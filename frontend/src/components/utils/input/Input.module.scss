@@ -1,0 +1,14 @@
+.inputBut {
+  width: 100%;
+  padding: 16px 8px;
+  text-align: center;
+  border: 2px solid #000000;
+  outline: 0;
+  &:focus, &:active {
+    border: 2px solid #963FF2;
+  }
+  &:invalid {
+    color: #F23F3F;
+    border: 2px solid #F23F3F;
+  }
+}

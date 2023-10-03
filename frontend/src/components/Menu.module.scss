@@ -1,0 +1,57 @@
+.body {
+  display: none;
+  @media (max-width: 767px) {
+    display: block;
+  }
+}
+
+.menu {
+  background-color: #963FF2;
+  color: #FFFFFF;
+  padding: 1rem 32px 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media (min-width: 320px) and (max-width: 479px) {
+    font-size: 16px;
+    padding: 1rem 16px 2rem;
+  }
+  @media (max-width: 319px) {
+    font-size: 15px;
+    padding: 1rem 8px 2rem;
+  }
+}
+
+.backHead {
+  width: 100%;
+  position: absolute;
+  background-color: #963FF2;
+  margin-top: -48px;
+  padding-top: 52px;
+  z-index: -1;
+}
+
+.list {
+  padding-bottom: 24px;
+  & li {
+    padding: 16px 0;
+    @media (min-width: 320px) and (max-width: 479px) {
+      padding: 12px 0;
+    }
+    @media (max-width: 319px) {
+      padding: 8px 0;
+    }
+  }
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  & a {
+    font: 700 16px/18px 'Ubuntu', sans-serif;
+    padding: 0.75rem 1.75rem;
+    background-color: #4300D2;
+    cursor: pointer;
+  }
+}

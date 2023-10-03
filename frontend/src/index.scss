@@ -1,0 +1,666 @@
+.container {
+  max-width: 1440px;
+  padding: 0 150px;
+  margin: 0 auto;
+  @media (min-width: 992px) and (max-width: 1199px) {
+    padding: 0 100px;
+  }
+  @media (min-width: 768px) and (max-width: 991px) {
+    padding: 0 50px;
+  }
+
+  @media (min-width: 480px) and (max-width: 767px) {
+    padding: 0 32px;
+  }
+
+  @media (min-width: 320px) and (max-width: 479px) {
+    padding: 0 16px;
+  }
+
+  @media (max-width: 319px) {
+    padding: 0 8px;
+  }
+}
+
+
+
+
+
+
+
+
+
+.advantages {
+  display: block;
+  padding-top: 140px;
+}
+
+.advantages__head {
+  text-align: center;
+  font: 700 36px/41px 'Ubuntu', sans-serif;
+}
+
+.advantages__body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 50px;
+}
+
+.advantages__bodyImg {
+  width: 488px;
+  height: 435px;
+  padding-right: 55px;
+}
+
+.advantages__body-text {
+  color: #FFFFFF;
+  font: 500 24px/27px 'Ubuntu', sans-serif;
+}
+
+.advantages__body-text li{
+  padding: 20px 44px;
+  background-color: #963FF2;
+  border: 3px solid #000000;
+  box-shadow: inset -8px -8px 0px rgba(0, 0, 0, 0.5), inset 8px 8px 0px rgba(0, 0, 0, 0.5);
+}
+
+.advantages__body-text li:nth-child(-n+3) {
+  margin-bottom: 25px;
+}
+
+.news {
+  display: block;
+  padding-top: 140px;
+}
+
+.news__head {
+  text-align: center;
+  font: 700 36px/41px 'Ubuntu', sans-serif;
+}
+
+.news__top__blocks {
+  display: flex;
+  padding-top: 50px;
+  justify-content: space-between;
+}
+
+.news__bottom__blocks {
+  display: flex;
+  padding-top: 20px;
+  justify-content: space-between;
+}
+
+.news__big__block {
+  max-width: 500px;
+  background: #963FF2;
+  border: 3px solid #000000;
+  box-shadow: inset -8px -8px 0px rgba(0, 0, 0, 0.5), inset 8px 8px 0px rgba(0, 0, 0, 0.5);
+  color: #FFFFFF;
+  background-image: url(./images/info-cube.png);
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+}
+
+.news__big__block-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 0 20px;
+}
+
+.news__big__block-head h2 {
+  font: 500 24px/27px 'Ubuntu', sans-serif;
+}
+
+.news__big__block-head p {
+  font: 700 16px/18px 'Ubuntu', sans-serif;
+  padding: 6px 35px;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.news__big__block-text {
+  padding: 10px 20px 0 20px;
+}
+
+.news__big__block-button {
+  display: flex;
+  padding: 20px;
+}
+
+.news__big__block-button a {
+  padding: 11px 48px;
+  background: #E83CCE;
+  border: 1px solid #000000;
+  box-shadow: inset -6px -5px 0px rgba(0, 0, 0, 0.25), inset 6px 5px 0px rgba(255, 255, 255, 0.5);
+  font: 700 16px/18px 'Ubuntu', sans-serif;
+}
+
+.news__small__block {
+  display: block;
+  text-align: center;
+  max-width: 300px;
+  padding: 20px;
+  color: #FFFFFF;
+  background: #963FF2;
+  border: 3px solid #000000;
+  box-shadow: inset -8px -8px 0px rgba(0, 0, 0, 0.5), inset 8px 8px 0px rgba(0, 0, 0, 0.5);
+  background-image: url(./images/info-cube.png);
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+}
+
+.news__sBlock p {
+  padding: 6px 90px;
+  background: rgba(0, 0, 0, 0.25);
+  font: 700 16px/18px 'Ubuntu', sans-serif;
+}
+
+.news__sBlock h2 {
+  padding: 10px 20px 72px 20px;
+  font: 500 24px/27px 'Ubuntu', sans-serif;
+}
+
+.news__small__block-button {
+  font: 700 16px/18px 'Ubuntu', sans-serif;
+}
+
+.news__small__block-button > a {
+  background: #E83CCE;
+  border: 1px solid #000000;
+  box-shadow: inset -6px -5px 0px rgba(0, 0, 0, 0.25), inset 6px 5px 0px rgba(255, 255, 255, 0.5);
+  padding: 11px 94.5px;
+}
+
+.decoration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 223px;
+  padding-bottom: 184px;
+}
+
+/* howplay.html */
+
+.howplay__head {
+  text-align: center;
+  padding: 150px 0px 50px;
+}
+
+.howplay__body {
+  color: #FFFFFF;
+  font: 500 18px/21px 'Ubuntu', sans-serif;
+  padding-bottom: 150px;
+}
+
+.howplay__body__items li {
+  padding: 20px;
+  background-color: #6D3CE8;
+}
+
+.howplay__body__items li a {
+  font: 300 18px/21px 'Ubuntu', sans-serif;
+}
+
+.howplay__body__items li span {
+  user-select: text;
+  text-decoration: underline;
+}
+
+.howplay__body__items li:nth-child(-n+11) {
+  margin-bottom: 25px;
+}
+
+/* Rules */
+
+.rules__title {
+  text-align: center;
+  padding: 150px 0 50px;
+}
+
+.rules__title h2 {
+  margin-bottom: 10px;
+}
+
+.rules__body {
+  color: #FFFFFF;
+  padding-bottom: 150px;
+}
+
+/* New rules */
+
+.rules__items {
+  font: 500 18px/21px 'Ubuntu', sans-serif;
+}
+
+.rule__item.active .rule__head__img {
+  transform: rotate(0.5turn);
+}
+
+.rule__item.active .rule__item__body {
+  display: block;
+}
+
+.rule__item__head {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #6D3CE8;
+  cursor: pointer;
+}
+
+.rule__head__img {
+  width: 12px;
+  height: 8px;
+  transition: transform .3s ease;
+}
+
+.rule__item__body {
+  display: none;
+}
+
+.rule__item__body > li {
+  padding: 11px 20px;
+  background-color: #963FF2;
+  border-bottom: 1px solid #BE81FF;
+  font: 400 16px/18px 'Ubuntu', sans-serif;
+  user-select: text;
+}
+
+/* Store */
+
+.swiper {
+  display: flex;
+  max-width: 665px;
+  max-height: 150px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.swiper-wrapper {
+  box-sizing: content-box;
+}
+
+.swiper-slide {
+  background-color: #6D3CE8;
+  position: relative;
+}
+
+.slider__title {
+  padding: 150px 0 30px;
+  text-align: center;
+}
+
+.slider__title h2 {
+  font: 700 36px/41px 'Ubuntu', sans-serif;
+}
+
+.slider__title p {
+  font-weight: 400;
+}
+
+.cube-swap {
+  position: absolute;
+}
+
+.text-swiper {
+  color: #fff;
+  padding: 25px 127px 28px 60px;
+  z-index: 1;
+  position: relative;
+}
+
+.text-swiper h2 {
+  font: 700 24px/27px 'Ubuntu', sans-serif;
+  margin-bottom: 15px;
+}
+
+.text-swiper p {
+  font: 500 16px/18px 'Ubuntu', sans-serif;
+}
+
+.like-swap {
+  width: 168px;
+  height: 122px;
+  position: absolute;
+  bottom: 0;
+  left: 75%;
+}
+
+.bag-swap {
+  width: 173px;
+  height: 182px;
+  position: absolute;
+  bottom: 0;
+  left: 74%;
+}
+
+.links-swap {
+  width: 213px;
+  height: 206px;
+  position: absolute;
+  bottom: 0;
+  left: 68%;
+}
+
+.slider__bottom {
+  display: flex;
+  justify-content: center;
+  padding: 105px 0 80px;
+  font: 400 12px/14px 'Ubuntu', sans-serif;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.slider__bottom__block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  cursor: pointer;
+}
+
+/* Donat section */
+
+.donate {
+  padding-bottom: 60px;
+}
+
+.donate > h2 {
+  font: 700 36px/41px 'Ubuntu', sans-serif;
+  padding-bottom: 40px;
+}
+
+.donate__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #FFFFFF;
+}
+
+.donate__item {
+  min-width: 350px;
+  position: relative;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.947917) 68.75%, rgba(0, 0, 0, 0.985632) 75%, #000000 83.85%);
+}
+
+.donate__item__img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+}
+
+.donate__item__text {
+  padding: 300px 40px 40px 40px;
+}
+
+.donate__item__text h2 {
+  font: 700 36px/41px 'Ubuntu', sans-serif;
+  margin-bottom: 20px;
+}
+
+/* Buttons */
+
+.button {
+  padding: 11px 48px;
+  background-color: #4300D2;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.button-width {
+  width: 100%;
+}
+
+.button-type_primary {
+  background-color: #E83CCE;
+  border: 1px solid #000000;
+  box-shadow: inset -6px -5px 0px rgba(0, 0, 0, 0.25), inset 6px 5px 0px rgba(255, 255, 255, 0.5);
+}
+
+/* Popup */
+
+body.lock {
+  overflow: hidden;
+}
+
+.modal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  top: 0;
+  left: 0;
+  z-index: 50;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: opacity 300ms ease-in-out
+
+  /* position: fixed;
+  display: none;
+  overflow-y: auto;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  z-index: 50;
+  cursor: pointer; */
+}
+
+.modal.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal__body {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+
+  /* position: relative;
+  margin: auto;
+  padding: 60px 20px; */
+}
+
+.modal__content {
+  max-width: 1165px;
+  min-height: 730px;
+  background-image: url(./images/background-popup.png);
+  background-repeat: no-repeat;
+  padding: 80px;
+}
+
+/* Block description */
+
+.blocks {
+  display: flex;
+  justify-content: space-between;
+}
+
+.block__description {
+  padding-right: 80px;
+}
+
+.block__title {
+  font: 700 28px/32px 'Ubuntu', sans-serif;
+  color: #FFFFFF;
+  padding-bottom: 30px;
+}
+
+.block__description-item {
+  padding: 14px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.block__description-item__text {
+  font: 500 16px/18px 'Ubuntu', sans-serif;
+}
+
+.description__text {
+  font: 500 16px/18px 'Ubuntu', sans-serif;
+  padding-bottom: 5px;
+}
+
+.block__description-list > li {
+  font: 400 14px/16px 'Ubuntu', sans-serif;
+  list-style-type: disc;
+  margin: 5px 20px;
+}
+
+.block__description-row {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  gap: 20px;
+}
+
+.button__form {
+  box-sizing: border-box;
+  background: #FFFFFF;
+  border: 2px solid #000000;
+  padding: 8px;
+  text-align: center;
+}
+
+.button__form::placeholder {
+  font: 400 14px/16px 'Ubuntu', sans-serif;
+  color: #000000;
+  opacity: 0.5;
+}
+
+.button__form:focus {
+  border: 2px solid #963FF2;
+  outline: 0;
+}
+
+/* Block form */
+.form {
+  min-width: 380px;
+}
+
+.block__form {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 15px;
+}
+
+.block__form__err {
+  display: flex;
+  padding-top: 13px;
+}
+
+.block__form__err-img {
+  margin: 10px;
+  padding-right: 10px;
+}
+
+.block__form__err-text {
+  background-color: #AB44DB;
+  color: #FFFFFF;
+  padding: 8px 12px;
+  font: 400 12px/14px 'Ubuntu', sans-serif;
+}
+
+.block__form__err-text a {
+  padding-top: 2px;
+  display: flex;
+  color: #FFC0F6;
+}
+
+.block__form__err-text a img {
+  padding-right: 5px;
+}
+
+.block__form__offer {
+  padding-top: 22px;
+  padding-bottom: 10px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+.block__form__offer-checkbox {
+  margin-right: 8px;
+}
+
+.block__form__offer-text a {
+  color: #963FF2;
+}
+
+.select {
+  background-color: #FFFFFF;
+  cursor: pointer;
+  position: relative;
+}
+
+.select__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #963FF2;
+  background-color: #FFFFFF;
+  padding: 10px;
+}
+
+.select__header-price {
+  flex-grow: 1;
+  text-align: end;
+  margin-right: 10px;
+}
+
+.select__header-icon {
+  transition: transform .3s ease;
+}
+
+.select__text-normal {
+  font: 400 14px/16px 'Ubuntu', sans-serif;
+}
+
+.select__text-bold {
+  font: 700 14px/16px 'Ubuntu', sans-serif;
+}
+
+.select__body {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transform: translateY(100%);
+}
+
+.select.active .select__body {
+  display: block;
+}
+
+.select.active .select__header-icon {
+  transform: rotate(180deg);
+}
+
+.select__body__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  border: 2px solid #000000;
+  background-color: #FFFFFF;
+  padding: 10px;
+}
+
+.select__body__item:hover {
+  background-color: #F4E7FF;
+} 
+
+.basket {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}

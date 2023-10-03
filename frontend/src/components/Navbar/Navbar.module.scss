@@ -1,0 +1,159 @@
+.logoImg {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  z-index: 6;
+  @media (min-width: 768px) and (max-width: 991px) {
+    width: 124px;
+    height: 124px;
+    transform: translate(-50%, 65%);
+  }
+  @media (min-width: 480px) and (max-width: 767px) {
+    width: 96px;
+    height: 96px;
+    transform: translate(-50%, 95%);
+  }
+  @media (min-width: 320px) and (max-width: 479px) {
+    width: 64px;
+    height: 64px;
+    transform: translate(-50%, 160%);
+  }
+  @media (max-width: 319px) {
+    width: 56px;
+    height: 56px;
+    transform: translate(-50%, 185%);
+  }
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 0 88px;
+  color: #FFFFFF;
+}
+
+.logoText {
+  font: normal 700 24px/28px 'Ubuntu', sans-serif;
+  text-transform: uppercase;
+  flex: 1;
+  @media (min-width: 320px) and (max-width: 479px) {
+    font-size: calc(1rem + ((1vw - 3.2px) * 5));
+  }
+  @media (max-width: 319px) {
+    font-size: 16px;
+  }
+}
+
+.list {
+  display: flex;
+  gap: 35px;
+  &Item {
+    position: relative;
+    &::before {
+      content: '';
+      display:inline-block;
+      width: 0px;
+      height: 3px;
+      box-shadow: 3px 1px 4px rgba(0, 0, 0, 0.25);
+      background-color: #FFFFFF;
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      transition: width .3s ease;
+    }
+    &:hover::before {
+      width: 45px;
+    }
+  }
+}
+
+.login {
+  flex: 1;
+  display: flex;
+  flex-direction: row-reverse;
+  & a {
+    font: 700 16px/18px 'Ubuntu', sans-serif;
+    padding: 12px 48px;
+    background-color: #4300D2;
+    @media (min-width: 768px) and (max-width: 991px) {
+      padding: 12px 28px;
+    }
+  }
+}
+
+.burger {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .list, .login {
+    display: none;
+  }
+
+  .logoText {
+    flex: none;
+  }
+
+  .burger {
+    cursor: pointer;
+    display: block;
+  }
+}
+
+
+// Button Account
+
+.nickname {
+  flex: 1;
+  display: flex;
+  flex-direction: row-reverse;
+  & > div {
+    position: relative;
+  }
+}
+
+.butNickname {
+  font: 700 16px/18px 'Ubuntu', sans-serif;
+  display: flex;
+  padding: 12px 48px;
+  background-color: #963FF2;
+  color: #FFFFFF;
+  & img {
+    margin-left: 10px;
+  }
+}
+
+.links {
+  padding: 0 5px 10px;
+  margin-bottom: 10px;
+  border-bottom: 3px solid #ffffff;
+  & > * {
+    display: block;
+    padding-bottom: 10px;
+  }
+  & button {
+    color: #FFFFFF;
+  }
+}
+
+.dropdown {
+  font: 400 16px/18px 'Ubuntu', sans-serif;
+  text-align: left;
+  white-space: nowrap;
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: rgba(115, 35, 209, .75);
+  padding: 15px;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.dropdown.active {
+  opacity: 1;
+  visibility: visible;
+}

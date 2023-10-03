@@ -1,0 +1,14 @@
+export const MAIN_ROUTE = '/'; // Главная страница
+export const SHOP_ROUTE = '/shop';
+export const PLAY_ROUTE = '/play'; //Страница "Как начать играть?" или "Начать играть"
+export const RULES_ROUTE = '/rules';
+
+export const AUTHORIZATION_ROUTE = '/registration';
+export const LOGIN_ROUTE = '/login';
+
+export const ADMIN_ROUTE = '/admin';
+
+
+// Внешние ссылки
+export const VK_LINK = 'https://vk.com/shutworld';
+export const DS_LINK = 'https://discord.gg/yeJ6fBwEsB';

@@ -1,0 +1,176 @@
+.body {
+  display: flex;
+  padding: 50px 0;
+  justify-content: space-between;
+}
+
+.wrapReg {
+  max-width: 578px;
+}
+
+.wrapLogin {
+  max-width: 490px;
+}
+
+.wrapForm {
+  display: grid;
+  row-gap: 40px;
+}
+
+.headTitle {
+  text-align: center;
+  font: 700 45px/55px 'Ubuntu', sans-serif;
+}
+
+.wrapFormItem {
+  display: grid;
+  height: 68px;
+  grid-template-columns: auto 248px;
+  column-gap: 40px;
+  align-items: center;
+}
+
+.titleField {
+  font: 700 24px/28px 'Ubuntu', sans-serif;
+}
+
+// Error
+.wrapError {
+  position: relative;
+}
+
+.error {
+  position: absolute;
+  top: -50%;
+  padding: 2px 8px;
+  margin-bottom: 4px;
+  color: #FFFFFF;
+  background-color: #F23F3F;
+  font: 400 12px/14px 'Ubuntu', sans-serif;
+  &+.inputBut {
+    border: 2px solid #F23F3F;
+  }
+}
+
+// Button
+.inputBut {
+  width: 100%;
+  padding: 16px 8px;
+  text-align: center;
+  border: 2px solid #000000;
+  outline: 0;
+  &:focus, &:active {
+    border: 2px solid #963FF2;
+  }
+}
+
+.wrapBtn {
+  padding: 12px 0 32px;
+  text-align: center;
+}
+
+.btnJoin {
+  padding: 12px 84px;
+  color: #FFFFFF;
+  font: 700 18px/22px 'Ubuntu', sans-serif;
+  background-color: #E83CCE;
+  border: 1px solid #000000;
+  box-shadow: inset -6px -5px 0px rgba(0, 0, 0, 0.25), inset 6px 5px 0px rgba(255, 255, 255, 0.5);
+}
+
+.btnJoin[disabled] {
+  padding: 12px 84px;
+  color: #FFFFFF;
+  opacity: 0.5;
+  font: 700 18px/22px 'Ubuntu', sans-serif;
+  background-color: #E83CCE;
+  border: 1px solid #000000;
+  box-shadow: inset -6px -5px 0px rgba(0, 0, 0, 0.25), inset 6px 5px 0px rgba(255, 255, 255, 0.5);
+  cursor: auto;
+}
+
+// Register new
+.descriptionReg {
+  padding-top: 5px;
+  font: 400 16px/16px 'Ubuntu', sans-serif;
+}
+
+.wrapUserAgreement {
+  padding: 0 50px;
+}
+
+.userAgreement {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  &:checked+label::before {
+    background-size: 8px 8px;
+    background-image: url("../../images/icon-user-agreement.svg");
+  }
+  // стили при наведении на checkbox курсором 
+  &:not(:disabled):not(:checked)+label:hover::before {
+    cursor: pointer;
+  }
+  // стили для активного состояния чекбокса (при нажатии на него)
+  &:not(:disabled):active+label::before {
+    background-color: rgba($color: #6D3CE8, $alpha: 0.5);
+  }
+  // в состоянии disabled 
+  &:disabled+label::before {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+  }
+}
+
+.userAgreement+label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  font: 400 16px/16px 'Ubuntu', sans-serif;
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 2px solid #000000;
+    margin-right: 0.5em;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+}
+
+.link {
+  color: #963FF2;
+}
+
+.login {
+  color: #963FF2;
+  display: flex;
+  justify-content: center;
+}
+
+.imgs {
+  display: flex;
+  flex-direction: column;
+}
+
+.status {
+  text-align: center;
+  color: green;
+}
+
+// Login new
+.recovery {
+  text-align: center;
+  color: #963FF2;
+  font: 700 14px/18px 'Ubuntu', sans-serif;
+}
+
+.reg {
+  color: #963FF2;
+  display: flex;
+  justify-content: center;
+  padding: 16px 0;
+}

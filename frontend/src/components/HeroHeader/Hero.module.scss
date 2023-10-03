@@ -1,0 +1,112 @@
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 32px;
+}
+
+.blockLeft {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.blockIp {
+  position: relative;
+  padding: 8px 20px 8px 40px;
+  background: linear-gradient(92deg, #963FF2 0%, #6D3CE8 100%);
+  border: 1px solid #000000;
+  box-shadow: 0px 0px 16px rgba(255, 255, 255, 0.4);
+  color: #FFFFFF;
+  user-select: text;
+  font: 500 14px/16px 'Ubuntu', sans-serif;
+  p {
+    font: 500 14px/16px 'Ubuntu', sans-serif;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 6px;
+    width: 20px;
+    height: 20px;
+    background-image: url(../../images/icon-ip.svg); 
+  }
+}
+
+.blockTitle {
+  padding: 20px 0 15px;
+  font: 700 48px/55px 'Ubuntu', sans-serif;
+}
+
+.blockText {
+  font: 400 24px/29px 'Ubuntu', sans-serif;
+  padding-bottom: 50px;
+}
+
+.blockInfo {
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+}
+
+.blockLinkPlay {
+  padding-right: 12px;
+  a {
+    padding: 12px 48px;
+    background-color: #E83CCE;
+    border: 1px solid #000000;
+    box-shadow: inset -6px -5px 0px rgba(0, 0, 0, 0.25), inset 6px 5px 0px rgba(255, 255, 255, 0.5);
+  }
+}
+
+.blockInfoOnline {
+  position: relative;
+  padding: 9.5px 10px 9.5px 45px;
+  background: linear-gradient(91.76deg, #963FF2 0%, #6D3CE8 100%);
+  border: 1px solid #000000;
+  box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.4);
+  p {
+    font: 500 18px/20px 'Ubuntu', sans-serif;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 10px;
+    top: 4.5px;
+    background: url(../../images/icon-online.svg) no-repeat;
+    background-position: center;
+  }
+}
+
+.blockRight {
+  flex-basis: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .header__left {
+    flex-basis: 60%;
+    padding-bottom: 0;
+    text-align: left;
+  }
+
+  .header__right {
+    flex-basis: 40%;
+    text-align: right;
+    margin-top: 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .header__left {
+    flex-basis: 50%;
+  }
+
+  .header__right {
+    flex-basis: 50%;
+  }
+}
