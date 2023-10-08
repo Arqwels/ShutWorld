@@ -3,8 +3,13 @@ import { Link } from 'react-router-dom';
 
 import style from './Menu.module.scss';
 import { AUTHORIZATION_ROUTE } from '../utils/consts';
+import { useContext } from 'react';
+import { Context } from '..';
+import MobileBtnAccount from './Navbar/MobileBtnAccount';
 
 const Menu = ({ header, items }) => {
+  const { store } = useContext(Context);
+
   return (
     <div className={style.body}>
       {/* Данный блок нужен для закрытия белого фона под фото header */}
@@ -18,9 +23,13 @@ const Menu = ({ header, items }) => {
             </li>
           )}
         </ul>
-        <div className={style.login}>
-          <Link to={AUTHORIZATION_ROUTE}>Авторизоваться</Link>
-        </div>
+        {store.isAuth ?
+          <MobileBtnAccount />
+          :
+          <div className={style.login}>
+            <Link to={AUTHORIZATION_ROUTE}>Авторизоваться</Link>
+          </div>
+        }
       </div>
     </div>
   )
