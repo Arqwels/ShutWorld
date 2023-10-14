@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import style from './Auth.module.scss';
 import { useContext, useEffect, useState } from 'react';
@@ -7,7 +7,7 @@ import enderDragon from '../../images/enderDragonReg.svg';
 import enderShip from '../../images/endShipReg.svg';
 import { observer } from 'mobx-react-lite';
 import { Context } from '../..';
-import { LOGIN_ROUTE } from '../../utils/consts';
+import { ADMIN_ROUTE, LOGIN_ROUTE } from '../../utils/consts';
 
 const Register = observer(() => {
 
@@ -107,6 +107,11 @@ const Register = observer(() => {
   };
   // Открывает и закрывает форму для регистрации, если не все данные были указаны форма будет неактивна
   useEffect( () => {
+    if (store.isAuth) {
+      store.checkAuth()
+      navigate(ADMIN_ROUTE);
+    }
+
     if ( nicknameError || emailError || passwordError || userAgrmntError || repeatPasswordError || registerStatus ) {
       setFormValid(false);
     } else {
@@ -124,7 +129,17 @@ const Register = observer(() => {
     }
   }
 
+  const navigate = useNavigate();
   const { store } = useContext(Context);
+
+  const handleRegistration = async (e) => {
+    e.preventDefault();
+    await store.registration(nickname,email,password,useragreement);
+    if (store.isAuth) {
+      await store.checkAuth();
+      navigate(ADMIN_ROUTE);
+    }
+  }
 
   return (
       <section className={style.body}>
@@ -237,7 +252,7 @@ const Register = observer(() => {
             </div>
 
             <div className={style.wrapBtn}>
-              <button onClick={(e) => { e.preventDefault(); store.registration(nickname,email,password,useragreement); }} type="submit" disabled={!formValid} className={style.btnJoin}><b>Зарегистрироваться</b></button>
+              <button onClick={handleRegistration} type="submit" disabled={!formValid} className={style.btnJoin}><b>Зарегистрироваться</b></button>
             </div>
 
           </form>

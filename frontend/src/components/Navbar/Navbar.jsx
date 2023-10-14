@@ -3,9 +3,9 @@ import { Link, useLocation } from 'react-router-dom';
 import LogoTypeHeaderImg from '../../images/Logotype-header.png';
 import BurgerSvg from '../../images/burger.svg';
 import ClsBurgerSvg from '../../images/clouseBurger.svg';
-import Menu from '../Menu';
+import Menu from './Menu/Menu';
 import style from './Navbar.module.scss';
-import { AUTHORIZATION_ROUTE, MAIN_ROUTE, RULES_ROUTE, SHOP_ROUTE } from '../../utils/consts';
+import { AUTHORIZATION_ROUTE, MAIN_ROUTE, PLAY_ROUTE, RULES_ROUTE, SHOP_ROUTE } from '../../utils/consts';
 import { Context } from '../..';
 import ButtonAccount from './ButtonAccount';
 import { observer } from 'mobx-react-lite';
@@ -24,11 +24,16 @@ const Navbar = () => {
     },
     {
       id: 1,
+      value: 'Как начать играть?',
+      href: PLAY_ROUTE
+    },
+    {
+      id: 2,
       value: 'Магазин',
       href: SHOP_ROUTE
     },
     {
-      id: 2,
+      id: 3,
       value: 'Правила',
       href: RULES_ROUTE
     }

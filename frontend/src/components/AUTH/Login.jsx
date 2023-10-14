@@ -4,7 +4,7 @@ import style from './Auth.module.scss';
 import endShip from '../../images/endShipLogin.svg';
 import { Context } from '../..';
 import { observer } from 'mobx-react-lite';
-import { AUTHORIZATION_ROUTE, MAIN_ROUTE } from '../../utils/consts';
+import { ADMIN_ROUTE, AUTHORIZATION_ROUTE, MAIN_ROUTE } from '../../utils/consts';
 
 const Login = () => {
   const [ nickname, setNickname ] = useState();
@@ -16,9 +16,19 @@ const Login = () => {
   useEffect(() => {
     if (store.isAuth) {
       store.checkAuth()
-      navigate(MAIN_ROUTE);
+      navigate(ADMIN_ROUTE);
     }
   }, [])
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    await store.login(nickname, password);
+
+    if (store.isAuth) {
+      await store.checkAuth();
+      navigate(ADMIN_ROUTE);
+    }
+  };
   
   return (
     <div className={style.body}>
@@ -58,7 +68,7 @@ const Login = () => {
 
           <span className={style.recovery}>Забыли пароль от аккаунта?</span>
           <div className={style.wrapBtn}>
-            <button onClick={(e) => { e.preventDefault(); store.login(nickname, password); }} className={style.btnJoin}>Вход</button>
+            <button onClick={handleLogin} className={style.btnJoin}>Вход</button>
             {/* <h3>{loginStatus}</h3> */}
           </div>
           

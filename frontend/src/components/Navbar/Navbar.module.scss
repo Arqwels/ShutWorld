@@ -54,7 +54,7 @@
     position: relative;
     &::before {
       content: '';
-      display:inline-block;
+      display: inline-block;
       width: 0px;
       height: 3px;
       box-shadow: 3px 1px 4px rgba(0, 0, 0, 0.25);
@@ -87,22 +87,6 @@
 .burger {
   display: none;
 }
-
-@media (max-width: 767px) {
-  .list, .login {
-    display: none;
-  }
-
-  .logoText {
-    flex: none;
-  }
-
-  .burger {
-    cursor: pointer;
-    display: block;
-  }
-}
-
 
 // Button Account
 
@@ -156,4 +140,55 @@
 .dropdown.active {
   opacity: 1;
   visibility: visible;
+}
+
+
+// Mobile Button Account
+
+.shell {
+  background: rgba(135, 57, 218, 0.75);
+  display: flex;
+  padding: 16px 32px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.nicknameMobile {
+  display: flex;
+  padding: 12px 48px;
+  width: 100%;
+  justify-content: center;
+  background: rgba(121, 41, 213, 0.50);
+}
+
+.linksMobile {
+  display: flex;
+  padding: 12px 48px;
+  width: 100%;
+  justify-content: center;
+  background: rgba(115, 35, 209, 0.75);
+  color: #FFFFFF;
+}
+
+// Разные медиа запросы
+
+@media (max-width: 767px) {
+  .list, .login {
+    display: none;
+  }
+
+  .nickname {
+    display: none;
+  }
+
+  .logoText {
+    flex: none;
+  }
+
+  .burger {
+    cursor: pointer;
+    display: block;
+  }
 }

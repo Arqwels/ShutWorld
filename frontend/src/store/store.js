@@ -43,7 +43,6 @@ export default class Store {
       this.setAuth(true);
       this.setUser(response.data.user);
     } catch (error) {
-      console.log("Ошибка в frond/store/store = 51");
       console.log(error.response?.data?.message);
     }
   }
@@ -60,25 +59,25 @@ export default class Store {
   }
 
 // В методе checkAuth
-async checkAuth() {
-  this.setLoading(true);
-  try {
-    const cachedToken = localStorage.getItem('token'); // Получаем токен из локального хранилища
-    if (cachedToken) {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}api/user/refresh`, { withCredentials: true });
-      localStorage.setItem('token', response.data.accessToken); // Обновляем токен в локальном хранилище
-      this.setAuth(true);
-      this.setUser(response.data.user);
+  async checkAuth() {
+    this.setLoading(true);
+    try {
+      const cachedToken = localStorage.getItem('token'); // Получаем токен из локального хранилища
+      if (cachedToken) {
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}api/user/refresh`, { withCredentials: true });
+        localStorage.setItem('token', response.data.accessToken); // Обновляем токен в локальном хранилище
+        this.setAuth(true);
+        this.setUser(response.data.user);
+      }
+    } catch (error) {
+      console.log(555111);
+      //localStorage.removeItem('token');
+      console.log(error.response?.data?.message);
+    } finally {
+      setTimeout(() => {
+        this.setLoading(false);
+      }, 0);
     }
-  } catch (error) {
-    console.log(555111);
-    //localStorage.removeItem('token');
-    console.log(error.response?.data?.message);
-  } finally {
-    setTimeout(() => {
-      this.setLoading(false);
-    }, 0);
   }
-}
 
 }

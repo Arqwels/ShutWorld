@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import style from './Menu.module.scss';
-import { AUTHORIZATION_ROUTE } from '../utils/consts';
+import { AUTHORIZATION_ROUTE } from '../../../utils/consts';
 import { useContext } from 'react';
-import { Context } from '..';
-import MobileBtnAccount from './Navbar/MobileBtnAccount';
+import { Context } from '../../..';
+import MobileBtnAccount from '../MobileBtnAccount';
 
 const Menu = ({ header, items }) => {
   const { store } = useContext(Context);
