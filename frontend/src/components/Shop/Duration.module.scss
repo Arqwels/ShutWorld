@@ -1,0 +1,75 @@
+
+.bodyForm {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 15px;
+}
+
+.labelDurationText {
+  font: 500 16px/18px 'Ubuntu', sans-serif;
+  padding-bottom: 5px;
+}
+
+.select {
+  background-color: #FFFFFF;
+  cursor: pointer;
+  position: relative;
+}
+
+.selectHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #963FF2;
+  background-color: #FFFFFF;
+  padding: 10px;
+}
+
+.selectHeaderPrice {
+  flex-grow: 1;
+  text-align: end;
+  margin-right: 10px;
+}
+
+.durationIcon {
+  transition: transform .3s ease;
+}
+
+.activeIcon {
+  transform: rotate(180deg);
+}
+
+.selectBody {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transform: translateY(100%);
+}
+
+.selectBodyItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  border: 2px solid #000000;
+  background-color: #FFFFFF;
+  padding: 10px;
+}
+
+.selectBodyItem:hover {
+  background-color: #F4E7FF;
+}
+
+.selectTextNormal {
+  font: 400 14px/16px 'Ubuntu', sans-serif;
+}
+
+.selectTextBold {
+  font: 700 14px/16px 'Ubuntu', sans-serif;
+}
+
+.active {
+  display: block;
+}

@@ -4,7 +4,7 @@ import style from './Auth.module.scss';
 import endShip from '../../images/endShipLogin.svg';
 import { Context } from '../..';
 import { observer } from 'mobx-react-lite';
-import { ADMIN_ROUTE, AUTHORIZATION_ROUTE, MAIN_ROUTE } from '../../utils/consts';
+import { ADMIN_ROUTE, AUTHORIZATION_ROUTE } from '../../utils/consts';
 
 const Login = () => {
   const [ nickname, setNickname ] = useState();
