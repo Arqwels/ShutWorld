@@ -5,6 +5,7 @@ import AppRouter from './components/AppRouter'
 import Navbar from './components/Navbar/Navbar';
 import { Context } from '.';
 import { observer } from 'mobx-react-lite';
+import ScrollToTop from './ScrollToTop';
 
 const App = () => {
   const { store } = useContext(Context);
@@ -27,6 +28,7 @@ const App = () => {
     <BrowserRouter>
       <Navbar />
       <AppRouter />
+      <ScrollToTop /> {/* Временное решение! */}
     </BrowserRouter>
   );
 };

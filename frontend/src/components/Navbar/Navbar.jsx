@@ -22,11 +22,11 @@ const Navbar = () => {
       value: 'Главная',
       href: MAIN_ROUTE
     },
-    {
-      id: 1,
-      value: 'Как начать играть?',
-      href: PLAY_ROUTE
-    },
+    // {
+    //   id: 1,
+    //   value: 'Как начать играть?',
+    //   href: PLAY_ROUTE
+    // },
     {
       id: 2,
       value: 'Магазин',
