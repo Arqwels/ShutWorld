@@ -5,7 +5,7 @@ import BurgerSvg from '../../images/burger.svg';
 import ClsBurgerSvg from '../../images/clouseBurger.svg';
 import Menu from './Menu/Menu';
 import style from './Navbar.module.scss';
-import { AUTHORIZATION_ROUTE, MAIN_ROUTE, PLAY_ROUTE, RULES_ROUTE, SHOP_ROUTE } from '../../utils/consts';
+import { AUTHORIZATION_ROUTE, MAIN_ROUTE, RULES_ROUTE, SHOP_ROUTE } from '../../utils/consts';
 import { Context } from '../..';
 import ButtonAccount from './ButtonAccount';
 import { observer } from 'mobx-react-lite';
