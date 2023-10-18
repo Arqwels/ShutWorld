@@ -12,8 +12,10 @@ import donate1ssImg from '../images/Vector.png';
 import donate2ssImg from '../images/Vector2.png';
 import donate3ssImg from '../images/Vector3.png';
 import donate1ItemImg from '../images/donat-item1.png';
-import DurationSelect from '../components/Shop/DurationSelect';
 
+import { donate } from '../components/Shop/DonateStatuses';
+import PaymentMethod from '../components/Shop/PaymentMethod';
+import DurationSelect from '../components/Shop/DurationSelect';
 
 const Store = () => {
   const [ modalDonate1ss, setModalDonate1ss ] = useState(false);
@@ -111,54 +113,8 @@ const Store = () => {
                       <label className="description__text" for="coupon">Купон</label>
                       <input className="button__form" type="text" name="name" required placeholder="Введите купион, если имеется" />
                     </div>
-                    <div className="block__form">
-                      <label className="description__text" for="duration">Длительность</label>
-                      <duration duration-name="dur" className="select" style={{zIndex:10}}>
-                        <div duration-header className="select__header">
-                          <div duration-value className="select__header-value select__text-normal">Выберите на сколько возьмёте</div>
-                          <div duration-property="price" className="select__header-price select__text-bold"></div>
-                          <img src="images/select-icon.svg" alt="" className="select__header-icon" />
-                        </div>
-                        <div duration-box className="select__body">
-                          <div duration-item="1" className="select__body__item">
-                            <div duration-value className="select__body__item-value select__text-normal">1 месяц</div>
-                            <div duration-property="price" className="select__body__item-value select__text-bold">100₽</div>
-                          </div>
-                          <div duration-item="2" className="select__body__item">
-                            <div duration-value className="select__body__item-value select__text-normal">3 месяца</div>
-                            <div duration-property="price" className="select__body__item-value select__text-bold">200₽</div>
-                          </div>
-                          <div duration-item="3" className="select__body__item">
-                            <div duration-value className="select__body__item-value select__text-normal">Навсегда</div>
-                            <div duration-property="price" className="select__body__item-value select__text-bold">480₽</div>
-                          </div>
-                        </div>
-                      </duration>
-                    </div>
-                    <div className="block__form">
-                      <label className="description__text" for="payMethod">Способ оплаты</label>
-                      <duration duration-name="dur" className="select" style={{zIndex:9}}>
-                        <div duration-header className="select__header">
-                          <div duration-value className="select__header-value select__text-normal">Выберите способ оплаты</div>
-                          <div duration-property="price" className="select__header-price select__text-bold"></div>
-                          <img src="images/select-icon.svg" alt="" className="select__header-icon" />
-                        </div>
-                        <div duration-box className="select__body">
-                          <div duration-item="1" className="select__body__item">
-                            <div duration-value className="select__body__item-value select__text-normal">QIWI</div>
-                            <div duration-property="price" className="select__body__item-value select__text-bold">Комиссия 3%</div>
-                          </div>
-                          <div duration-item="2" className="select__body__item">
-                            <div duration-value className="select__body__item-value select__text-normal">Банковская карта</div>
-                            <div duration-property="price" className="select__body__item-value select__text-bold">Комиссия 0%</div>
-                          </div>
-                          <div duration-item="3" className="select__body__item">
-                            <div duration-value className="select__body__item-value select__text-normal">Bitcoin</div>
-                            <div duration-property="price" className="select__body__item-value select__text-bold">Комиссия 5%</div>
-                          </div>
-                        </div>
-                      </duration>
-                    </div>
+                    <DurationSelect donateStatus={donate["1ss"]} />
+                    <PaymentMethod />
                     <div className="block__form__err">
                       <img src="images/question-mark.svg" alt="" className="block__form__err-img" />
                       <div className="block__form__err-text">
@@ -222,54 +178,8 @@ const Store = () => {
                       <label className="description__text" for="coupon">Купон</label>
                       <input className="button__form" type="text" name="name" required placeholder="Введите купион, если имеется" />
                     </div>
-                    <div className="block__form">
-                      <label className="description__text" for="duration">Длительность</label>
-                      <duration duration-name="dur" className="select" style={{zIndex:10}}>
-                        <div duration-header className="select__header">
-                          <div duration-value className="select__header-value select__text-normal">Выберите на сколько возьмёте</div>
-                          <div duration-property="price" className="select__header-price select__text-bold"></div>
-                          <img src="images/select-icon.svg" alt="" className="select__header-icon" />
-                        </div>
-                        <div duration-box className="select__body">
-                          <div duration-item="1" className="select__body__item">
-                            <div duration-value className="select__body__item-value select__text-normal">1 месяц</div>
-                            <div duration-property="price" className="select__body__item-value select__text-bold">165₽</div>
-                          </div>
-                          <div duration-item="2" className="select__body__item">
-                            <div duration-value className="select__body__item-value select__text-normal">3 месяца</div>
-                            <div duration-property="price" className="select__body__item-value select__text-bold">330₽</div>
-                          </div>
-                          <div duration-item="3" className="select__body__item">
-                            <div duration-value className="select__body__item-value select__text-normal">Навсегда</div>
-                            <div duration-property="price" className="select__body__item-value select__text-bold">980₽</div>
-                          </div>
-                        </div>
-                      </duration>
-                    </div>
-                    <div className="block__form">
-                      <label className="description__text" for="payMethod">Способ оплаты</label>
-                      <duration duration-name="dur" className="select" style={{zIndex:9}}>
-                        <div duration-header className="select__header">
-                          <div duration-value className="select__header-value select__text-normal">Выберите способ оплаты</div>
-                          <div duration-property="price" className="select__header-price select__text-bold"></div>
-                          <img src="images/select-icon.svg" alt="" className="select__header-icon" />
-                        </div>
-                        <div duration-box className="select__body">
-                          <div duration-item="1" className="select__body__item">
-                            <div duration-value className="select__body__item-value select__text-normal">QIWI</div>
-                            <div duration-property="price" className="select__body__item-value select__text-bold">Комиссия 3%</div>
-                          </div>
-                          <div duration-item="2" className="select__body__item">
-                            <div duration-value className="select__body__item-value select__text-normal">Банковская карта</div>
-                            <div duration-property="price" className="select__body__item-value select__text-bold">Комиссия 0%</div>
-                          </div>
-                          <div duration-item="3" className="select__body__item">
-                            <div duration-value className="select__body__item-value select__text-normal">Bitcoin</div>
-                            <div duration-property="price" className="select__body__item-value select__text-bold">Комиссия 5%</div>
-                          </div>
-                        </div>
-                      </duration>
-                    </div>
+                    <DurationSelect donateStatus={donate["2ss"]} />
+                    <PaymentMethod />
                     <div className="block__form__err">
                       <img src="images/question-mark.svg" alt="" className="block__form__err-img" />
                       <div className="block__form__err-text">
@@ -333,31 +243,8 @@ const Store = () => {
                       <label className="description__text" for="coupon">Купон</label>
                       <input className="button__form" type="text" name="name" required placeholder="Введите купион, если имеется" />
                     </div>
-                    <DurationSelect />
-                    <div className="block__form">
-                      <label className="description__text" for="payMethod">Способ оплаты</label>
-                      <duration duration-name="dur" className="select" style={{zIndex:9}}>
-                        <div duration-header className="select__header">
-                          <div duration-value className="select__header-value select__text-normal">Выберите способ оплаты</div>
-                          <div duration-property="price" className="select__header-price select__text-bold"></div>
-                          <img src="images/select-icon.svg" alt="" className="select__header-icon" />
-                        </div>
-                        <div duration-box className="select__body">
-                          <div duration-item="1" className="select__body__item">
-                            <div duration-value className="select__body__item-value select__text-normal">QIWI</div>
-                            <div duration-property="price" className="select__body__item-value select__text-bold">Комиссия 3%</div>
-                          </div>
-                          <div duration-item="2" className="select__body__item">
-                            <div duration-value className="select__body__item-value select__text-normal">Банковская карта</div>
-                            <div duration-property="price" className="select__body__item-value select__text-bold">Комиссия 0%</div>
-                          </div>
-                          <div duration-item="3" className="select__body__item">
-                            <div duration-value className="select__body__item-value select__text-normal">Bitcoin</div>
-                            <div duration-property="price" className="select__body__item-value select__text-bold">Комиссия 5%</div>
-                          </div>
-                        </div>
-                      </duration>
-                    </div>
+                    <DurationSelect donateStatus={donate["3ss"]} />
+                    <PaymentMethod />
                     <div className="block__form__err">
                       <img src="images/question-mark.svg" alt="" className="block__form__err-img" />
                       <div className="block__form__err-text">

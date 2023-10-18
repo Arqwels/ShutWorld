@@ -4,85 +4,85 @@ console.log ('Даня самый лучший дотер в мире!');
 
 
 
-const prefix = "duration"; // чтобы выпендриться
+// const prefix = "duration"; // чтобы выпендриться
 
-const selects = document.querySelectorAll(prefix);
+// const selects = document.querySelectorAll(prefix);
 
-selects.forEach(select => {
-    const header = select.querySelector("[" + prefix + "-header]");
-    const value = header.querySelector("[" + prefix + "-value]");
-    const properties = header.querySelectorAll("[" + prefix + "-property]");  // это потом
+// selects.forEach(select => {
+//     const header = select.querySelector("[" + prefix + "-header]");
+//     const value = header.querySelector("[" + prefix + "-value]");
+//     const properties = header.querySelectorAll("[" + prefix + "-property]");  // это потом
 
-    const box = select.querySelector("[" + prefix + "-box]");
-    const items = select.querySelectorAll("[" + prefix + "-item]");
+//     const box = select.querySelector("[" + prefix + "-box]");
+//     const items = select.querySelectorAll("[" + prefix + "-item]");
 
-    const name = select.getAttribute(prefix + '-name');
-    const defaultValue = select.getAttribute(prefix + '-default'); // default null
+//     const name = select.getAttribute(prefix + '-name');
+//     const defaultValue = select.getAttribute(prefix + '-default'); // default null
 
-    let input = null;
+//     let input = null;
 
-    select.addEventListener('click', ()=> {
-        console.log(11)
-        select.classList.toggle('active');
+//     select.addEventListener('click', ()=> {
+//         console.log(11)
+//         select.classList.toggle('active');
 
-        selects.forEach(item => {
-            if(item == select) return;
-            item.classList.remove('active');
-        })
-    });
+//         selects.forEach(item => {
+//             if(item == select) return;
+//             item.classList.remove('active');
+//         })
+//     });
 
-    if(defaultValue == null) {
-        value.textContent = "Выберите значение"
-    }
+//     if(defaultValue == null) {
+//         value.textContent = "Выберите значение"
+//     }
 
-    items.forEach(item => {
-        console.log(3)
-        const itemInfo = {
-            id: item.getAttribute(prefix + '-item'),
-            value: item.querySelector("[" + prefix + '-value]'),
-            properties: item.querySelectorAll("[" + prefix + "-property]") // это тоже потом
-        };
+//     items.forEach(item => {
+//         console.log(3)
+//         const itemInfo = {
+//             id: item.getAttribute(prefix + '-item'),
+//             value: item.querySelector("[" + prefix + '-value]'),
+//             properties: item.querySelectorAll("[" + prefix + "-property]") // это тоже потом
+//         };
 
-        if(defaultValue != null && itemInfo.id == defaultValue) {
-            setItem(itemInfo);
-            console.log(2)
-        }
+//         if(defaultValue != null && itemInfo.id == defaultValue) {
+//             setItem(itemInfo);
+//             console.log(2)
+//         }
 
-        item.addEventListener('click', () => {
-            setItem(itemInfo);
-            console.log(1)
-        });
-    });
+//         item.addEventListener('click', () => {
+//             setItem(itemInfo);
+//             console.log(1)
+//         });
+//     });
 
-    function setItem(info) {
-        if(input == null) {
-            const element = document.createElement('input');
-            element.setAttribute('name', name)
-            element.setAttribute('id', name);
-            element.setAttribute('hidden', '');
+//     function setItem(info) {
+//         if(input == null) {
+//             const element = document.createElement('input');
+//             element.setAttribute('name', name)
+//             element.setAttribute('id', name);
+//             element.setAttribute('hidden', '');
 
-            select.after(element);
+//             select.after(element);
 
-            input = element;
+//             input = element;
 
-        }
+//         }
 
-        value.textContent = info.value.textContent;
-        input.setAttribute('value', info.id);
+//         value.textContent = info.value.textContent;
+//         input.setAttribute('value', info.id);
 
-        info.properties.forEach(property => {
-            const name = property.getAttribute(prefix + "-property");
+//         info.properties.forEach(property => {
+//             const name = property.getAttribute(prefix + "-property");
 
-            properties.forEach(selectPropertyItem => {
-                const selectName = selectPropertyItem.getAttribute(prefix + "-property");
+//             properties.forEach(selectPropertyItem => {
+//                 const selectName = selectPropertyItem.getAttribute(prefix + "-property");
 
-                if(name == selectName) {
-                    selectPropertyItem.textContent = property.textContent;
-                }
-            });
-        });
-    }
-});
+//                 if(name == selectName) {
+//                     selectPropertyItem.textContent = property.textContent;
+//                 }
+//             });
+//         });
+//     }
+// });
 
 // Скролл до товаров
 
