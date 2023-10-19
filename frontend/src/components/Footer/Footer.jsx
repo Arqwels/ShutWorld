@@ -9,6 +9,7 @@ const Footer = () => {
   <footer>
     <div className="container">
       <section className={style.footer}>
+        {/* Сделать так, что бы можно было на главную поспасть нажавл на целый блок */}
         <div className={style.logo}>
           <img src={cubeFooter} alt="cube-footer" />
           <h2>SHUT<br/>WORLD</h2>
