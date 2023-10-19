@@ -4,7 +4,7 @@ import whyAreWe from '../../images/whywe.svg'
 
 const Advantages = () => {
   return (
-    <section className="advantages container">
+    <section className="advantages">
       <h2 className="advantages__head">Почему мы?</h2>
       <div className="advantages__body">
         <img src={whyAreWe} alt="imageWhyAreWe" className="advantages__bodyImg" width="488px" height="435px" />

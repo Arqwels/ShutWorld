@@ -9,7 +9,7 @@ import { DS_LINK, VK_LINK } from '../../utils/consts';
 
 const Contacts = () => {
   return (
-    <section className={"container " + style.contacts}>
+    <section className={style.contacts}>
       <h2 className={style.head}>Наши контакты</h2>
       <div className={style.block}>
         <Link to={VK_LINK} target="_blank" className={style.block_link}>

@@ -1,0 +1,159 @@
+footer {
+  background: url(../../images/background-footer.png) repeat-x;
+  // height: 100%;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 65px;
+  color: #FFFFFF;
+  @media (min-width: 480px) and (max-width: 767px) {
+    padding-top: 50px;
+  }
+  @media (max-width: 479px) {
+    padding-top: 45px;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  > img {
+    margin: 0 25px;
+    @media (min-width: 992px) and (max-width: 1199px) {
+      width: 121px;
+      height: 141px;
+      margin: 0 20px;
+    }
+    @media (min-width: 768px) and (max-width: 991px) {
+      width: 111px;
+      height: 131px;
+      margin: 0 18px;
+    }
+    @media (min-width: 480px) and (max-width: 767px) {
+      width: 91px;
+      height: 101px;
+      margin: 0 15px;
+    }
+    @media (max-width: 479px) {
+      width: 71px;
+      height: 81px;
+      margin: 0 10px;
+    }
+  }
+  > h2 {
+    font: 700 32px/37px 'Ubuntu', sans-serif;
+    @media (min-width: 992px) and (max-width: 1199px) {
+      font-size: 29px;
+      line-height: 33px;
+    }
+    @media (min-width: 768px) and (max-width: 991px) {
+      font-size: 26px;
+      line-height: 28px;
+    }
+    @media (min-width: 480px) and (max-width: 767px) {
+      font-size: 24px;
+      line-height: 24px;
+    }
+    @media (max-width: 479px) {
+      display: none;
+    }
+    
+  }
+}
+
+.links {
+  display: flex;
+  text-align: end;
+  font: 400 14px/16px 'Ubuntu', sans-serif;
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
+.socialLinks {
+  margin-right: 50px;
+  > li:nth-child(1) {
+    padding-bottom: 15px;
+  }
+  > li:nth-child(2) {
+    padding-bottom: 5px;
+  }
+  @media (max-width: 991px) and (min-width: 768px) {
+    margin-right: 25px;
+  }
+}
+
+.pagesLinks {
+  li:nth-child(1) {
+    padding-bottom: 15px;
+  }
+  li {
+    padding-bottom: 5px;
+  }
+}
+
+.yearCreation {
+  padding: 10px 0;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.yearCreation h3 {
+  font: 700 16px/18px 'Ubuntu', sans-serif;
+  @media (max-width: 479px) {
+    font-size: 14px;
+  }
+}
+
+.yearCreation p {
+  font: 400 12px/14px 'Ubuntu', sans-serif;
+  padding-top: 2px;
+  @media (max-width: 479px) {
+    font-size: 10px;
+  }
+}
+
+// LinksMobile
+.LinksMobile {
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+.LinksMobText {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: #FFFFFF;
+  cursor: pointer;
+  > p {
+    padding-right: 5px;
+    font: 700 16px 'Ubuntu', sans-serif;
+    @media (max-width: 479px) {
+      font: 700 15px 'Ubuntu', sans-serif;
+    }
+  }
+  > img {
+    transition: transform .35s ease;;
+  }
+}
+
+.items {
+  text-align: end;
+  font: 400 14px/16px 'Ubuntu', sans-serif;
+  padding-right: 10px;
+  > li:not(:last-child) {
+    padding-bottom: 5px;
+  }
+}
+
+.hide {
+  display: none;
+}
+
+.activeImg {
+  transform: rotate(180deg);
+}

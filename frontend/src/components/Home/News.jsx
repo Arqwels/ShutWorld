@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const News = () => {
   return (
-    <section className="news container">
+    <section className="news">
       <h2 className="news__head">Последние новости</h2>
       <div className="news__top__blocks">
         <article className="news__big__block">

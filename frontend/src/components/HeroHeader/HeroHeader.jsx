@@ -1,16 +1,11 @@
-import React from 'react';
 import { Link } from "react-router-dom";
-
-import '../../css/header.scss';
 import style from './Hero.module.scss';
-
-import endship from '../../images/endShip.svg';
+import EndShip from '../../images/endShip.svg';
 import { PLAY_ROUTE } from '../../utils/consts';
 
 const HeroHeader = () => {
   return (
-    <div className="header container">
-
+    <div className={style.header}>
       <div className={style.blockLeft}>
         <div className={style.blockIp}>
           <p>IP: net.shutw.ru</p>
@@ -26,11 +21,9 @@ const HeroHeader = () => {
           </div>
         </div>
       </div>
-
-      <img src={endship} alt="" className={style.blockRight} />
-
+      <img src={EndShip} alt="EndShip" className={style.blockRight} />
     </div>
   )
-}
+};
 
-export default HeroHeader
+export default HeroHeader;

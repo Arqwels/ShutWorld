@@ -9,6 +9,9 @@ export const LOGIN_ROUTE = '/login';
 export const ADMIN_ROUTE = '/admin';
 
 
+// Нужно сделать
+export const USER_AGREEMENT = '/user-agreement';
+
 // Внешние ссылки
 export const VK_LINK = 'https://vk.com/shutworld';
 export const DS_LINK = 'https://discord.gg/yeJ6fBwEsB';

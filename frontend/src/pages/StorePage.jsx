@@ -4,7 +4,6 @@ import '../index.scss'
 
 import Slider from '../components/Store/Slider';
 import Modal from '../components/Store/Modal';
-import Footer from '../components/Footer';
 import Modal2 from '../components/Store/Modal';
 import Modal3 from '../components/Store/Modal';
 
@@ -264,7 +263,6 @@ const Store = () => {
           </div>
         </Modal3>
       </main>
-      <Footer />
       <div className="basket">Корзина</div>
     </>
   )

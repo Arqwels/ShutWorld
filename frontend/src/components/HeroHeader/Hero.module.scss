@@ -1,6 +1,9 @@
+header {
+  background: url(../../images/background-header.png) repeat-x;
+}
+
 .header {
   display: flex;
-  flex-wrap: wrap;
   padding-top: 32px;
 }
 
@@ -88,13 +91,13 @@
 }
 
 @media screen and (min-width: 768px) {
-  .header__left {
+  .blockLeft {
     flex-basis: 60%;
     padding-bottom: 0;
     text-align: left;
   }
 
-  .header__right {
+  .blockRight {
     flex-basis: 40%;
     text-align: right;
     margin-top: 0;
@@ -102,11 +105,11 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .header__left {
+  .blockLeft {
     flex-basis: 50%;
   }
 
-  .header__right {
+  .blockRight {
     flex-basis: 50%;
   }
 }

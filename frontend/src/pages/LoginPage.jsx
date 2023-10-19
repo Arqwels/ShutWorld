@@ -1,16 +1,12 @@
-import Footer from '../components/Footer';
 import Login from '../components/AUTH/Login';
+import WrapperComponent from './WrapperComponent';
 
 const LoginPage = () => {
   return (
-    <>
-      <main className="container">
-        <Login />
-      </main>
+    <WrapperComponent>
+      <Login />
+    </WrapperComponent>
+  );
+};
 
-      <Footer />
-    </>
-  )
-}
-
-export default LoginPage
+export default LoginPage;

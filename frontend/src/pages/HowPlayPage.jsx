@@ -1,15 +1,9 @@
-import React from 'react';
-
-import HowPlayBlock from '../components/HowPlay'
-import Footer from '../components/Footer';
+import HowPlayBlock from '../components/HowPlay';
 
 const HowPlay = () => {
   return (
-    <>
-      <HowPlayBlock />
-      <Footer />
-    </>
+    <HowPlayBlock />
   )
-}
+};
 
-export default HowPlay
+export default HowPlay;

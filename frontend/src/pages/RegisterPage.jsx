@@ -1,16 +1,12 @@
 import Register from '../components/AUTH/Register';
-import Footer from '../components/Footer';
+import WrapperComponent from './WrapperComponent';
 
 const RegisterPage = () => {
   return (
-    <>
-      <main className="container">
-        <Register />
-      </main>
+    <WrapperComponent>
+      <Register />
+    </WrapperComponent>
+  );
+};
 
-      <Footer />
-    </>
-  )
-}
-
-export default RegisterPage
+export default RegisterPage;
