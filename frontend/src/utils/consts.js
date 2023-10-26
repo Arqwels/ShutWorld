@@ -15,3 +15,6 @@ export const USER_AGREEMENT = '/user-agreement';
 // Внешние ссылки
 export const VK_LINK = 'https://vk.com/shutworld';
 export const DS_LINK = 'https://discord.gg/yeJ6fBwEsB';
+
+// IP
+export const IP_SERVER = 'net.shutw.ru';
