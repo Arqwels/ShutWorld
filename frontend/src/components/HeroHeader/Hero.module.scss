@@ -5,6 +5,13 @@ header {
 .header {
   display: flex;
   padding-top: 32px;
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+
+  }
+  
+  @media screen and (max-width: 767px) {
+    padding-top: 70px;
+  }
 }
 
 .blockLeft {
@@ -23,7 +30,6 @@ header {
   color: #FFFFFF;
   user-select: none;
   cursor: pointer;
-  font: 500 14px/16px 'Ubuntu', sans-serif;
   p {
     font: 500 14px/16px 'Ubuntu', sans-serif;
   }
@@ -37,21 +43,37 @@ header {
     background-image: url(../../images/icon-ip.svg); 
   }
 }
-
+ 
 .blockTitle {
-  padding: 20px 0 15px;
-  font: 700 48px/55px 'Ubuntu', sans-serif;
+  padding: 20px 0 16px;
+  font: 700 48px/56px 'Ubuntu', sans-serif;
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    font-size: 36px;
+  }
+  @media screen and (max-width: 767px) {
+    font-size: 28px;
+  }
 }
 
 .blockText {
-  font: 400 24px/29px 'Ubuntu', sans-serif;
+  font: 400 24px/32px 'Ubuntu', sans-serif;
   padding-bottom: 50px;
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    font: 400 20px/28px 'Ubuntu', sans-serif;
+  }
+  @media screen and (max-width: 767px) {
+    font: 400 18px/28px 'Ubuntu', sans-serif;
+  }
 }
 
 .blockInfo {
   display: flex;
   align-items: center;
   color: #FFFFFF;
+  @media screen and (max-width: 479px) {
+    width: 100%;
+    justify-content: space-between;
+  }
 }
 
 .blockLinkPlay {
@@ -61,6 +83,12 @@ header {
     background-color: #E83CCE;
     border: 1px solid #000000;
     box-shadow: inset -6px -5px 0px rgba(0, 0, 0, 0.25), inset 6px 5px 0px rgba(255, 255, 255, 0.5);
+    @media screen and (max-width: 479px) {
+      padding: 12px 32px;
+    }
+  }
+  @media screen and (max-width: 479px) {
+    padding-right: 0;
   }
 }
 
@@ -86,31 +114,25 @@ header {
 }
 
 .blockRight {
-  flex-basis: 100%;
-  text-align: center;
-  margin-top: 20px;
+  max-width: 60%;
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    max-width: 55%;
+  }
+  
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 }
 
 @media screen and (min-width: 768px) {
   .blockLeft {
-    flex-basis: 60%;
-    padding-bottom: 0;
-    text-align: left;
-  }
-
-  .blockRight {
-    flex-basis: 40%;
-    text-align: right;
-    margin-top: 0;
   }
 }
 
 @media screen and (min-width: 1024px) {
   .blockLeft {
-    flex-basis: 50%;
   }
 
   .blockRight {
-    flex-basis: 50%;
   }
 }

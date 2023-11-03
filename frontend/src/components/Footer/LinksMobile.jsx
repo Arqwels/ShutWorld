@@ -27,7 +27,7 @@ const LinksMobile = () => {
             <li key={link.id}>
               <Link to={link.to}>{link.labelText}</Link>
             </li>
-          ))};
+          ))}
         </ul>
       </span>
       <div className={style.LinksMobText} onClick={() => setOpenLink2(!openLink2)}>
@@ -40,7 +40,7 @@ const LinksMobile = () => {
           <li key={link.id}>
             <Link to={link.to} target="_blank">{link.labelText}</Link>
           </li>
-        ))};
+        ))}
         </ul>
       </span>
     </div>
