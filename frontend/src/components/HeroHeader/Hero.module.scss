@@ -1,14 +1,6 @@
-header {
-  background: url(../../images/background-header.png) repeat-x;
-}
-
 .header {
   display: flex;
   padding-top: 32px;
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
-
-  }
-  
   @media screen and (max-width: 767px) {
     padding-top: 70px;
   }
@@ -94,10 +86,9 @@ header {
 
 .blockInfoOnline {
   position: relative;
-  padding: 9.5px 10px 9.5px 45px;
-  background: linear-gradient(91.76deg, #963FF2 0%, #6D3CE8 100%);
+  padding: 10px 10px 10px 44px;
+  background: linear-gradient(92deg, #963FF2 0%, #6D3CE8 100%);
   border: 1px solid #000000;
-  box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.4);
   p {
     font: 500 18px/20px 'Ubuntu', sans-serif;
   }
@@ -107,7 +98,7 @@ header {
     width: 30px;
     height: 30px;
     left: 10px;
-    top: 4.5px;
+    top: 5px;
     background: url(../../images/icon-online.svg) no-repeat;
     background-position: center;
   }
@@ -118,21 +109,7 @@ header {
   @media screen and (min-width: 768px) and (max-width: 1023px) {
     max-width: 55%;
   }
-  
   @media screen and (max-width: 767px) {
     display: none;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .blockLeft {
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .blockLeft {
-  }
-
-  .blockRight {
   }
 }

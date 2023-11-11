@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import style from './Hero.module.scss';
-import EndShip from '../../images/endShip.svg';
-import { IP_SERVER, PLAY_ROUTE } from '../../utils/consts';
+import style from "./Hero.module.scss";
+import EndShip from "../../images/endShip.svg";
+import { IP_SERVER, PLAY_ROUTE } from "../../utils/consts";
 
 // Добавить Уведомления о копирования
 //! Если будет ошибка то выдавать error, если пользователь не предостаит доступ к буферму обмену. В теории... 

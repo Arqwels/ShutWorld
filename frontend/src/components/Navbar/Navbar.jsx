@@ -9,6 +9,7 @@ import { AUTHORIZATION_ROUTE, MAIN_ROUTE, RULES_ROUTE, SHOP_ROUTE } from '../../
 import { Context } from '../..';
 import ButtonAccount from './ButtonAccount';
 import { observer } from 'mobx-react-lite';
+import WrapperComponent from '../../pages/WrapperComponent';
 
 const Navbar = () => {
   const [openBurger, setOpenBurger] = useState(true);
@@ -50,8 +51,8 @@ const Navbar = () => {
 
   return (
     <header>
-      <div className="container">
-        <img src={LogoTypeHeaderImg} alt="logotype" className={style.logoImg} />
+      <WrapperComponent>
+        <img src={LogoTypeHeaderImg} alt="Logotype" className={style.logoImg} />
         <nav className={style.nav}>
           <Link to={MAIN_ROUTE} className={style.logoText}>ShutWorld</Link>
           <ul className={style.list}>
@@ -69,10 +70,10 @@ const Navbar = () => {
           </div>
           }
           <div onClick={handleBurgerClick} className={style.burger}>
-            {openBurger ? <img src={BurgerSvg} alt="burger" /> : <img src={ClsBurgerSvg} alt="clouseBurger" /> }
+            {openBurger ? <img src={BurgerSvg} alt="Burger" /> : <img src={ClsBurgerSvg} alt="ClouseBurger" /> }
           </div>
         </nav>
-      </div>
+      </WrapperComponent>
       {openBurger ? null : <Menu items={items} />}
     </header>
   )

@@ -1,0 +1,88 @@
+.news {
+  display: block;
+  padding-top: 140px;
+}
+
+.title {
+  text-align: center;
+  font: 700 36px/41px "Ubuntu", sans-serif;
+  margin-bottom: 50px;
+}
+
+.body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  color: #FFFFFF;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.card {
+  min-width: 300px;
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 20px;
+  background: #963ff2;
+  border: 3px solid #000000;
+  box-shadow: inset -8px -8px 0px rgba(0, 0, 0, 0.5), inset 8px 8px 0px rgba(0, 0, 0, 0.5);
+  background-image: url(./../../../images/info-cube.png);
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+}
+
+.cartHead {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  > h2 {
+    font: 500 24px/28px "Ubuntu", sans-serif;
+  }
+  > p {
+    padding: 6px 20%;
+    margin-bottom: 10px;
+    background: rgba(0, 0, 0, 0.25);
+    font: 700 16px/18px "Ubuntu", sans-serif;
+  }
+}
+
+.cardButton {
+  width: 100%;
+  padding: 12px 0;
+  cursor: pointer;
+  text-align: center;
+  border: 1px solid #000000;
+  background: #E83CCE;
+  font: 700 16px/18px "Ubuntu", sans-serif;
+  box-shadow: inset -6px -5px 0px rgba(0, 0, 0, 0.25), inset 6px 5px 0px rgba(255, 255, 255, 0.5);
+}
+
+.big {
+  flex-grow: 2;
+  width: 40%;
+  .cartHead {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    > p {
+      margin-bottom: 0;
+    }
+  }
+  .cardButton {
+    width: 60%;
+  }
+}
+
+
+@media (max-width: 850px) {
+  .cartHead > p {
+    padding: 6px 10%;
+  }
+
+  .big .cardButton {
+    width: 100%;
+  }
+}

@@ -1,14 +1,13 @@
-import React from 'react'
-
-import whyAreWe from '../../images/whywe.svg'
+import whyAreWe from '../../../images/whywe.svg';
+import st from "./Advantege.module.scss";
 
 const Advantages = () => {
   return (
-    <section className="advantages">
-      <h2 className="advantages__head">Почему мы?</h2>
-      <div className="advantages__body">
-        <img src={whyAreWe} alt="imageWhyAreWe" className="advantages__bodyImg" width="488px" height="435px" />
-        <ul className="advantages__body-text">
+    <section className={st.advantages}>
+      <h2 className={st.head}>Почему мы?</h2>
+      <div className={st.body}>
+        <img src={whyAreWe} alt="ImageWhyAreWe" className={st.Img} />
+        <ul className={st.text}>
           <li>Мощнейшее оборудование</li>
           <li>Постоянные обновления</li>
           <li>Часто проводим эвенты с игроками</li>

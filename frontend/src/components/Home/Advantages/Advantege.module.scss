@@ -1,0 +1,70 @@
+.advantages {
+  display: block;
+  padding-top: 140px;
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    padding-top: 100px;
+  }
+  @media screen and (max-width: 767px) {
+    padding-top: 75px;
+  }
+}
+
+.head {
+  text-align: center;
+  font: 700 36px/42px 'Ubuntu', sans-serif;
+}
+
+.body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 50px;
+}
+
+.Img {
+  max-width: 100%;
+  height: auto;
+  flex: 0;
+  @media screen and (max-width: 1350px) {
+    max-width: 40%;
+  }
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}
+
+.text {
+  color: #FFFFFF;
+  font: 500 24px/26px 'Ubuntu', sans-serif;
+  font-size: clamp(16px, 2vw, 24px);
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
+}
+
+.text li{
+  padding: 20px 40px;
+  background-color: #963FF2;
+  border: 3px solid #000000;
+  box-shadow: inset -8px -8px 0px rgba(0, 0, 0, 0.5), inset 8px 8px 0px rgba(0, 0, 0, 0.5);
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    padding: 16px 28px;
+  }
+  @media screen and (max-width: 991px) {
+    border: 2px solid #000000;
+    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.50) inset, -4px -4px 0px 0px rgba(0, 0, 0, 0.50) inset;
+  }
+  @media screen and (min-width: 480px) and (max-width: 767px) {
+    padding: 18px 40px;
+  }
+  @media screen and (max-width: 479px) {
+    padding: 16px;
+  }
+}
+
+.text li:nth-child(-n+3) {
+  margin-bottom: 25px;
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    margin-bottom: 20px;
+  }
+}
