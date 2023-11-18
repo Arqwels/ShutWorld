@@ -2,12 +2,14 @@ const sequelize = require('../db');
 const { DataTypes } = require('sequelize');
 
 const PostVK = sequelize.define('PostVK', {
-  postNumber: {
+  postId: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+  },
+  title: {
+    type: DataTypes.STRING,
   },
   text: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
   },
   likesCount: {
     type: DataTypes.INTEGER,

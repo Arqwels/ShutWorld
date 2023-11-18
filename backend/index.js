@@ -31,7 +31,7 @@ const start = async () => {
       const interval = 60 * 60 * 1000;
       setInterval(async () => {
         try {
-          await postVKController.getPost();
+          await postVKController.savePost();
           console.log("Данные о постах ВК были полученны!");
         } catch (error) {
           console.error('⛔ Ошибка:', error);

@@ -15,10 +15,14 @@ class getPostVKService {
       throw ApiError.ErrorReceivingData("Ошибка при получении внешних данных!");
     }
     const posts = data.items;
-    const formattedPosts = posts.map((post, index) => {
+    
+    const formattedPosts = posts.map(post => {
+      const [title, ...contentLines] = post.text.split(/\n+/);
+      const content = contentLines.join('\n');
       const formattedPost = {
-        postNumber: index + 1,
-        text: post.text,
+        postId: post.id,
+        title: title.trim(),
+        text: content.trim(),
         likesCount: post.likes.count,
         commentsCount: post.comments.count,
         repostsCount: post.reposts.count,
@@ -34,7 +38,7 @@ class getPostVKService {
       const existingPosts = await postVKModel.findAll();
       await Promise.all(
         data.map(async (newPost) => {
-          const existingPost = existingPosts.find((post) => post.postNumber === newPost.postNumber);
+          const existingPost = existingPosts.find((post) => post.postId === newPost.postId);
           if(existingPost) {
             await existingPost.update(newPost);
           } else {

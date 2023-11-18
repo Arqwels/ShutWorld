@@ -5,7 +5,7 @@
 
 .title {
   text-align: center;
-  font: 700 36px/41px "Ubuntu", sans-serif;
+  font: 700 26px/41px "Ubuntu", sans-serif;
   margin-bottom: 50px;
 }
 
@@ -34,12 +34,12 @@
   background-position: 100% 100%;
 }
 
-.cartHead {
+.cardHead {
   display: flex;
   flex-direction: column;
   align-items: center;
   > h2 {
-    font: 500 24px/28px "Ubuntu", sans-serif;
+    font: 500 20px/28px "Ubuntu", sans-serif;
   }
   > p {
     padding: 6px 20%;
@@ -63,7 +63,7 @@
 .big {
   flex-grow: 2;
   width: 40%;
-  .cartHead {
+  .cardHead {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -78,7 +78,7 @@
 
 
 @media (max-width: 850px) {
-  .cartHead > p {
+  .cardHead > p {
     padding: 6px 10%;
   }
 
