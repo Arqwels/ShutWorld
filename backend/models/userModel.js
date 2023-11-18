@@ -1,5 +1,5 @@
-const sequelize = require('../db')
-const { DataTypes } = require('sequelize')
+const sequelize = require('../db');
+const { DataTypes } = require('sequelize');
 
 const User = sequelize.define('user', {
   id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true}, // primaryKey=Уникальный идентификатор, autoIncrement=Каждый раз будет увеличиваться 
@@ -10,6 +10,6 @@ const User = sequelize.define('user', {
   isActivated: {type: DataTypes.BOOLEAN, defaultValue: false},
   activationLink: {type: DataTypes.STRING},
   role: {type: DataTypes.STRING, defaultValue: "USER"}, // defaultValue=Устанавливает значение по умолчанию
-})
+});
 
 module.exports = User;

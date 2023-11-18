@@ -7,4 +7,4 @@ module.exports = class UserDto {
     this.nickname = model.nickname;
     this.isActivated = model.isActivated;
   }
-}
+};

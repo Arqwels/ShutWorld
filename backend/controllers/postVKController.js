@@ -4,7 +4,6 @@ const PostVK = require('../models/postVKModel');
 const getPostVKService = require('../service/getPostVKService');
 
 class PostController {
-
   async receivePost(req, res) {
     try {
       const posts = await getPostVKService.getPostVK();
@@ -12,9 +11,9 @@ class PostController {
     } catch (error) {
       throw ApiError.ErrorReceivingData("Ошибка в получении Постов ВК!", error);
     }
-  }
+  };
 
-  async savePost(req, res) {
+  async savePost() {
     try {
       const postData = await getPostVKService.getPostVK();
       await getPostVKService.savePostData(postData);
@@ -31,7 +30,7 @@ class PostController {
     } catch (error) {
       return res.status(500).json(error);
     }
-  }
+  };
 };
 
 module.exports = new PostController();

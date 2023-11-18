@@ -22,4 +22,4 @@ router.post('/logout', userController.logout)
 // http://localgost:5000/api/user/refresh
 router.get('/refresh', userController.refresh)
 
-module.exports = router
+module.exports = router;

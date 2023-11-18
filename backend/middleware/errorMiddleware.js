@@ -1,4 +1,4 @@
-const ApiError = require('../error/api-error')
+const ApiError = require('../error/api-error');
 
 module.exports = function(err, req, res, next) {
   console.log(err);
@@ -6,4 +6,4 @@ module.exports = function(err, req, res, next) {
     return res.status(err.status).json({message: err.message, errors: err.errors})
   }
   return res.status(500).json({message: 'Упсс... Непредвиденная ошибка!'})
-}
+};

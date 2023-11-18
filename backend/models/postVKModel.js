@@ -1,7 +1,7 @@
 const sequelize = require('../db');
 const { DataTypes } = require('sequelize');
 
-const PostVK = sequelize.define('PostVK', {
+const PostVK = sequelize.define('vk-post', {
   postId: {
     type: DataTypes.INTEGER,
   },

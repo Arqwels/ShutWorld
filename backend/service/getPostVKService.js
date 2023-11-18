@@ -15,7 +15,6 @@ class getPostVKService {
       throw ApiError.ErrorReceivingData("Ошибка при получении внешних данных!");
     }
     const posts = data.items;
-    
     const formattedPosts = posts.map(post => {
       const [title, ...contentLines] = post.text.split(/\n+/);
       const content = contentLines.join('\n');
@@ -35,12 +34,12 @@ class getPostVKService {
   
   async savePostData(data) {
     try {
-      const existingPosts = await postVKModel.findAll();
+      const existsPosts = await postVKModel.findAll();
       await Promise.all(
         data.map(async (newPost) => {
-          const existingPost = existingPosts.find((post) => post.postId === newPost.postId);
-          if(existingPost) {
-            await existingPost.update(newPost);
+          const existsPost = existsPosts.find((post) => post.postId === newPost.postId);
+          if(existsPost) {
+            await existsPost.update(newPost);
           } else {
             await postVKModel.create(newPost);
           }

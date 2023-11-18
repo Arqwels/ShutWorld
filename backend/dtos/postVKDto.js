@@ -9,4 +9,4 @@ module.exports = class postVKDto {
     this.textPost = model.text;
     this.datePost = model.date;
   }
-}
+};
