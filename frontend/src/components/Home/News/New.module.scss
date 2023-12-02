@@ -1,12 +1,21 @@
 .news {
   display: block;
   padding-top: 140px;
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    padding-top: 100px;
+  }
+  @media screen and (max-width: 767px) {
+    padding-top: 75px;
+  }
 }
 
 .title {
   text-align: center;
   font: 700 26px/41px "Ubuntu", sans-serif;
   margin-bottom: 50px;
+  @media screen and (max-width: 767px) {
+    margin-bottom: 30px;
+  }
 }
 
 .body {
@@ -15,10 +24,10 @@
   gap: 15px;
   color: #FFFFFF;
   font-family: "Ubuntu", sans-serif;
+  justify-content: center;
 }
 
 .card {
-  min-width: 300px;
   min-height: 240px;
   display: flex;
   flex-direction: column;
@@ -60,9 +69,15 @@
   box-shadow: inset -6px -5px 0px rgba(0, 0, 0, 0.25), inset 6px 5px 0px rgba(255, 255, 255, 0.5);
 }
 
+.little {
+  max-width: 300px;
+  text-align: center;
+}
+
 .big {
   flex-grow: 2;
   width: 40%;
+  max-width: 500px;
   .cardHead {
     flex-direction: row;
     align-items: center;
@@ -76,7 +91,6 @@
   }
 }
 
-
 @media (max-width: 850px) {
   .cardHead > p {
     padding: 6px 10%;
@@ -84,5 +98,21 @@
 
   .big .cardButton {
     width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .sliderNews {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .body {
+    display: none;
+  }
+
+  .sliderNews {
+    display: block;
   }
 }

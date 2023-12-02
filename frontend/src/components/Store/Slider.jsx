@@ -9,6 +9,8 @@ import linksSwap from '../../images/links-swap.png';
 
 import 'swiper/css';
 
+import "./swipersll.css";
+
 const Slider = () => {
   return (
   <section className="slider">
