@@ -1,0 +1,45 @@
+// Global styles HomePage
+.titleHead {
+  text-align: center;
+  font: 700 36px/42px 'Ubuntu', sans-serif;
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    font: 700 32px/36px 'Ubuntu', sans-serif;
+  }
+  @media screen and (max-width: 767px) {
+    font: 700 28px/30px 'Ubuntu', sans-serif;
+  }
+}
+
+.containerBlock {
+  display: block;
+  padding-top: 140px;
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    padding-top: 100px;
+  }
+  @media screen and (max-width: 767px) {
+    padding-top: 75px;
+  }
+}
+
+
+// Decoration.jsx
+
+.decoration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 230px;
+  padding-bottom: 180px;
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    padding-top: 170px;
+    padding-bottom: 120px;
+  }
+  @media screen and (max-width: 767px) {
+    padding-top: 110px;
+    padding-bottom: 80px;
+  }
+  > img {
+    width: 420px;
+    height: 100%;
+  }
+}

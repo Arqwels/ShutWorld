@@ -23,7 +23,7 @@ const Donate = () => {
           <div class="donate__item">
             <img class="donate__item__img" src="images/Vector3.png" alt=""/>
             <div class="donate__item__text">
-              <h2>Вождь <br/>от <span>240</span>₽</h2>
+              <h2>Вождь <br/>от <span>244</span>₽</h2>
               <button href="#modal-3ss" class="modal__button button button-type_primary button-width">Приобрести</button>
             </div>
           </div>

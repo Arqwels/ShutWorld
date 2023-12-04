@@ -46,7 +46,6 @@ const NewsSlider = ({ posts }) => {
           <NewsForSlider {...post} />
         </SwiperSlide>
       ))}
-
         
       <div className={st.paginat}>
         <button className={`${st.icon} ${st.prev} ${isFirst ? st.disabled : ''}`} onClick={()=> SlideRef.current.swiper.slidePrev()}>
@@ -61,4 +60,4 @@ const NewsSlider = ({ posts }) => {
   )
 }
 
-export default NewsSlider
+export default NewsSlider;

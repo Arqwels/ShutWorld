@@ -1,5 +1,4 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import st from "./New.module.scss";
 
 const truncateText = (text, wordCount) => {
@@ -29,6 +28,6 @@ const NewsArticle = ({ idPost, titlePost, datePost, textPost, index, data }) => 
       <Link className={st.cardButton} to={`https://vk.com/shutworld?w=wall-221465919_${idPost}%2Fall`} target="_blank">Прочитать полностью</Link>
     </article>
   )
-}
+};
 
-export default NewsArticle
+export default NewsArticle;

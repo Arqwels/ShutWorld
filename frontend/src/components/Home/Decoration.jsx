@@ -1,13 +1,11 @@
-import React from 'react';
-
-import endCiti from '../../images/end-city.svg';
+import EndCity from "../../images/end-city.svg";
 
 const Decoration = () => {
   return (
     <section className="decoration">
-      <img src={endCiti} alt="end-city" width="421px" height="367px" />
+      <img src={EndCity} alt="End-City"/>
     </section>
   )
-}
+};
 
-export default Decoration
+export default Decoration;
