@@ -4,6 +4,8 @@ import { Context } from "..";
 import { authRoutes, publicRoutes } from "../routes";
 import { observer } from "mobx-react-lite";
 
+import ModalSandbox from "./Shop/Sandbox";
+
 const AppRouter = () => {
   const { store } = useContext(Context);
 
@@ -18,6 +20,7 @@ const AppRouter = () => {
       )}
 
       <Route path="/*" element={<Navigate to="/" />} />
+      <Route path="/modal" element={<ModalSandbox />} />
     </Routes>
   );
 };
