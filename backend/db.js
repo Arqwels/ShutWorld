@@ -15,5 +15,11 @@ module.exports = new Sequelize(
   process.env.DB_PASSWORD, // password = Пароль БД
   {
     host: process.env.DB_HOST,
-    dialect: 'postgres', 
+    dialect: 'postgres',
+    ssl: true,  // Включение SSL
+    dialectOptions: {
+      ssl: {
+        require: true,  // Установка sslmode=require
+      },
+    },
 });
