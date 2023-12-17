@@ -28,7 +28,7 @@ const start = async () => {
     app.listen(PORT, () => {
       console.log(`Сервер запущен на порту - ${PORT}`)
       
-      const interval = 60 * 60 * 1000; // 60 минут
+      const interval = 10 * 60 * 1000; // 10 минут
       setInterval(async () => {
         try {
           await postVKController.savePost();
