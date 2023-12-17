@@ -1,0 +1,16 @@
+.modalWindow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-height: 200px;
+  z-index: 2;
+}
+
+.modal__content {
+  max-width: 1165px;
+  min-height: 730px;
+  background-image: url(../../../images/background-popup.png);
+  background-repeat: no-repeat;
+  padding: 80px;
+}

@@ -5,6 +5,7 @@ import RegisterPage from "./pages/RegisterPage";
 import Rules from "./pages/RulesPage";
 import Store from "./pages/StorePage";
 import AdminPage from "./pages/mAdminPage";
+import ShopPage from "./pages/mShopPage";
 import { ADMIN_ROUTE, AUTHORIZATION_ROUTE, LOGIN_ROUTE, MAIN_ROUTE, PLAY_ROUTE, RULES_ROUTE, SHOP_ROUTE } from "./utils/consts";
 
 export const authRoutes = [
@@ -29,7 +30,8 @@ export const publicRoutes = [
   },
   {
     path: SHOP_ROUTE,
-    Component: Store
+    // Component: Store
+    Component: ShopPage
   },
   {
     path: RULES_ROUTE,

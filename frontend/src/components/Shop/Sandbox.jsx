@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import Modal from './Modal';
-import Button from './Button/Button';
+import Modal from './Modal/Modal';
 
 class Sandbox extends Component {
   state = {
@@ -39,14 +38,13 @@ class Sandbox extends Component {
     return (
       <Fragment>
         <h2><span>1. Base Dialog (Modal) window:</span></h2>
-        <Button onClick={() => this.openModal("First Modal")}>Show First Modal</Button>
-        <Button onClick={() => this.openModal("Second Modal")}>Show Second Modal</Button>
-        <Button onClick={() => this.openModal("Third Modal")}>Show Third Modal</Button>
+        <button onClick={() => this.openModal("First Modal")}>Show First Modal</button>
+        <button onClick={() => this.openModal("Second Modal")}>Show Second Modal</button>
+        <button onClick={() => this.openModal("Third Modal")}>Show Third Modal</button>
 
         {this.state.modals.map((modal, index) => (
           <Modal
             key={index}
-            title={modal.title}
             isOpen={modal.isOpen}
             onCancel={() => this.handleCancel(index)}
             onSubmit={() => this.handleSubmit(index)}

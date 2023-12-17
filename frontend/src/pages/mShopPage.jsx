@@ -1,8 +1,12 @@
 import React from 'react'
+import RankBlock from '../components/Shop/Ranks/RankBlock'
 
 const ShopPage = () => {
   return (
-    <div>ShopPage</div>
+    <>
+      <RankBlock />
+      
+    </>
   )
 }
 
