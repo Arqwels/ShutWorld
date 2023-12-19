@@ -6,7 +6,7 @@ const { Sequelize } = require('sequelize')
 //   process.env.DB_PASSWORD, // password = Пароль БД
 //   {
 //     host: process.env.DB_HOST,
-//     dialect: 'postgres', 
+//     dialect: 'postgres',
 // });
 
 module.exports = new Sequelize(
