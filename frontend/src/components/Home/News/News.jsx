@@ -19,6 +19,8 @@ const News = () => {
         const sortPosts = data.sort((a, b) => b.idPost - a.idPost);
         setPosts(sortPosts);
       } catch (error) {
+        const sortPosts = jsonData.sort((a, b) => b.idPost - a.idPost);
+        setPosts(sortPosts);
         console.error(error);
       }
     };
