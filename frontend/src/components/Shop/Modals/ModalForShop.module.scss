@@ -1,0 +1,324 @@
+.modalWindow {
+  width: 100%;
+  max-width: 1200px;
+  max-height: 730px;
+  display: flex;
+  padding: 80px;
+  z-index: 3;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url('../../../images/background-popup.png'); //1162on729
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  @media screen and (max-width: 1400px) {
+    max-width: 1050px;
+    padding: 60px;
+  }
+  @media screen and (max-width: 1100px) {
+    max-width: 850px;
+    padding: 40px;
+  }
+  @media screen and (max-width: 990px) {
+    max-width: 100%;
+    max-height: 100%;
+    height: 100%;
+    padding: 80px 100px;
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    background-image: url('../../../assets/images/ShopPage/background-shopPage_mobile.png');
+    overflow-y: auto;
+    flex-direction: column;
+    background-size: cover;
+  }
+  @media screen and (max-width: 890px) {
+    padding: 70px 90px;
+  }
+  @media screen and (max-width: 766px) {
+    padding: 60px;
+  }
+  @media screen and (max-width: 580px) {
+    padding: 40px;
+  }
+  @media screen and (max-width: 450px) {
+    padding: 30px 20px;
+  }
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.closeIcon {
+  position: absolute;
+  z-index: 4;
+  top: -10%;
+  right: -2%;
+  > img {
+    width: 45px;
+    cursor: pointer;
+  }
+  @media screen and (min-width: 991px) {
+    display: none;
+  }
+}
+
+.modalRigth {
+  padding-right: 80px;
+  display: flex;
+  flex-direction: column;
+  > h2 {
+    color: #FFFFFF;
+    font: 700 28px/32px 'Ubuntu', sans-serif;
+    padding-bottom: 30px;
+  }
+  > p {
+    padding: 16px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #000;
+    font: 400 14px 'Ubuntu', sans-serif;
+  }
+  @media screen and (max-width: 1400px) {
+    padding-right: 60px;
+  }
+  @media screen and (max-width: 1100px) {
+    padding-right: 40px;
+  }
+  @media screen and (max-width: 990px) {
+    display: none;
+  }
+}
+
+.mobModalRight {
+  position: relative;
+  @media screen and (min-width: 991px) {
+    display: none;
+  }
+  > h2 {
+    color: #FFFFFF;
+    font: 700 28px/32px 'Ubuntu', sans-serif;
+    padding-bottom: 20px;
+    @media screen and (max-width: 450px) {
+      font-size: 18px;
+      padding-bottom: 12px;
+    }
+  }
+  > p {
+    padding: 16px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #000;
+    font: 400 14px 'Ubuntu', sans-serif;
+    margin-bottom: 20px;
+    @media screen and (max-width: 450px) {
+      margin-bottom: 16px;
+    }
+    @media screen and (max-width: 450px) {
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+  }
+}
+
+.privilege {
+  flex-grow: 1;
+  margin-top: 20px;
+  padding: 16px;
+  background-color: rgba(255, 255, 255, 0.8);
+  overflow: auto; 
+  .privilegeList {
+    padding-top: 10px;
+    list-style: disc;
+    list-style-position: inside;
+    > li {
+      font: 400 14px/20px 'Ubuntu', sans-serif;
+      padding-bottom: 5px;
+    }
+  }
+}
+
+.mobModalPrivilege {
+  @media screen and (min-width: 991px) {
+    display: none;
+  }
+}
+
+.modalLeft {
+  min-width: 380px;
+  display: flex;
+  flex-direction: column;
+  > h2 {
+    color: #FFFFFF;
+    font: 700 28px/32px 'Ubuntu', sans-serif;
+    padding-bottom: 30px;
+    @media screen and (max-width: 450px) {
+      font-size: 18px;
+      padding-bottom: 20px;
+    }
+  }
+  @media screen and (max-width: 580px) {
+    min-width: 100%;
+  }
+}
+
+.modalForm {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 14px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.formInputText {
+  box-sizing: border-box;
+  background-color: #FFF;
+  border: 2px solid #000;
+  padding: 8px;
+  text-align: center;
+  margin-bottom: 15px;
+  &::placeholder {
+    font: 400 14px/16px 'Ubuntu', sans-serif;
+    color: #000;
+    opacity: 0.5;
+    @media screen and (max-width: 380px) {
+      font-size: 12px;
+    }
+  }
+  &:focus {
+    border: 2px solid #963FF2;
+    outline: 0;
+  }
+  &:valid {
+    border: 2px solid #963FF2;
+  }
+}
+
+.coupon {
+  &:valid {
+    border: 2px solid #000;
+  }
+  &:focus {
+    border: 2px solid #963FF2;
+    outline: 0;
+  }
+
+}
+
+.formLabel {
+  font: 500 16px/18px 'Ubuntu', sans-serif;
+  margin-bottom: 10px;
+}
+
+.formQuest {
+  display: flex;
+  padding-top: 12px;
+  align-items: center;
+  > img {
+    width: 40px;
+    height: 40px;
+    @media screen and (max-width: 380px) {
+      display: none;
+    }
+  }
+}
+
+.formQuestText {
+  margin-left: 20px;
+  background-color: #AB44DB;
+  padding: 8px 12px;
+  color: #FFF;
+  font: 400 12px/14px 'Ubuntu', sans-serif;
+  > a {
+    padding-top: 2px;
+    display: flex;
+    color: #FFC0F6;
+    text-align: center;
+    > img {
+      margin-right: 4px;
+      align-items: center;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    margin-left: 10px;
+  }
+  @media screen and (max-width: 380px) {
+    margin: 0;
+  }
+}
+
+.formOffer {
+  display: flex;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.publicOffer {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  &:checked+label::before {
+    cursor: pointer;
+    background-size: 8px 8px;
+    background-image: url("../../../images/icon-user-agreement.svg");
+    @media screen and(max-width: 380px) {
+      background-size: 6px 6px;
+    }
+  }
+  // стили при наведении на checkbox курсором 
+  &:not(:disabled):not(:checked)+label:hover::before {
+    cursor: pointer;
+  }
+  // стили для активного состояния чекбокса (при нажатии на него)
+  &:not(:disabled):active+label::before {
+    background-color: rgba(109, 60, 232, 0.5);
+  }
+  // в состоянии disabled 
+  &:disabled+label::before {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+  }
+}
+
+.publicOffer+label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  font: 400 16px/16px 'Ubuntu', sans-serif;
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 2px solid #000000;
+    margin-right: 0.5em;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  @media screen and (max-width: 380px) {
+    font-size: 12px;
+  }
+}
+
+.btn {
+  margin-top: 10px;
+  padding: 12px 0px;
+  color: #FFF;
+  font: 700 16px 'Ubuntu', sans-serif;
+  background-color: #E83CCE;
+  border: 1px solid #000;
+  box-shadow: inset -6px -6px 0px rgba(0, 0, 0, 0.25), inset 6px 6px 0px rgba(255, 255, 255, 0.5);
+}
+
+.btn[disabled] {
+  opacity: 0.5;
+  cursor: auto;
+}

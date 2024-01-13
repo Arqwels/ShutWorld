@@ -8,7 +8,7 @@ header {
   position: absolute;
   left: 50%;
   transform: translate(-50%, 50%);
-  z-index: 6;
+  z-index: 1;
   @media (min-width: 768px) and (max-width: 991px) {
     width: 124px;
     height: 124px;

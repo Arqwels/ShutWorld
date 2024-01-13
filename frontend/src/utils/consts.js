@@ -1,5 +1,6 @@
 export const MAIN_ROUTE = '/'; // Главная страница
 export const SHOP_ROUTE = '/shop';
+export const M_SHOP_ROUTE = '/m-shop';
 export const PLAY_ROUTE = '/play'; //Страница "Как начать играть?" или "Начать играть"
 export const RULES_ROUTE = '/rules';
 

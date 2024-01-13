@@ -6,7 +6,11 @@ import Rules from "./pages/RulesPage";
 import Store from "./pages/StorePage";
 import AdminPage from "./pages/mAdminPage";
 import ShopPage from "./pages/mShopPage";
+<<<<<<< HEAD
 import { ADMIN_ROUTE, AUTHORIZATION_ROUTE, LOGIN_ROUTE, MAIN_ROUTE, PLAY_ROUTE, RULES_ROUTE, SHOP_ROUTE } from "./utils/consts";
+=======
+import { ADMIN_ROUTE, AUTHORIZATION_ROUTE, LOGIN_ROUTE, MAIN_ROUTE, M_SHOP_ROUTE, PLAY_ROUTE, RULES_ROUTE, SHOP_ROUTE } from "./utils/consts";
+>>>>>>> c18642f (Модальное окно)
 
 export const authRoutes = [
   {
@@ -40,5 +44,9 @@ export const publicRoutes = [
   {
     path: PLAY_ROUTE,
     Component: HowPlay
+  },
+  {
+    path: M_SHOP_ROUTE,
+    Component: ShopPage
   },
 ]
