@@ -4,9 +4,9 @@ import DurationSelect from "../Payment&Duration/DurationSelect";
 import PaymentMethod from "../Payment&Duration/PaymentMethod";
 import st from "./ModalForShop.module.scss";
 
-import LinkFormVK from "../../../images/icon-link-formvk.svg";
-import QuestionMark from "../../../images/question-mark.svg";
-import CloseIcon from "../../../assets/images/icons/close-icon.png"
+import LinkFormVK from "../../../assets/images/icons/link-formvk-icon.svg";
+import QuestionMark from "../../../assets/images/ShopPage/question-mark.svg";
+import CloseIcon from "../../../assets/images/icons/close-icon.png";
 
 const ModalForShop= ({ isOpen, donStatus, descriptionTitle, descriptionText, privilegeText, onCancel }) => {
   

@@ -9,7 +9,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-image: url('../../../images/background-popup.png'); //1162on729
+  background-image: url('../../../assets/images/ShopPage/background-shopPage.png');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   @media screen and (max-width: 1400px) {
@@ -266,7 +266,7 @@
   &:checked+label::before {
     cursor: pointer;
     background-size: 8px 8px;
-    background-image: url("../../../images/icon-user-agreement.svg");
+    background-image: url("../../../assets/images/icons/user-agreement-icon.svg");
     @media screen and(max-width: 380px) {
       background-size: 6px 6px;
     }

@@ -1,0 +1,87 @@
+
+.swiper {
+  display: flex;
+  max-width: 665px;
+  max-height: 150px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.sliderTitle {
+  padding: 150px 0 30px;
+  text-align: center;
+  > h2 {
+    font: 700 36px/42px 'Ubuntu', sans-serif;
+  }
+}
+
+.swiperWrapper {
+  box-sizing: content-box;
+}
+
+// Slide
+
+.swiperSlide {
+  background-color: #6D3CE8;
+  position: relative;
+}
+
+.cubeSwap {
+  position: absolute;
+}
+
+.textSlide {
+  color: #fff;
+  padding: 24px 128px 28px 60px;
+  z-index: 1;
+  position: relative;
+  > h2 {
+    font: 700 24px/28px 'Ubuntu', sans-serif;
+    margin-bottom: 16px;
+  }
+  > p {
+    font: 500 16px/18px 'Ubuntu', sans-serif;
+  }
+}
+
+.likeSwap {
+  width: 168px;
+  height: 124px;
+  position: absolute;
+  bottom: 0;
+  right: 0%;
+}
+
+.bagSwap {
+  width: 173px;
+  height: 182px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.linksSwap {
+  width: 213px;
+  height: 206px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.sliderBottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 0 80px;
+  font: 400 12px/14px 'Ubuntu', sans-serif;
+  color: rgba(0, 0, 0, 0.6);
+  > img {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    background-color: red;
+  }
+}

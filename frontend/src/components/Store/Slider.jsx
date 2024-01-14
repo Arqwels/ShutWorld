@@ -2,14 +2,14 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade } from "swiper";
 
-import cubeSwap from '../../images/cube-swap.png';
-import bagSwap from '../../images/bag-swap.png';
-import thanksSwap from '../../images/thanks-swap.png';
-import linksSwap from '../../images/links-swap.png';
+// import cubeSwap from '../../images/cube-swap.png';
+// import bagSwap from '../../images/bag-swap.png';
+// import thanksSwap from '../../images/thanks-swap.png';
+// import linksSwap from '../../images/links-swap.png';
 
 import 'swiper/css';
 
-import "./swipersll.css";
+// import "./swipersll.css";
 
 const Slider = () => {
   return (
@@ -32,32 +32,32 @@ const Slider = () => {
       <div className="swiper-wrapper">
         <SwiperSlide>
         <div className="swiper-slide">
-          <img className="cube-swap" src={cubeSwap} alt="" />
+          {/* <img className="cube-swap" src={cubeSwap} alt="" /> */}
           <div className="text-swiper">
             <h2>Спасибо Вам!</h2>
             <p>Покупая что-то у нас, Вы очень сильно помогаете нам в развитии проекта. Мы очень благодарны нашим покупателям и пытаемся щедро наградить им.</p>
           </div>
-          <img className="like-swap" src={thanksSwap} alt="" />
+          {/* <img className="like-swap" src={thanksSwap} alt="" /> */}
         </div>
         </SwiperSlide>
         <SwiperSlide>
         <div className="swiper-slide">
-          <img className="cube-swap" src={cubeSwap} alt="" />
+          {/* <img className="cube-swap" src={cubeSwap} alt="" /> */}
           <div className="text-swiper">
             <h2>Нашёл баг?</h2>
             <p>Если Вы нашли баг на нашем сервере, то сообщите поскорее нам в ВКонтакте или в Discord! Мы выдадим Вам приз в виде плюшек или купонов в зависимости от крититичности бага.</p>
           </div>
-          <img className="bag-swap" src={bagSwap} alt="" />
+          {/* <img className="bag-swap" src={bagSwap} alt="" /> */}
         </div>
         </SwiperSlide>
         <SwiperSlide>
         <div className="swiper-slide">
-          <img className="cube-swap" src={cubeSwap} alt="" />
+          {/* <img className="cube-swap" src={cubeSwap} alt="" /> */}
           <div className="text-swiper">
             <h2>Как покупать выгодно?</h2>
             <p>У нас имеется купоны, которые дают скидки на наши товары. Мы эти купоны выкладываем на нашем группе ВКонтакте, Discord-канале и бывает даже на самом сервере.</p>
           </div>
-          <img className="links-swap" src={linksSwap} alt="" />
+          {/* <img className="links-swap" src={linksSwap} alt="" /> */}
         </div>
         </SwiperSlide>
       </div>
