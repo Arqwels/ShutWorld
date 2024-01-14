@@ -13,8 +13,8 @@ import donate3ssImg from '../images/Vector3.png';
 import donate1ItemImg from '../images/donat-item1.png';
 
 import { donate } from '../components/Shop/DonateStatuses';
-import PaymentMethod from '../components/Shop/PaymentMethod';
-import DurationSelect from '../components/Shop/DurationSelect';
+import PaymentMethod from '../components/Shop/Payment&Duration/PaymentMethod';
+import DurationSelect from '../components/Shop/Payment&Duration/DurationSelect';
 
 const Store = () => {
   const [ modalDonate1ss, setModalDonate1ss ] = useState(false);

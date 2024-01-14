@@ -1,5 +1,5 @@
 import React from "react";
-import Portal from "./Portal";
+import Portal from "../Portal";
 import "./Modal.css";
 import Button from './Button/Button';
 import Overlay from "./Overlay";
@@ -9,7 +9,6 @@ const Modal = ({ title, isOpen, onCancel, onSubmit, children }) => {
     <>
       { isOpen && 
         <Portal>
-          {/* <div className="modalOverlay"> */}
             <div className="modalWindow">
               <div className="modalHeader">
                 <p className="modalTitle">{title}</p>
@@ -24,7 +23,6 @@ const Modal = ({ title, isOpen, onCancel, onSubmit, children }) => {
                 
               </div>
             </div>
-          {/* </div> */}
           <Overlay onClose={onCancel}/>
         </Portal>
       }

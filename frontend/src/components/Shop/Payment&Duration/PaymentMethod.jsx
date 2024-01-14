@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import style from "./Pay&Duration.module.scss"
-import SelectIcon from '../../images/SelectIcon.svg';
+import SelectIcon from '../../../images/SelectIcon.svg';
 import { observer } from 'mobx-react-lite';
-import formStore from '../../store/form';
+import formStore from '../../../store/form';
 
 export const PaymentMethod = () => {
   const { stateVisibl2, toggleDropdownVisible2 } = formStore;

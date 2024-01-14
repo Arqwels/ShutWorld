@@ -1,9 +1,13 @@
 import React from 'react'
+import WrapperComponent from './WrapperComponent'
+import ModalSandbox from '../components/Shop/Sandbox'
 
-const ShopPage = () => {
+const AuthPage = () => {
   return (
-    <div>ShopPage</div>
+    <WrapperComponent>
+      <ModalSandbox />
+    </WrapperComponent>
   )
 }
 
-export default ShopPage
+export default AuthPage
