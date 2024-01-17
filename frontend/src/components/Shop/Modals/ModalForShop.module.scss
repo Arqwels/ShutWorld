@@ -119,8 +119,6 @@
     margin-bottom: 20px;
     @media screen and (max-width: 450px) {
       margin-bottom: 16px;
-    }
-    @media screen and (max-width: 450px) {
       font-size: 12px;
       margin-bottom: 12px;
     }
@@ -140,6 +138,9 @@
     > li {
       font: 400 14px/20px 'Ubuntu', sans-serif;
       padding-bottom: 5px;
+      @media screen and (max-width: 450px) {
+        padding-bottom: 0px;
+      }
     }
   }
 }
@@ -257,6 +258,15 @@
   display: flex;
   align-items: center;
   padding-top: 20px;
+  > label {
+    white-space: nowrap;
+    > a {
+      color: #963FF2;
+    }
+    ::before {
+      content: "\00a0";
+    }
+  }
 }
 
 .publicOffer {

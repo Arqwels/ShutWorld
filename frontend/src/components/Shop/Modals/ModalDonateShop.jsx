@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Portal from "../../Portal";
 import { Link } from "react-router-dom";
 import DurationSelect from "../Payment&Duration/DurationSelect";
@@ -6,9 +7,11 @@ import st from "./ModalForShop.module.scss";
 
 import LinkFormVK from "../../../assets/images/icons/link-formvk-icon.svg";
 import QuestionMark from "../../../assets/images/ShopPage/question-mark.svg";
-import CloseIcon from "../../../assets/images/icons/close-icon.png";
+import CloseIcon from "../../../assets/images/icons/close-icon.svg";
 
 const ModalForShop= ({ isOpen, donStatus, descriptionTitle, descriptionText, privilegeText, onCancel }) => {
+  const [selectedDuration, setSelectedDuration] = useState(null);
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
   
   return (
     <>
@@ -44,8 +47,8 @@ const ModalForShop= ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
                 <label className={st.formLabel} htmlFor="coupon">Купон</label>
                 <input className={`${st.formInputText} ${st.coupon}`} type="text" name="coupon" placeholder="Введите купион, если имеется" />
               
-                <DurationSelect donateStatus={donStatus} />
-                <PaymentMethod />
+                <DurationSelect donateStatus={donStatus} onDurationSelect={(duration) => setSelectedDuration(duration)} />
+                <PaymentMethod onSelectPaymentMethod={(selectedMethod) => setSelectedPaymentMethod(selectedMethod)} />
 
                 <div className={st.formQuest}>
                   <img src={QuestionMark} alt="QuestionMark" />
@@ -62,6 +65,7 @@ const ModalForShop= ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
 
                 <button className={st.btn} disabled type="submit">Данные не заполнены</button>
               </form>
+              <button onClick={() => console.log(selectedDuration, selectedPaymentMethod)}>Нажми меня</button>
             </div>
 
             <div className={st.mobModalPrivilege}>
@@ -81,6 +85,6 @@ const ModalForShop= ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
       }
     </>
   )
-}
+};
 
 export default ModalForShop;
