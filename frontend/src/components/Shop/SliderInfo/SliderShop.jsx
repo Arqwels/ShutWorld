@@ -10,6 +10,12 @@ import BelowButton from "../../../assets/images/icons/button-below-icon.svg";
 import st from "./SliderShop.module.scss";
 
 const SliderShop = () => {
+  const scrollToBlock = () => {
+    const targetBlack = document.getElementById('donate');
+    if (targetBlack) {
+      targetBlack.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
     <section>
       <div className={st.sliderTitle}>
@@ -63,9 +69,9 @@ const SliderShop = () => {
         </Swiper>
       </div>
 
-      <div id="scroll" className={st.sliderBottom}>
+      <div className={st.sliderBottom}>
         <p>Ниже список товаров</p>
-        <img src={BelowButton} alt="BelowButton" />
+        <img src={BelowButton} alt="BelowButton" onClick={scrollToBlock} />
       </div>
     </section>
   )

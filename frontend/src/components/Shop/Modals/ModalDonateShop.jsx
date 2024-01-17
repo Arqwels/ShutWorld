@@ -9,7 +9,7 @@ import LinkFormVK from "../../../assets/images/icons/link-formvk-icon.svg";
 import QuestionMark from "../../../assets/images/ShopPage/question-mark.svg";
 import CloseIcon from "../../../assets/images/icons/close-icon.svg";
 
-const ModalForShop= ({ isOpen, donStatus, descriptionTitle, descriptionText, privilegeText, onCancel }) => {
+const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, privilegeText, onClose }) => {
   const [selectedDuration, setSelectedDuration] = useState(null);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
   
@@ -35,7 +35,7 @@ const ModalForShop= ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
             <div className={st.mobModalRight}>
               <h2>Описание - {descriptionTitle}</h2>
               <p>{descriptionText}</p>
-              <button className={st.closeIcon} tabIndex={1} onClick={onCancel}><img src={CloseIcon} alt="CloseIcon"/></button>
+              <button className={st.closeIcon} tabIndex={1} onClick={onClose}><img src={CloseIcon} alt="CloseIcon"/></button>
             </div>
 
             <div className={st.modalLeft}>
@@ -68,6 +68,7 @@ const ModalForShop= ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
               <button onClick={() => console.log(selectedDuration, selectedPaymentMethod)}>Нажми меня</button>
             </div>
 
+            {/* Mobile */}
             <div className={st.mobModalPrivilege}>
               <div className={st.privilege}>
                 <h3>Возможности</h3>
@@ -78,13 +79,15 @@ const ModalForShop= ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
                 </ul>
               </div>
             </div>
+
+
           </div>
           
-          <div className={st.overlay} onClick={onCancel}/>
+          <div className={st.overlay} onClick={onClose}/>
         </Portal>
       }
     </>
   )
 };
 
-export default ModalForShop;
+export default ModalDonate;

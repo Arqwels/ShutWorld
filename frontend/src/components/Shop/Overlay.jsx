@@ -1,4 +1,4 @@
-import "./ShopStyles.scss";
+import "./ShopStyles.module.scss";
 
 const Overlay = ({ onClose }) => {
   return (

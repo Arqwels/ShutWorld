@@ -7,9 +7,9 @@ import Modal from '../components/Store/Modal';
 import Modal2 from '../components/Store/Modal';
 import Modal3 from '../components/Store/Modal';
 
-import donate1ssImg from '../images/Vector.png';
-import donate2ssImg from '../images/Vector2.png';
-import donate3ssImg from '../images/Vector3.png';
+// import donate1ssImg from '../images/Vector.png';
+// import donate2ssImg from '../images/Vector2.png';
+// import donate3ssImg from '../images/Vector3.png';
 import donate1ItemImg from '../images/donat-item1.png';
 
 import { donate } from '../components/Shop/DonateStatuses';
@@ -31,21 +31,21 @@ const Store = () => {
             <h2>Ранги</h2>
             <div className="donate__container">
               <div className="donate__item">
-                <img className="donate__item__img" src={donate1ssImg} alt="" />
+                {/* <img className="donate__item__img" src={donate1ssImg} alt="" /> */}
                 <div className="donate__item__text">
                   <h2>Гладиатор <br/>от <span>100</span>₽</h2>
                   <button onClick={() => setModalDonate1ss(true)} className="modal__button button button-type_primary button-width">Приобрести</button>
                 </div>
               </div>
               <div className="donate__item">
-                <img className="donate__item__img" src={donate2ssImg} alt="" />
+                {/* <img className="donate__item__img" src={donate2ssImg} alt="" /> */}
                 <div className="donate__item__text">
                   <h2>Паладин <br/>от <span>165</span>₽</h2>
                   <button onClick={() => setModalDonate2ss(true)} className="modal__button button button-type_primary button-width">Приобрести</button>
                 </div>
               </div>
               <div className="donate__item">
-                <img className="donate__item__img" src={donate3ssImg} alt="" />
+                {/* <img className="donate__item__img" src={donate3ssImg} alt="" /> */}
                 <div className="donate__item__text">
                   <h2>Вождь <br/>от <span>240</span>₽</h2>
                   <button onClick={() => setModalDonate3ss(true)} className="modal__button button button-type_primary button-width">Приобрести</button>

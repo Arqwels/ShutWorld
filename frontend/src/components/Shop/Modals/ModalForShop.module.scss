@@ -60,11 +60,17 @@
 .closeIcon {
   position: absolute;
   z-index: 4;
-  top: -10%;
+  top: -5%;
   right: -2%;
   > img {
     width: 45px;
     cursor: pointer;
+    @media screen and (max-width: 768px) {
+      width: 35px;
+    }
+    @media screen and (max-width: 400px) {
+      width: 30px;
+    }
   }
   @media screen and (min-width: 991px) {
     display: none;
