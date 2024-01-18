@@ -1,5 +1,6 @@
 import { Component, Fragment } from "react";
 import { artifacts } from "./ArtifactsInfo";
+import ModalArtifact from "./Modals/ModalArtifactsShop";
 
 import Soulshard from "../../assets/images/ShopPage/artifacts-soulshard.png";
 
@@ -28,21 +29,32 @@ class Artifacts extends Component {
   render() {
     return (
       <Fragment>
-        <div>
+        <div className={st.donate}>
           <h2>Артефакты</h2>
 
-          <div>
-
-            <div>
-              <img src={Soulshard} alt="Rank" />
-              <div>
+          <div className={st.wrapCard}>
+            <div className={st.card}>
+              <img src={Soulshard} alt="Artifact" />
+              <div className={st.cardText}>
                 <h2>{artifacts["soulshard"].name} <br/>от <span>{artifacts["soulshard"].price}</span>₽</h2>
-                <button>Приобрести</button>
+                <button onClick={() => this.openModal("soulshard", "Artifacts")} className={st.btn}>Приобрести</button>
               </div>
             </div>
 
           </div>
         </div>
+
+        {this.state.modals.map((modal, index) => {
+          return (
+            <ModalArtifact 
+              key={index}
+              isOpen={modal.isOpen}
+              onClose={() => this.closeModal(index)}
+              descriptionTitle={artifacts[modal.index].name}
+              descriptionText={artifacts[modal.index].description}
+            />
+          )
+        })}
       </Fragment>
     );
   };
