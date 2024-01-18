@@ -75,62 +75,8 @@
   margin-bottom: 25px;
 }
 
-/* Rules */
 
-.rules__title {
-  text-align: center;
-  padding: 150px 0 50px;
-}
 
-.rules__title h2 {
-  margin-bottom: 10px;
-}
-
-.rules__body {
-  color: #FFFFFF;
-  padding-bottom: 150px;
-}
-
-/* New rules */
-
-.rules__items {
-  font: 500 18px/21px 'Ubuntu', sans-serif;
-}
-
-.rule__item.active .rule__head__img {
-  transform: rotate(0.5turn);
-}
-
-.rule__item.active .rule__item__body {
-  display: block;
-}
-
-.rule__item__head {
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #6D3CE8;
-  cursor: pointer;
-}
-
-.rule__head__img {
-  width: 12px;
-  height: 8px;
-  transition: transform .3s ease;
-}
-
-.rule__item__body {
-  display: none;
-}
-
-.rule__item__body > li {
-  padding: 11px 20px;
-  background-color: #963FF2;
-  border-bottom: 1px solid #BE81FF;
-  font: 400 16px/18px 'Ubuntu', sans-serif;
-  user-select: text;
-}
 
 /* Buttons */
 
