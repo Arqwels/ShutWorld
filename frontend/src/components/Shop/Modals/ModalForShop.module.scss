@@ -9,7 +9,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-image: url('../../../images/background-popup.png'); //1162on729
+  background-image: url('../../../assets/images/ShopPage/background-shopPage.png');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   @media screen and (max-width: 1400px) {
@@ -60,11 +60,17 @@
 .closeIcon {
   position: absolute;
   z-index: 4;
-  top: -10%;
+  top: -5%;
   right: -2%;
   > img {
     width: 45px;
     cursor: pointer;
+    @media screen and (max-width: 768px) {
+      width: 35px;
+    }
+    @media screen and (max-width: 400px) {
+      width: 30px;
+    }
   }
   @media screen and (min-width: 991px) {
     display: none;
@@ -119,12 +125,14 @@
     margin-bottom: 20px;
     @media screen and (max-width: 450px) {
       margin-bottom: 16px;
-    }
-    @media screen and (max-width: 450px) {
       font-size: 12px;
       margin-bottom: 12px;
     }
   }
+}
+
+.descTA > p {
+  font: 400 18px/20px 'Ubuntu', sans-serif;
 }
 
 .privilege {
@@ -140,6 +148,9 @@
     > li {
       font: 400 14px/20px 'Ubuntu', sans-serif;
       padding-bottom: 5px;
+      @media screen and (max-width: 450px) {
+        padding-bottom: 0px;
+      }
     }
   }
 }
@@ -257,6 +268,15 @@
   display: flex;
   align-items: center;
   padding-top: 20px;
+  > label {
+    white-space: nowrap;
+    > a {
+      color: #963FF2;
+    }
+    ::before {
+      content: "\00a0";
+    }
+  }
 }
 
 .publicOffer {
@@ -266,7 +286,7 @@
   &:checked+label::before {
     cursor: pointer;
     background-size: 8px 8px;
-    background-image: url("../../../images/icon-user-agreement.svg");
+    background-image: url("../../../assets/images/icons/user-agreement-icon.svg");
     @media screen and(max-width: 380px) {
       background-size: 6px 6px;
     }

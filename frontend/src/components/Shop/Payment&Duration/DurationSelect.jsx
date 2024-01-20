@@ -4,13 +4,14 @@ import SelectIcon from '../../../images/SelectIcon.svg'
 import { observer } from 'mobx-react-lite';
 import formStore from '../../../store/form';
 
-export const DurationSelect = ({ donateStatus }) => {
+export const DurationSelect = ({ donateStatus, onDurationSelect }) => {
   const { stateVisibl1, toggleDropdownVisible1 } = formStore;
   const [selectedItem, setSelectedItem] = useState(null);
 
   const handleSelect = (item) => {
     setSelectedItem(item);
     toggleDropdownVisible1(false);
+    onDurationSelect(item);
   };
 
   return (

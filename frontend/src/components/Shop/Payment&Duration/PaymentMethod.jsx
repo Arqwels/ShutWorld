@@ -4,13 +4,14 @@ import SelectIcon from '../../../images/SelectIcon.svg';
 import { observer } from 'mobx-react-lite';
 import formStore from '../../../store/form';
 
-export const PaymentMethod = () => {
+export const PaymentMethod = ({ onSelectPaymentMethod }) => {
   const { stateVisibl2, toggleDropdownVisible2 } = formStore;
   const [selectedMethod, setSelectedMethod] = useState(null);
 
   const handleSelect = (method) => {
     setSelectedMethod(method);
     toggleDropdownVisible2(false);
+    onSelectPaymentMethod(method);
   };
 
   return (

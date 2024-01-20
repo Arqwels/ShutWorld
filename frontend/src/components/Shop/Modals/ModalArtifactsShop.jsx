@@ -1,16 +1,15 @@
 import { useState } from "react";
 import Portal from "../../Portal";
 import { Link } from "react-router-dom";
-import DurationSelect from "../Payment&Duration/DurationSelect";
 import PaymentMethod from "../Payment&Duration/PaymentMethod";
+
 import st from "./ModalForShop.module.scss";
 
 import LinkFormVK from "../../../assets/images/icons/link-formvk-icon.svg";
 import QuestionMark from "../../../assets/images/ShopPage/question-mark.svg";
 import CloseIcon from "../../../assets/images/icons/close-icon.svg";
 
-const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, privilegeText, onClose }) => {
-  const [selectedDuration, setSelectedDuration] = useState(null);
+const ModalArtifact = ({ isOpen, onClose, descriptionTitle, descriptionText }) => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
   
   return (
@@ -19,20 +18,12 @@ const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
         <Portal>
           <div className={st.modalWindow}>
 
-            <div className={st.modalRigth}>
+            <div className={`${st.modalRigth} ${st.descTA}`}>
               <h2>Описание - {descriptionTitle}</h2>
               <p>{descriptionText}</p>
-              <div className={st.privilege}>
-                <h3>Возможности</h3>
-                <ul className={st.privilegeList}>
-                  {Object.entries(privilegeText).map(([key, value]) => (
-                    <li key={key}>{value}</li>
-                  ))}
-                </ul>
-              </div>
             </div>
 
-            <div className={st.mobModalRight}>
+            <div className={`${st.mobModalRight} ${st.descTA}`}>
               <h2>Описание - {descriptionTitle}</h2>
               <p>{descriptionText}</p>
               <button className={st.closeIcon} tabIndex={1} onClick={onClose}><img src={CloseIcon} alt="CloseIcon"/></button>
@@ -46,8 +37,11 @@ const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
               
                 <label className={st.formLabel} htmlFor="coupon">Купон</label>
                 <input className={`${st.formInputText} ${st.coupon}`} type="text" name="coupon" placeholder="Введите купион, если имеется" />
-              
-                <DurationSelect donateStatus={donStatus} onDurationSelect={(duration) => setSelectedDuration(duration)} />
+                
+                {/* Сделать отдельным компонентом, добавить множество проверок! */}
+                <label className={st.formLabel} htmlFor="count">Количество</label>
+                <input className={st.formInputText} type="number" name="count" placeholder="Введите количество" required />
+
                 <PaymentMethod onSelectPaymentMethod={(selectedMethod) => setSelectedPaymentMethod(selectedMethod)} />
 
                 <div className={st.formQuest}>
@@ -65,24 +59,10 @@ const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
 
                 <button className={st.btn} disabled type="submit">Данные не заполнены</button>
               </form>
-              <button onClick={() => console.log(selectedDuration, selectedPaymentMethod)}>Нажми меня</button>
+              <button onClick={() => console.log(selectedPaymentMethod)}>Нажми меня</button>
             </div>
-
-            {/* Mobile */}
-            <div className={st.mobModalPrivilege}>
-              <div className={st.privilege}>
-                <h3>Возможности</h3>
-                <ul className={st.privilegeList}>
-                  {Object.entries(privilegeText).map(([key, value]) => (
-                    <li key={key}>{value}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-
           </div>
-          
+
           <div className={st.overlay} onClick={onClose}/>
         </Portal>
       }
@@ -90,4 +70,4 @@ const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
   )
 };
 
-export default ModalDonate;
+export default ModalArtifact;

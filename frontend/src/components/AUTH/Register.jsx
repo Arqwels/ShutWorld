@@ -262,8 +262,8 @@ const Register = observer(() => {
         </div>
 
         <div className={style.imgs}>
-          <img src={enderDragon} alt="enderDragon" />
-          <img src={enderShip} alt="endShip" />
+          <img className={style.enderDragon} src={enderDragon} alt="enderDragon" />
+          <img className={style.enderShip} src={enderShip} alt="endShip" />
         </div>
       </section>
   )
