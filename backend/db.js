@@ -1,4 +1,5 @@
-const { Sequelize } = require('sequelize')
+const { Sequelize } = require('sequelize');
+import pg from 'pg';
 
 // module.exports = new Sequelize(
 //   process.env.DB_NAME, // database = Название БД
@@ -16,6 +17,7 @@ module.exports = new Sequelize(
   {
     host: process.env.DB_HOST,
     dialect: 'postgres',
+    dialectModule: pg,
     ssl: true,  // Включение SSL
     dialectOptions: {
       ssl: {
