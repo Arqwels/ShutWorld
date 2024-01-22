@@ -1,4 +1,5 @@
 const { Sequelize } = require('sequelize');
+const pg = require('pg');
 import pg from 'pg';
 
 // module.exports = new Sequelize(
