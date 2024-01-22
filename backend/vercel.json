@@ -1,15 +1,5 @@
 {
   "version": 2,
-  "builds": [
-    { "src": "./api/periodic-task.js", "use": "@vercel/node" },
-    { "src": "./index.js", "use": "@vercel/node" }
-  ],
-  "routes": [{ "src": "/api/(.*)", "dest": "/"}],
-  "functions": {
-    "periodic-task": {
-      "runtime": "@vercel/node",
-      "memory": 128,
-      "maxDuration": 30
-    }
-  }
+  "builds": [{ "src": "./index.js", "use": "@vercel/node" }],
+  "routes": [{ "src": "/api/(.*)", "dest": "/"}]
 }
