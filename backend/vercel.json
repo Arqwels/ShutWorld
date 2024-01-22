@@ -7,12 +7,10 @@
   "routes": [{ "src": "/api/(.*)", "dest": "/api/$1" }],
   "functions": {
     "periodic-task": {
+      "schedule": "*/5 * * * *",
       "runtime": "@vercel/node",
       "memory": 128,
-      "maxDuration": 30,
-      "triggers": {
-        "schedule": { "cron": "0 */5 * * *" }
-      }
+      "maxDuration": 30
     }
   }
 }
