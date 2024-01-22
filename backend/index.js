@@ -5,7 +5,6 @@ const cookieParser = require('cookie-parser')
 const sequelize = require('./db')
 const router = require('./routers/index')
 const errorMiddleware = require('./middleware/errorMiddleware')
-const postVKController = require('./controllers/postVKController')
 
 const PORT = process.env.PORT || 2000
 const app = express()
@@ -27,16 +26,6 @@ const start = async () => {
     await sequelize.sync()
     app.listen(PORT, () => {
       console.log(`Сервер запущен на порту - ${PORT}`)
-      
-      const interval = 5 * 60 * 1000; // 60 минут
-      setInterval(async () => {
-        try {
-          await postVKController.savePost();
-          console.log("Данные о постах ВК были полученны!");
-        } catch (error) {
-          console.error('⛔ Ошибка:', error);
-        }
-      }, interval);
     });
   } catch (error) {
     console.log(`⛔ Ошибка с подключение к БД - ${error}`)
