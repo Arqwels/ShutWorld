@@ -8,7 +8,7 @@
   "crons": [
     {
       "path": "/api/periodic-task",
-      "schedule": "*/25 * * * *"
+      "schedule": "10 12 * * *"
     }
   ]
 }
