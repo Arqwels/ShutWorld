@@ -1,14 +1,14 @@
 {
   "version": 2,
   "builds": [
-    { "src": "./api/periodic-task.js", "use": "@vercel/node" },
+    { "src": "./api/cron/index.js", "use": "@vercel/node" },
     { "src": "./index.js", "use": "@vercel/node" }
   ],
   "routes": [{ "src": "/api/(.*)", "dest": "/"}],
   "crons": [
     {
-      "path": "/api/periodic-task",
-      "schedule": "35 21 * * *"
+      "path": "/api/cron",
+      "schedule": "5 22 * * *"
     }
   ]
 }
