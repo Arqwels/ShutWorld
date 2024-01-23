@@ -13,7 +13,6 @@ const postVKController = require('../../controllers/postVKController');
 
 const handler = async (req, res) => {
   try {
-    await postVKController.savePost();
     console.log("123!!--")
     return res.status(200).json({ success: "Всё ништяк!" })
   } catch (error) {
