@@ -1,4 +1,4 @@
-const postVKController = require('../controllers/postVKController');
+// const postVKController = require('../controllers/postVKController');
 
 // module.exports = async (req, res) => {
 //   try {
@@ -29,5 +29,5 @@ export default async function handler(request, response) {
   );
   const data = await result.json();
  
-  return response.status(200).json({ datetime: data.datetime });
+  return response.json({ datetime: data.datetime });
 }
