@@ -4,8 +4,8 @@
   "routes": [{ "src": "/api/(.*)", "dest": "/"}],
   "crons": [
     {
-      "path": "/api/cron",
-      "schedule": "45 13 * * *"
+      "path": "/api/hello-world",
+      "schedule": "16 16 * * *"
     }
   ]
 }

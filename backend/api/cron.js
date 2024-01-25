@@ -23,11 +23,17 @@
 // export default handler;
 
 
-export default async function handler(request, response) {
-  const result = await fetch(
-    'http://worldtimeapi.org/api/timezone/America/Chicago',
-  );
-  const data = await result.json();
+// export default async function handler(request, response) {
+//   const result = await fetch(
+//     'http://worldtimeapi.org/api/timezone/America/Chicago',
+//   );
+//   const data = await result.json();
  
-  return response.json({ datetime: data.datetime });
+//   return response.json({ datetime: data.datetime });
+// }
+
+export async function GET(request) {
+  return new Response('Hello from cron', {
+    status: 200
+  })
 }
