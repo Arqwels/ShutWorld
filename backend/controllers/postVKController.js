@@ -31,6 +31,14 @@ class PostController {
       return res.status(500).json(error);
     }
   };
+
+  async HelloWorld(req, res) {
+    try {
+      return res.status(200).json({ succsec: true })
+    } catch (error) {
+      return res.status(500).json(error);
+    }
+  }
 };
 
 module.exports = new PostController();
