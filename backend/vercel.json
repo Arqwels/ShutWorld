@@ -5,7 +5,7 @@
   "crons": [
     {
       "path": "/api/post/save-post-vk",
-      "schedule": "59 19 * * *"
+      "schedule": "10 20 * * *"
     }
   ]
 }
