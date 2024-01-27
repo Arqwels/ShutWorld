@@ -28,7 +28,7 @@ class PostController {
       let posts = await PostVK.findAll();
       if(posts.length === 0) {
         const postController = new PostController();
-        await postController.savePost();
+        await postController.savePost(res);
         posts = await PostVK.findAll();
       }
       const postsDto = posts.map(post => new postVKDto(post));
