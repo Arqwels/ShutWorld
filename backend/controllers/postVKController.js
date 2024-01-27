@@ -13,11 +13,11 @@ class PostController {
     }
   };
 
-  async savePost(res) {
+  async savePost(req, res) {
     try {
       const postData = await getPostVKService.getPostVK();
       await getPostVKService.savePostData(postData);
-      return res.json({success: true});
+      return res.status(200).json({success: true});
     } catch (error) {
       throw ApiError.ErrorReceivingData("Ошибка в получении Постов ВК!", error);
     }
