@@ -17,6 +17,7 @@ class PostController {
     try {
       const postData = await getPostVKService.getPostVK();
       await getPostVKService.savePostData(postData);
+      return res.status(200).json({success: true});
     } catch (error) {
       throw ApiError.ErrorReceivingData("Ошибка в получении Постов ВК!", error);
     }
@@ -24,21 +25,18 @@ class PostController {
 
   async sendVKData(req, res) {
     try {
-      const posts = await PostVK.findAll();
+      let posts = await PostVK.findAll();
+      if(posts.length === 0) {
+        const postController = new PostController();
+        await postController.savePost();
+        posts = await PostVK.findAll();
+      }
       const postsDto = posts.map(post => new postVKDto(post));
       return res.status(200).json(postsDto);
     } catch (error) {
       return res.status(500).json(error);
     }
   };
-
-  async HelloWorld(req, res) {
-    try {
-      return res.status(200).json({ succsec: true })
-    } catch (error) {
-      return res.status(500).json(error);
-    }
-  }
 };
 
 module.exports = new PostController();

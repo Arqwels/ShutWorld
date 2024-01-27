@@ -6,7 +6,7 @@ const postVKController = require('../controllers/postVKController');
 router.get('/get-post-vk', postVKController.sendVKData);
 // http://localhost:5000/api/post/receive-post-vk
 router.get('/receive-post-vk', postVKController.receivePost);
-
-router.get('/hello-world', postVKController.HelloWorld);
+// http://localhost:5000/api/post/save-post-vk
+router.get('/save-post-vk', postVKController.savePost);
 
 module.exports = router;

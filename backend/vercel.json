@@ -4,8 +4,8 @@
   "routes": [{ "src": "/api/(.*)", "dest": "/"}],
   "crons": [
     {
-      "path": "/api/post/hello-world",
-      "schedule": "20 16 * * *"
+      "path": "/api/post/save-post-vk",
+      "schedule": "50 19 * * *"
     }
   ]
 }

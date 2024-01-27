@@ -13,7 +13,7 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
   credentials: true,
-  origin: 'https://shutworld.ru'
+  origin: process.env.CLIENT_URL || process.env.RPODUCTION_CLIENT_URL
 }))
 app.use('/api', router)
 
