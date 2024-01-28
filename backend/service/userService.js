@@ -10,7 +10,7 @@ class UserService {
   async registration(nickname,email,password,useragreement,role,next) {
     const candidate = await User.findOne({ where: { nickname } });
     if(candidate) {
-      throw ApiError.BadRequest(`Пользователь с таким никнеймок ${nickname} уже зарегистрирован!`)
+      throw ApiError.BadRequest(`Пользователь с таким никнеймок ${nickname} уже зарегистрирован!`, {success: false, error: "Nickname busy"})
     }
     const hashPassword = await bcrypt.hash(password, 7)
     const activationLink = uuid.v4()

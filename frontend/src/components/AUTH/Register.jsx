@@ -8,6 +8,9 @@ import enderShip from '../../images/endShipReg.svg';
 import { observer } from 'mobx-react-lite';
 import { Context } from '../..';
 import { ADMIN_ROUTE, LOGIN_ROUTE } from '../../utils/consts';
+import { toast } from "react-toastify";
+import Input from './common/Input';
+import texts from './texts';
 
 const Register = observer(() => {
 
@@ -47,11 +50,15 @@ const Register = observer(() => {
     setNickname(e.target.value)
     if (e.target.value.length === 0)
       setNicknameError('Введите Ник');
-    else if (e.target.value.length < 4)
+    else if (e.target.value.length <= 4) {
       setNicknameError('Слишком короткий ник');
-    else if (e.target.value.length > 4 && e.target.value.length < 16)
+      setRegisterStatus("");
+    }
+    else if (e.target.value.length >= 4 && e.target.value.length <= 16) {
+      setRegisterStatus("");
       setNicknameError('');
-    else if (e.target.value.length > 16)
+    }
+    else if (e.target.value.length >= 16)
       setNicknameError('Слишком длинный ник');
   }
   // Проверка на соответствие почты и её наличия
@@ -74,11 +81,11 @@ const Register = observer(() => {
     setPassword(e.target.value)
     if (e.target.value.length === 0) 
       setPasswordError('Введите пароль')
-    else if (e.target.value.length < 6) 
+    else if (e.target.value.length <= 5) 
       setPasswordError('Слишком короткий пароль')
-    else if (e.target.value.length > 6 && e.target.value.length < 16)
+    else if (e.target.value.length >= 5 && e.target.value.length <= 16)
       setPasswordError('')
-    else if (e.target.value.length > 16)
+    else if (e.target.value.length >= 16)
       setPasswordError('Слишком длинный пароль')
   }
   // Проверка на совпадение повторного пароля с праволем
@@ -119,27 +126,22 @@ const Register = observer(() => {
     }
   }, [ nicknameError, emailError, passwordError, userAgrmntError, repeatPasswordError, registerStatus ])
 
-  // Создаётся функция usedNickname для проверки и отслеживания изменения данного параметра
-  const usedNickname = (e) => {
-    setNickname(e.target.value);
-    if (!e.target.value) {
-      setRegisterStatus("Уже есть акк!!");
-    } else {
-      setRegisterStatus("");
-    }
-  }
-
   const navigate = useNavigate();
   const { store } = useContext(Context);
 
   const handleRegistration = async (e) => {
     e.preventDefault();
-    await store.registration(nickname,email,password,useragreement);
+    await store.registration(nickname, email, password, useragreement);
     if (store.isAuth) {
       await store.checkAuth();
       navigate(ADMIN_ROUTE);
+      toast.success("Вы успешно зарегистрировались!");
+    }
+    if ("NicknameBusy") {
+      setRegisterStatus("Никнейм занят!");
     }
   }
+  
 
   return (
       <section className={style.body}>
@@ -150,93 +152,53 @@ const Register = observer(() => {
 
             <h2 className={style.headTitle}>Регистрация</h2>
 
-            <div className={style.wrapFormItem}>
+            <Input 
+              titleLabel={texts.label.h3.nickname}
+              textLabel={texts.label.p.nickname}
+              errors={[nicknameDirty, nicknameError, registerStatus]}
+              value={nickname}
+              onChange={nicknameHandler}
+              onBlur={blurHandler}
+              type={texts.input.type.name}
+              name={texts.input.name.name}
+              placeholder={texts.input.placeholder.nickname}
+            />
 
-              <div>
-                <h3 className={style.titleField}>Придумайте себе ник</h3>
-                <p className={style.descriptionReg}>Ник будет использоваться на сайте. <br />Минимум 4 символа, максимум 16</p>
-              </div>
+            <Input 
+              titleLabel={texts.label.h3.email}
+              textLabel={texts.label.p.email}
+              errors={[emailDirty, emailError]}
+              value={email}
+              onChange={emailHandler}
+              onBlur={blurHandler}
+              type={texts.input.type.email}
+              name={texts.input.name.email}
+              placeholder={texts.input.placeholder.email}
+            />
 
-              <div className={style.wrapError}>
-                {(nicknameDirty && nicknameError) && <div className={style.error}>{nicknameError}</div>}
-                {(registerStatus) && <div className={style.error}>{registerStatus}</div>}
-                <input className={style.inputBut}
-                  value={nickname}
-                  onChange={e => {
-                    nicknameHandler(e);
-                    usedNickname(e);
-                    }}
-                  onBlur={e => blurHandler(e)} 
-                  type='text'
-                  name='nickname'
-                  placeholder='Введите свой никнейм'
-                  required/>
-              </div>
+            <Input 
+              titleLabel={texts.label.h3.password}
+              textLabel={texts.label.p.password}
+              errors={[passwordDirty, passwordError]}
+              value={password}
+              onChange={passwordHandler}
+              onBlur={blurHandler}
+              type={texts.input.type.password}
+              name={texts.input.name.password}
+              placeholder={texts.input.placeholder.password}
+            />
 
-            </div>
-
-            <div className={style.wrapFormItem}>
-
-              <div>
-                <h3 className={style.titleField}>Email адрес</h3>
-                <p className={style.descriptionReg}>Нужен для восстановления пароля</p>
-              </div>
-
-              <div className={style.wrapError}>
-                {(emailDirty && emailError) && <div className={style.error}>{emailError}</div>}
-                <input className={style.inputBut}
-                  onChange={e => emailHandler(e)}
-                  onBlur={e => blurHandler(e)}
-                  value={email}
-                  type='email'
-                  name='email'
-                  placeholder='Введите свой email'/>
-
-              </div>
-
-            </div>
-
-            <div className={style.wrapFormItem}>
-
-              <div>
-                <h3 className={style.titleField}>Пароль</h3>
-                <p className={style.descriptionReg}>Максильмано сложный. <br />Минимум 6 символа, максимум 16</p>
-              </div>
-
-              <div className={style.wrapError}>
-                {(passwordDirty && passwordError) && <div className={style.error}>{passwordError}</div>}
-                <input className={style.inputBut} 
-                  value={password}
-                  onChange={e => passwordHandler(e)}
-                  onBlur={e => blurHandler(e)}
-                  type='text'
-                  name='password'
-                  placeholder='Придумайте пароль'
-                  required/>
-              </div>
-
-            </div>
-
-            <div className={style.wrapFormItem}>
-
-              <div>
-                <h3 className={style.titleField}>Повторите пароль</h3>
-                <p className={style.descriptionReg}>Убедитесь, что не допущены ошибки. </p>
-              </div>
-
-              <div className={style.wrapError}>
-                {(repeatPasswordDirty && repeatPasswordError) && <div className={style.error}>{repeatPasswordError}</div>}
-                <input className={style.inputBut}
-                  value={repeatPassword}
-                  type='text'
-                  name='repeat-password'
-                  placeholder='Повторите пароль'
-                  onChange={e => repeatPasswordHandler(e)} 
-                  onBlur={e => blurHandler(e)} 
-                  required/>
-              </div>
-
-            </div>
+            <Input 
+              titleLabel={texts.label.h3.repeatPassword}
+              textLabel={texts.label.p.repeatPassword}
+              errors={[repeatPasswordDirty, repeatPasswordError]}
+              value={repeatPassword}
+              onChange={repeatPasswordHandler}
+              onBlur={blurHandler}
+              type={texts.input.type.repeatPassword}
+              name={texts.input.name.repeatPassword}
+              placeholder={texts.input.placeholder.repeatPassword}
+            />
 
             <div className={style.wrapUserAgreement}>
               {(userAgrmntError) && <div className={style.error}>{userAgrmntError}</div>}

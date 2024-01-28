@@ -6,7 +6,7 @@ const {body} = require('express-validator');
 
 // http://localhost:5000/api/user/registration
 router.post('/registration',
-  body('nickname').isLength({min: 4, max: 16}),
+  body('nickname').isLength({min: 5, max: 16}),
   body('email').isEmail(),
   body('password').isLength({min: 6, max: 16}),
   userController.registration
