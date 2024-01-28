@@ -12,18 +12,18 @@ const Contacts = () => {
       <div className={style.block}>
         <Link to={VK_LINK} target="_blank" className={style.link}>
           <article className={style.linkItem}>
-            <img src={discordImg} alt="vk" className={style.soc_img} />
+            <img src={vkImg} alt="ds" className={style.soc_img} />
             <div className={style.soc_link}>
-              <img src={link} alt="" />
+              <img src={link} alt="link" />
               <p>vk.com/shutworld</p>
             </div>
           </article>
         </Link>
         <Link to={DS_LINK} target="_blank" className={style.link}>
           <article className={style.linkItem}>
-            <img src={vkImg} alt="ds" className={style.soc_img} />
+            <img src={discordImg} alt="vk" className={style.soc_img} />
             <div className={style.soc_link}>
-              <img src={link} alt="" />
+              <img src={link} alt="link" />
               <p>discord.gg/shutworld</p>
             </div>
           </article>
