@@ -6,8 +6,7 @@ import { Context } from '.';
 import { observer } from 'mobx-react-lite';
 import ScrollToTop from './ScrollToTop';
 import Footer from './components/Footer/Footer';
-
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   const { store } = useContext(Context);

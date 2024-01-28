@@ -18,7 +18,7 @@ const Login = () => {
       store.checkAuth()
       navigate(ADMIN_ROUTE);
     }
-  }, [])
+  }, [ store, navigate ])
 
   const handleLogin = async (e) => {
     e.preventDefault();
