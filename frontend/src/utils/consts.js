@@ -7,7 +7,6 @@ export const AUTHORIZATION_ROUTE = '/registration';
 export const LOGIN_ROUTE = '/login';
 
 export const PROFILE_ROUTE = '/profile';
-export const ADMIN_ROUTE = '/admin';
 
 
 // Нужно сделать
@@ -20,3 +19,7 @@ export const DS_LINK = 'https://discord.gg/yeJ6fBwEsB';
 
 // IP
 export const IP_SERVER = 'net.shutw.ru';
+
+// Админка
+export const ADMIN_ROUTE = '/admin';
+export const ADMIN_LOGIN_ROUTER = '/swadmin'

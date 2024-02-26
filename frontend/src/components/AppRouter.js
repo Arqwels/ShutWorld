@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Context } from "..";
-import { authRoutes, publicRoutes } from "../routes";
+import { adminRouters, authRoutes, publicRoutes } from "../routes";
 import { observer } from "mobx-react-lite";
 
 const AppRouter = () => {
@@ -14,6 +14,10 @@ const AppRouter = () => {
       )}
 
       {publicRoutes.map(({path, Component}) => 
+        <Route key={path} path={path} element={<Component/>} exact/>
+      )}
+
+      {adminRouters.map(({path, Component}) => 
         <Route key={path} path={path} element={<Component/>} exact/>
       )}
 
