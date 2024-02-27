@@ -3,16 +3,16 @@ import WrapperComponent from '../pages/WrapperComponent'
 
 import { useContext } from "react";
 import { Context } from '..';
+import GetUsers from './components/GetUsers';
 
 const AdminPage = () => {
   const { store } = useContext(Context);
 
   return (
-    <div className='wrapper'>
       <WrapperComponent>
-        <h3>gergerg</h3>
+        <h2>{store.user.nickname}, Ты теперь читер! :D</h2>
+        <GetUsers />
       </WrapperComponent>
-    </div>
   )
 }
 

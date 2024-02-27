@@ -1,15 +1,14 @@
-import { ADMIN_LOGIN_ROUTER, ADMIN_ROUTE, AUTHORIZATION_ROUTE, LOGIN_ROUTE, MAIN_ROUTE, PLAY_ROUTE, PROFILE_ROUTE, PUBLIC_OFFER_ROUTE, RULES_ROUTE, SHOP_ROUTE, USER_AGREEMENT_ROUTE } from "./utils/consts";
+import { ADMIN_ROUTE, AUTHORIZATION_ROUTE, LOGIN_ROUTE, MAIN_ROUTE, PLAY_ROUTE, PROFILE_ROUTE, PUBLIC_OFFER_ROUTE, RULES_ROUTE, SHOP_ROUTE, USER_AGREEMENT_ROUTE } from "./utils/consts";
 import HomePage from "./pages/HomePage";
 import HowPlay from "./pages/HowPlayPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import Rules from "./pages/RulesPage";
-import ProfilePage from "./pages/mProfilePage";
+import ProfilePage from "./pages/ProfilePage";
 import ShopPage from "./pages/ShopPage";
 import mPublicOfferPage from "./pages/mPublicOfferPage";
 import mUserAgreementPage from "./pages/mUserAgreementPage";
 import AdminPage from "./ADMIN/AdminPage";
-import AdminLogin from "./ADMIN/AdminLogin";
 
 export const authRoutes = [
   {
@@ -23,10 +22,6 @@ export const adminRouters = [
     path: ADMIN_ROUTE,
     Component: AdminPage
   },
-  {
-    path: ADMIN_LOGIN_ROUTER,
-    Component: AdminLogin
-  }
 ]
 
 export const publicRoutes = [

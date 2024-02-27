@@ -8,7 +8,7 @@ import texts from './texts';
 import style from './Auth.module.scss';
 import enderDragon from '../../images/enderDragonReg.svg';
 import enderShip from '../../images/endShipReg.svg';
-import { ADMIN_ROUTE, LOGIN_ROUTE } from '../../utils/consts';
+import { ADMIN_ROUTE, LOGIN_ROUTE, PROFILE_ROUTE } from '../../utils/consts';
 
 const Register = observer(() => {
   const [ nickname, setNickname ] = useState('');
@@ -117,7 +117,11 @@ const Register = observer(() => {
   useEffect( () => {
     if (store.isAuth) {
       store.checkAuth()
-      navigate(ADMIN_ROUTE);
+      if (store.user.roles.includes('ADMIN')) {
+        navigate(ADMIN_ROUTE);
+      } else {
+        navigate(PROFILE_ROUTE);
+      }
     }
     if ( nicknameError || emailError || passwordError || userAgrmntError || repeatPasswordError || registerStatus ) {
       setFormValid(false);
@@ -131,7 +135,11 @@ const Register = observer(() => {
     await store.registration(nickname, email, password, useragreement);
     if (store.isAuth) {
       await store.checkAuth();
-      navigate(ADMIN_ROUTE);
+      if (store.user.roles.includes('ADMIN')) {
+        navigate(ADMIN_ROUTE);
+      } else {
+        navigate(PROFILE_ROUTE);
+      }
     }
     if ("NicknameBusy") {
       setRegisterStatus("Никнейм занят!");

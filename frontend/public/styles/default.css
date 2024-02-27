@@ -57,7 +57,3 @@ fieldset {
 footer {
   flex-shrink: 0;
 }
-
-.wrapper {
-  flex: 1 0 auto;
-}
