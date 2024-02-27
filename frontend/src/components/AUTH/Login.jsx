@@ -4,7 +4,7 @@ import style from './Auth.module.scss';
 import endShip from '../../images/endShipLogin.svg';
 import { Context } from '../..';
 import { observer } from 'mobx-react-lite';
-import { ADMIN_ROUTE, AUTHORIZATION_ROUTE } from '../../utils/consts';
+import { ADMIN_ROUTE, AUTHORIZATION_ROUTE, PROFILE_ROUTE } from '../../utils/consts';
 
 const Login = () => {
   const [ nickname, setNickname ] = useState();
@@ -16,7 +16,11 @@ const Login = () => {
   useEffect(() => {
     if (store.isAuth) {
       store.checkAuth()
-      navigate(ADMIN_ROUTE);
+      if (store.user.roles.includes('ADMIN')) {
+        navigate(ADMIN_ROUTE);
+      } else {
+        navigate(PROFILE_ROUTE);
+      }
     }
   }, [ store, navigate ])
 
@@ -26,7 +30,11 @@ const Login = () => {
 
     if (store.isAuth) {
       await store.checkAuth();
-      navigate(ADMIN_ROUTE);
+      if (store.user.roles.includes('ADMIN')) {
+        navigate(ADMIN_ROUTE);
+      } else {
+        navigate(PROFILE_ROUTE);
+      }
     }
   };
   

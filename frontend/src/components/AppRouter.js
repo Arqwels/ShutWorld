@@ -17,7 +17,7 @@ const AppRouter = () => {
         <Route key={path} path={path} element={<Component/>} exact/>
       )}
 
-      {adminRouters.map(({path, Component}) => 
+      {store.isAuth && store.user.roles.includes('ADMIN') && adminRouters.map(({path, Component}) => 
         <Route key={path} path={path} element={<Component/>} exact/>
       )}
 
