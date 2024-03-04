@@ -9,4 +9,12 @@ export default class AdminService {
       console.error(error); 
     }
   }
+
+  static async addRank(data) {
+    try {
+      return await $api.post(API_ENDPOINTS.POST_ADDRANK, data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 }
