@@ -18,11 +18,8 @@ router.post('/del-role', roleMiddleware(["ADMIN"]), adminController.removeRoleFr
 // Ranks 
 router.get('/get-all-ranks', ranksController.getAllRanks);
 
-router.post('/upload-img', imageController.uploadImg);
-
+// http://localhost:5000/api/admin/send-img/(imageName)
 router.get('/send-img/:filename', imageController.sendImg);
-
-router.post('/img-send', imageController.sendImage);
 
 // http://localhost:5000/api/admin/add-rank
 router.post('/add-rank', roleMiddleware(["ADMIN"]), ranksController.addRank);
