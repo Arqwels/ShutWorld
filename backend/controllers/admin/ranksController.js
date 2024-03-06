@@ -34,15 +34,14 @@ class RanksController {
       if (uploadResult.error) {
         return res.status(400).json({ message: uploadResult.error });
       }
-      const relativePath = uploadResult.filePath;
-      console.log("Относительный путь к загруженному файлу:", relativePath);
+      const imageName = uploadResult.fileName;
 
       const rank = await RankDonate.create({
         id: rankData.id,
         name: rankData.name,
         description: rankData.description,
         privilege: JSON.parse(rankData.privilege),
-        imageUrl: relativePath
+        imageUrl: imageName
       }, { transaction });
 
       const durations = JSON.parse(rankData.durations);

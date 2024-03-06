@@ -6,6 +6,7 @@ const sequelize = require('./db')
 const router = require('./routers/index')
 const errorMiddleware = require('./middleware/errorMiddleware')
 const fileUpload = require('express-fileupload')
+const path = require('path')
 
 const PORT = process.env.PORT || 2000
 const app = express()
@@ -22,6 +23,8 @@ app.use(fileUpload());
 
 const RankDonate = require("./models/Donate/ranksModel");
 const DurationDonate = require("./models/Donate/durationRanksModel");
+
+app.use(express.static('upload'));
 
 // Обработка ошибок, последним должен быть Middleware
 app.use(errorMiddleware)

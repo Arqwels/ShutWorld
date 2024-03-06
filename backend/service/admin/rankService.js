@@ -10,7 +10,7 @@ class RankService {
     }
 
     const fileName = nameImg.name;
-    const relativePath = `/upload/${fileName}`;
+
 
     const filePath = path.join(assetsFolder, fileName);
 
@@ -23,7 +23,7 @@ class RankService {
       // Файл не найден, можно загружать
       nameImg.mv(filePath);
       console.log("Фото загружено в", filePath);
-      return { success: true, filePath: relativePath }; // Возвращаем относительный путь файла
+      return { success: true, fileName: fileName }; // Возвращаем относительный путь файла
     }
   }
 }

@@ -23,3 +23,5 @@ export const IP_SERVER = 'net.shutw.ru';
 // Админка
 export const ADMIN_ROUTE = '/admin';
 export const ADMIN_LOGIN_ROUTER = '/swadmin'
+
+export const ADMIN_EDIT_RANKS = '/edit-ranks';

@@ -23,15 +23,15 @@ export const DurationSelect = ({ donateStatus, onDurationSelect }) => {
             {selectedItem ? selectedItem.labelDuration : 'Выберите на сколько возьмёте'}
           </div>
           <div className={`${style.selectHeaderPrice} ${style.selectTextBold}`}>
-            {selectedItem ? selectedItem.labelPrice : ''}
+            {selectedItem ? selectedItem.price + "₽" : ''}
           </div>
           <img src={SelectIcon} alt="SelectIcon" className={`${style.selectIcon} ${stateVisibl1 ? style.activeIcon : ''}`} />
         </div>
         <div className={style.selectBody + (stateVisibl1 ? ' ' + style.active : '')}>
-          {donateStatus.duration.map((item, index) => (
+          {Array.isArray(donateStatus['duration-donates']) && donateStatus['duration-donates'].map((item, index) => (
             <div key={index} className={style.selectBodyItem} onClick={() => handleSelect(item)}>
               <div className={style.selectTextNormal}>{item.labelDuration}</div>
-              <div className={style.selectTextBold}>{item.labelPrice}</div>
+              <div className={style.selectTextBold}>{item.price}₽</div>
             </div>
           ))}
         </div>
