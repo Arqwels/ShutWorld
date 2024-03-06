@@ -15,7 +15,7 @@ router.post('/add-role', roleMiddleware(["ADMIN"]), adminController.addRoleToUse
 router.post('/del-role', roleMiddleware(["ADMIN"]), adminController.removeRoleFromUser);
 
 
-// Ranks 
+// Ranks
 router.get('/get-all-ranks', ranksController.getAllRanks);
 
 // http://localhost:5000/api/admin/send-img/(imageName)
