@@ -1,5 +1,5 @@
 import WrapperComponent from '../pages/WrapperComponent'
-import EditDonateStatus from './components/Donate/EditDonateStatus'
+import EditDonateStatus from './components/Donate/Editor/EditDonateStatus'
 
 const EditerRanksPage = () => {
   return (

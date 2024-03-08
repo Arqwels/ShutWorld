@@ -18,6 +18,9 @@ router.post('/del-role', roleMiddleware(["ADMIN"]), adminController.removeRoleFr
 // Ranks
 router.get('/get-all-ranks', ranksController.getAllRanks);
 
+// http://localhost:5000/api/admin/get-one-rank?rankId=1ss
+router.get('/get-one-rank', roleMiddleware(["ADMIN"]), ranksController.getOneRank);
+
 // http://localhost:5000/api/admin/send-img/(imageName)
 router.get('/send-img/:filename', imageController.sendImg);
 

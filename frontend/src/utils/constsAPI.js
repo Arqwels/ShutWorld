@@ -5,5 +5,6 @@ export const API_ENDPOINTS = {
 
   // ADMINS
   GET_USERS: 'api/admin/get-users',
-  POST_ADDRANK: 'api/admin/add-rank'
+  POST_ADDRANK: 'api/admin/add-rank',
+  GET_ONE_RANK: 'api/admin/get-one-rank',
 };

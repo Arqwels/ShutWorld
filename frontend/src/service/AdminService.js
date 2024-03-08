@@ -10,6 +10,14 @@ export default class AdminService {
     }
   }
 
+  static async getOneRank(rankId) {
+    try {
+      return await $api.get(API_ENDPOINTS.GET_ONE_RANK, rankId);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   static async addRank(data) {
     try {
       return await $api.post(API_ENDPOINTS.POST_ADDRANK, data);

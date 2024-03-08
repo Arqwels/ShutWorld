@@ -25,3 +25,4 @@ export const ADMIN_ROUTE = '/admin';
 export const ADMIN_LOGIN_ROUTER = '/swadmin'
 
 export const ADMIN_EDIT_RANKS = '/edit-ranks';
+export const ADMIN_SINGLE_EDIT_RANK = '/edit-rank/:idRank';

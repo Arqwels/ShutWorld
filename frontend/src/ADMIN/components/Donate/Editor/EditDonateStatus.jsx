@@ -1,25 +1,33 @@
-import { useState } from "react";
-import GetRanksService from "../../../service/GetRanksService"
+import { useEffect, useState } from "react";
+import GetRanksService from "../../../../service/GetRanksService";
+import { Link } from "react-router-dom";
+import { ADMIN_SINGLE_EDIT_RANK } from "../../../../utils/consts";
+import st from '../../../Admin.module.scss';
 
 const EditDonateStatus = () => {
+
   const [ranks, setRanks] = useState([]);
 
-  const submit = async () => {
-    try {
-      const res = await GetRanksService.getRanks();
-      setRanks(res.data);
-      console.log(ranks);
-    } catch (error) {
-      
-    }
-  }
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await GetRanksService.getRanks();
+        setRanks(res.data);
+        console.log(res.data);
+      } catch (error) {
+        console.error('Ошибочка в получении рангов:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <>
       <section>
         <h2>Изменение данных о статусах!</h2>
         <div>
-        <button onClick={submit}>Чики брики</button>
+          <button>Чики брики</button>
           <ul>
             {ranks.map(rank => (
               <div key={rank.id}>
@@ -33,6 +41,7 @@ const EditDonateStatus = () => {
                     </li>
                   ))}
                 </ul>
+                <Link to={`${ADMIN_SINGLE_EDIT_RANK.replace(':idRank', rank.id)}`}>Редактирование</Link>
                 <br />
               </div>
             ))}
@@ -43,4 +52,4 @@ const EditDonateStatus = () => {
   )
 }
 
-export default EditDonateStatus
+export default EditDonateStatus;

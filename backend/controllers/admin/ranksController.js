@@ -7,7 +7,7 @@ class RanksController {
   async getAllRanks(req, res) {
     try {
       
-      const rank =  await RankDonate.findAll({
+      const rank = await RankDonate.findAll({
         include: DurationDonate
       });
 
@@ -15,6 +15,18 @@ class RanksController {
     } catch (error) {
       console.log(error);
       res.status(500).json({ message: 'Произошла ошибка при получении данных рангов' });
+    }
+  }
+
+  async getOneRank(req, res) {
+    try {
+      const rank = await RankDonate.findByPk(req.query.rankId, {
+        include: DurationDonate
+      })
+      res.status(200).json(rank);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Ошибка при получении 1 Ранга!' });
     }
   }
 
