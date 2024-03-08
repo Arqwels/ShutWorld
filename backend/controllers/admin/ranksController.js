@@ -74,6 +74,29 @@ class RanksController {
       res.status(500).json({ message: 'Произошла ошибка при добавлении ранга!' });
     }
   }
+
+  async deleteRank(req, res) {
+    try {
+      const rankId = req.params.rankId;
+      if(!rankId) {
+        return res.status(400).json({message: 'Вы не передали значение ранга!'})
+      }
+
+      const resultFind = await RankDonate.findByPk(rankId);
+      if(!resultFind) {
+        return res.status(400).json({message: `Ранг с название ${rankId} не найден!`})
+      }
+      
+      await RankDonate.destroy({ where: { id: rankId }}, {
+        include: DurationDonate
+      })
+
+      res.status(200).json({message: `Ранг ${rankId} успешно удалён`})
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({message: 'Ошибка при удаление Ранга!'});
+    }
+  }
 }
 
 module.exports = new RanksController();

@@ -25,4 +25,13 @@ export default class AdminService {
       console.error(error);
     }
   }
+
+  static async deleteRank(rankId) {
+    try {
+      console.log(rankId);
+      return await $api.delete(`${API_ENDPOINTS.DELETE_RANK}/${rankId}`);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 }

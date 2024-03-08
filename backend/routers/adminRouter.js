@@ -27,4 +27,7 @@ router.get('/send-img/:filename', imageController.sendImg);
 // http://localhost:5000/api/admin/add-rank
 router.post('/add-rank', roleMiddleware(["ADMIN"]), ranksController.addRank);
 
+// http://localhost:5000/api/admin/delete-rank/(1ss)
+router.delete('/delete-rank/:rankId', roleMiddleware(["ADMIN"]), ranksController.deleteRank);
+
 module.exports = router;

@@ -7,4 +7,5 @@ export const API_ENDPOINTS = {
   GET_USERS: 'api/admin/get-users',
   POST_ADDRANK: 'api/admin/add-rank',
   GET_ONE_RANK: 'api/admin/get-one-rank',
+  DELETE_RANK: 'api/admin/delete-rank',
 };
