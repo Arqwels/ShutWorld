@@ -1,18 +1,23 @@
-import React, { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import style from './Navbar.module.scss';
 import { Context } from '../..';
 import checkMark from '../../images/icon-mark-account.svg'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ADMIN_ROUTE, PROFILE_ROUTE } from '../../utils/consts';
 
 const ButtonAccount = () => {
   const { store } = useContext(Context);
   const [ isOpen, setOpen ] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setOpen(false);
+  }, [location]);
 
   return (
     <div className={style.nickname}>
       <div>
-        <button className={style.butNickname} onClick={() => setOpen(!isOpen)}>
+        <button className={`${style.butNickname} ${isOpen ? style.open : ""}`} onClick={() => setOpen(!isOpen)}>
           {store.user.nickname}
           <img src={checkMark} alt="checkMark" />
         </button>

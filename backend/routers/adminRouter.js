@@ -30,4 +30,7 @@ router.post('/add-rank', roleMiddleware(["ADMIN"]), ranksController.addRank);
 // http://localhost:5000/api/admin/delete-rank/(1ss)
 router.delete('/delete-rank/:rankId', roleMiddleware(["ADMIN"]), ranksController.deleteRank);
 
+// http://localhost:5000/api/admin/update-rank
+router.put('/update-rank', ranksController.updateRank);
+
 module.exports = router;

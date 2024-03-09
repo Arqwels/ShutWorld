@@ -86,6 +86,12 @@ class RanksController {
       if(!resultFind) {
         return res.status(400).json({message: `Ранг с название ${rankId} не найден!`})
       }
+
+      const urlImg = resultFind.dataValues.imageUrl || resultFind.imageUrl;
+      const resImg = await RankService.imageDelete(urlImg);
+      if(!resImg) {
+        return res.status(400).json({ status: false, message: 'Ошибка при удалении фото!', error: resImg.error})
+      }
       
       await RankDonate.destroy({ where: { id: rankId }}, {
         include: DurationDonate
@@ -95,6 +101,39 @@ class RanksController {
     } catch (error) {
       console.error(error);
       res.status(500).json({message: 'Ошибка при удаление Ранга!'});
+    }
+  }
+
+  async updateRank(req, res) {
+    try {
+      const { rankId, name, description, durationDonates } = req.body;
+
+      if (!rankId || !name || !description || !durationDonates || !durationDonates.length) {
+        return res.status(400).json({ message: 'Некорректные данные для обновления ранга.' });
+      }
+
+      await RankDonate.update(
+        { name, description },
+        { where: { id: rankId } }
+      );
+
+      for (const donate of durationDonates) {
+        if (!donate.id || !donate.duration || !donate.labelDuration || !donate.price) {
+          console.error(`Пропущено обновление данных для ранга ${rankId}. Некорректные данные продолжительности и стоимости.`);
+          continue;
+        }
+
+        await DurationDonate.update(
+          { duration: donate.duration, labelDuration: donate.labelDuration, price: donate.price },
+          { where: { id: donate.id } }
+        );
+      }
+
+      console.log(`Данные для ранга ${rankId} успешно обновлены.`);
+      return res.status(200).json({ message: 'Данные успешно обновлены.' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({message: 'Ошибка при обновлении данных о Ранге!'});
     }
   }
 }

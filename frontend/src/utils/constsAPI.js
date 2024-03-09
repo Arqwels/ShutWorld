@@ -8,4 +8,5 @@ export const API_ENDPOINTS = {
   POST_ADDRANK: 'api/admin/add-rank',
   GET_ONE_RANK: 'api/admin/get-one-rank',
   DELETE_RANK: 'api/admin/delete-rank',
+  UPDATE_RANK: 'api/admin/update-rank'
 };

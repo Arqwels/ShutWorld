@@ -34,4 +34,13 @@ export default class AdminService {
       console.error(error);
     }
   }
+
+  static async updateRank(data) {
+    try {
+      console.log(data);
+      return await $api.put(API_ENDPOINTS.UPDATE_RANK, data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 }

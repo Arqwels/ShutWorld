@@ -68,7 +68,7 @@ const SinglEditRank = () => {
     })));
   }
 
-  const formSubmit = (e) => {
+  const formSubmit = async (e) => {
     e.preventDefault();
 
     console.log("Rank ID:", rankId);
@@ -83,6 +83,22 @@ const SinglEditRank = () => {
       console.log("  Rank ID:", durationDonate.rankId);
       console.log("-----------------------");
     });
+
+    e.preventDefault();
+
+    const requestData = {
+      rankId: rankId,
+      name: rankName,
+      description: rankDescription,
+      durationDonates: rankDurationDonates
+    };
+
+    try {
+      await AdminService.updateRank(requestData);
+      console.log('Данные успешно отправлены на сервер');
+    } catch (error) {
+      console.error('Ошибка при отправке данных на сервер:', error);
+    }
   }
 
   return (
@@ -157,7 +173,9 @@ const SinglEditRank = () => {
           </ul>
         </li>
       </ul>
-      <button onClick={() => navigate(-1)}>Назад</button>
+      <div className={st.goBack}>
+        <button onClick={() => navigate(-1)} className={st.goBackBtn}>Назад</button>
+      </div>
     </WrapperComponent>
   );
 }

@@ -100,39 +100,76 @@
 
 // EditDonateStatus
 
-.editForm {
-  display: flex;
-  flex-direction: column;
+.editorDonate {
+  margin-block: 60px;
+  h2 {
+    text-align: center;
+    margin-bottom: 12px;
+  }
 }
 
-.infoData {
+.listData {
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
+  padding: 0;
 }
 
-.infoTable {
-  background-color: #8b8b8b;
-  padding: 10px;
-  margin-bottom: 5px;
+.listDataBody {
+  max-width: 360px;
   display: flex;
   flex-direction: column;
-  max-width: 360px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #f8f8f8;
+  li {
+    margin-bottom: 5px;
+  }
 }
 
-
-.blockBtn {
+.editorBtns {
   display: flex;
+  text-align: center;
+  gap: 5px;
+  .btn {
+    width: 50%;
+    color: white;
+    padding: 10px 16px;
+  }
 }
 
-.infoTableBtn {
-  width: 50%;
-  background-color: #0ba01f;
-  padding: 12px 24px;
+.editBtn {
+  background-color: #4caf50;
+  border-radius: 5px;
+  &:hover {
+    background-color: #0ba01f;
+  }
 }
 
-.btnDelete {
-  width: 50%;
-  padding: 12px 24px;
-  background-color: #af1515;
+.deleteBtn {
+  background-color: #d32f2f;
+  border-radius: 5px;
+  &:hover {
+    background-color: #af1515;
+  }
+}
+
+
+// ===================
+
+.goBack {
+  text-align: center;
+  margin-top: 20px;
+  .goBackBtn {
+    background-color: #2196f3;
+    color: white;
+    padding: 12px 32px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    &:hover {
+      background-color: #0d47a1;
+    }
+  }
 }
