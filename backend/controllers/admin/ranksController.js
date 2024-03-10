@@ -53,7 +53,8 @@ class RanksController {
         name: rankData.name,
         description: rankData.description,
         privilege: JSON.parse(rankData.privilege),
-        imageUrl: imageName
+        imageUrl: imageName,
+        weight: rankData.weight
       }, { transaction });
 
       const durations = JSON.parse(rankData.durations);

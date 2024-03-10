@@ -7,17 +7,17 @@ import PrivilegeInput from './PrivilegeInput';
 const AddDonateStatus = () => {
   const fileInput = createRef();
 
-  const [ id, setId ] = useState('');
-  const [ name, setName ] = useState('');
-  const [ description, setDescription ] = useState('');
-  const [ privilege, setPrivilege ] = useState([]);
-
+  const [id, setId] = useState('');
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [privilege, setPrivilege] = useState([]);
   const [durations, setDurations] = useState([
     { duration: '', labelDuration: '', price: '' },
     { duration: '', labelDuration: '', price: '' },
     { duration: '', labelDuration: '', price: '' }
   ]);
-  
+  const [weight, setWeight] = useState('');
+
   const сhangeDuration = (index, e) => {
     const { name, value } = e.target;
     const updatedDurations = [...durations];
@@ -28,45 +28,47 @@ const AddDonateStatus = () => {
     setDurations(updatedDurations);
   };
 
-  const editPrivilege = (updatedPrivilege) => {
+  const editPrivilege = updatedPrivilege => {
     setPrivilege(updatedPrivilege);
   };
-  
-  const deletePrivilege = (updatedPrivilege) => {
+
+  const deletePrivilege = updatedPrivilege => {
     setPrivilege(updatedPrivilege);
   };
-  
-  const addPrivilege = (newPrivilege) => {
+
+  const addPrivilege = newPrivilege => {
     setPrivilege(prevPrivilege => [...prevPrivilege, newPrivilege]);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
-  
+
     const formData = new FormData();
-  
-    formData.append("imageFile", fileInput.current.files[0]);
-    formData.append("id", id);
-    formData.append("name", name);
-    formData.append("description", description);
-  
+
+    formData.append('imageFile', fileInput.current.files[0]);
+    formData.append('id', id);
+    formData.append('name', name);
+    formData.append('description', description);
+
     const durationsData = durations.map(duration => ({
       duration: duration.duration,
       labelDuration: duration.labelDuration,
       price: duration.price,
       rankId: id
     }));
-  
-    formData.append("durations", JSON.stringify(durationsData));
-  
-    formData.append("privilege", JSON.stringify(privilege));
-  
+
+    formData.append('durations', JSON.stringify(durationsData));
+
+    formData.append('privilege', JSON.stringify(privilege));
+
+    formData.append('weight', weight);
+
     try {
       const res = await AdminService.addRank(formData);
-      if (res.data.message === "Good!") {
-        alert("Всё нормик!");
+      if (res.data.message === 'Ранг успешно добавлен!') {
+        alert(res.data.message);
       } else {
-        alert("Ошибка");
+        alert('Ошибка');
       }
     } catch (error) {
       console.log(error);
@@ -133,7 +135,8 @@ const AddDonateStatus = () => {
           </div>
 
           <label className={st.labelTitle}>Введите описание для ранга!</label>
-          <textarea name='description'
+          <textarea 
+            name='description'
             rows='5'
             value={description}
             onChange={(e) => setDescription(e.target.value)}
@@ -149,12 +152,23 @@ const AddDonateStatus = () => {
             ref={fileInput}
             className={st.fileInput} />
           
+          {/* Добавленный инпут для значения weight */}
+          <label className={st.labelTitle}>Введите значение weight:</label>
+          <input
+            type="text"
+            name="weight"
+            value={weight}
+            onChange={e => setWeight(e.target.value)}
+            placeholder="Например 50"
+            className={st.input}
+            required
+          />
+          
           <button type="submit" className={st.submitBtn}>Добавить</button>
         </form>
       </div>
     </>
   );
 };
-
 
 export default AddDonateStatus;

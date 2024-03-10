@@ -18,7 +18,7 @@ class UserService {
     const user = await User.create({nickname, email, useragreement, password: hashPassword, activationLink})
     await mailService.sendActivationMail(email, `${process.env.API_URL}/api/mail/activate/${activationLink}`)
 
-    const userDto = new UserDto(user); // id, nickname, isActivated
+    const userDto = new UserDto(user);
     const tokens = tokenService.generateTokens({...userDto})
     await tokenService.saveToken(userDto.id, tokens.refreshToken)
 
@@ -63,13 +63,11 @@ class UserService {
     const userData = tokenService.validateRefreshToken(refreshToken);
     const tokenFromDb = await tokenService.findToken(refreshToken);
     if (!userData || !tokenFromDb) {
-      console.log("Ошибка в bakend/service/userService = 25")
       throw ApiError.UnauthorizedError();
     }
     const user = await User.findByPk(userData.id);
     const userDto = new UserDto(user);
     const tokens = tokenService.generateTokens({...userDto});
-
     await tokenService.saveToken(userDto.id, tokens.refreshToken);
     return {...tokens, user: userDto};
     } catch (error) {
