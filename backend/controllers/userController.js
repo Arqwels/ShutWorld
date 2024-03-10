@@ -21,6 +21,10 @@ class UserController {
 
   async login(req, res, next) {
     try {
+      const errors = validationResult(req);
+      if(!errors.isEmpty()) {
+        return next(ApiError.BadRequest('Ошибка при вылидации', errors.array()))
+      }
       const {nickname, password} = req.body;
       const userData = await userService.login(nickname, password);
       res.cookie('refreshToken', userData.refreshToken, {maxAge: 24 * 60 * 60 * 1000, httpOnly: true});

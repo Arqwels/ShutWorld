@@ -37,11 +37,11 @@ class UserService {
   async login(nickname, password) {
     const user = await User.findOne({ where: { nickname }})
     if (!user) {
-      throw ApiError.BadRequest('Пользователь не найден!');
+      throw ApiError.BadRequest('Пользователь не найден!', ['user']);
     }
     const isPassEquals = await bcrypt.compare(password, user.password);
     if (!isPassEquals) {
-      throw ApiError.BadRequest('Неверный пароль!');
+      throw ApiError.BadRequest('Неверный пароль!', ['password']);
     }
     const userDto = new UserDto(user);
     const tokens = tokenService.generateTokens({...userDto});

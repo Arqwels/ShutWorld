@@ -13,7 +13,11 @@ router.post('/registration',
 );
 
 // http://localhost:5000/api/user/login
-router.post('/login', userController.login)
+router.post('/login',
+  body('nickname').isLength({min: 5}),
+  body('password').isLength({min: 6}),
+  userController.login
+);
 
 // http://localhost:5000/api/user/logout
 router.post('/logout', userController.logout)

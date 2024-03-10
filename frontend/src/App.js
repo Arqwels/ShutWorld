@@ -7,6 +7,7 @@ import { observer } from 'mobx-react-lite';
 import ScrollToTop from './ScrollToTop';
 import Footer from './components/Footer/Footer';
 import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   const { store } = useContext(Context);
@@ -22,7 +23,6 @@ const App = () => {
   }, [store]);
 
   if(store.isLoading || !isAuthChecked) {
-    console.log(process.env.REACT_APP_API_URL)
     return <div>ЗАГРУЖАЮСЬ ЖДИИИИ!!!...</div>;
   };
 

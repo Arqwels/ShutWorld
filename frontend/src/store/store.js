@@ -42,15 +42,27 @@ export default class Store {
   }
 
   async login(nickname, password) {
-    try {
-      const response = await AuthService.login(nickname, password);
-      console.log(response);
-      localStorage.setItem('token', response.data.accessToken);
-      this.setAuth(true);
-      this.setUser(response.data.user);
-    } catch (error) {
-      console.log(error.response?.data?.message);
+    const Errors = [];
+  
+    if (!nickname || !password) {
+      Errors.push("Введите никнейм и пароль.");
+    } else {
+      try {
+        const response = await AuthService.login(nickname, password);
+        localStorage.setItem('token', response.data.accessToken);
+        this.setAuth(true);
+        this.setUser(response.data.user);
+      } catch (error) {
+        if (error.response?.data?.errors[0] === "user") {
+          Errors.push("userError");
+        }
+        if (error.response?.data?.errors[0] === "password") {
+          Errors.push("passwordError");
+        }
+        console.log(error.response?.data?.message);
+      }
     }
+    return Errors;
   }
 
   async logout() {
