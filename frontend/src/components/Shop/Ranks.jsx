@@ -26,7 +26,8 @@ const Ranks = () => {
     const fetchRanks = async () => {
       try {
         const response = await GetRanksService.getRanks();
-        setRanks(response.data);
+        const sortedRanks = response.data.sort((a, b) => a.weight - b.weight);
+        setRanks(sortedRanks);
       } catch (error) {
         console.error("Ошибочка при получении Рангов:", error);
       }

@@ -2,6 +2,8 @@ export const API_ENDPOINTS = {
   GET_POST_VK: 'api/post/get-post-vk',
 
   GET_RANKS_DONATE: 'api/rank/get-ranks',
+  
+  CHECK_COUPON: 'api/coupon/check-coupon',
 
   // ADMINS
   GET_USERS: 'api/admin/get-users',

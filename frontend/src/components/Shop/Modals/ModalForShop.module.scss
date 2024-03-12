@@ -187,45 +187,9 @@
   background-color: rgba(255, 255, 255, 0.8);
 }
 
-.formInputText {
-  box-sizing: border-box;
-  background-color: #FFF;
-  border: 2px solid #000;
-  padding: 8px;
-  text-align: center;
-  margin-bottom: 15px;
-  &::placeholder {
-    font: 400 14px/16px 'Ubuntu', sans-serif;
-    color: #000;
-    opacity: 0.5;
-    @media screen and (max-width: 380px) {
-      font-size: 12px;
-    }
-  }
-  &:focus {
-    border: 2px solid #963FF2;
-    outline: 0;
-  }
-  &:valid {
-    border: 2px solid #963FF2;
-  }
-}
 
-.coupon {
-  &:valid {
-    border: 2px solid #000;
-  }
-  &:focus {
-    border: 2px solid #963FF2;
-    outline: 0;
-  }
 
-}
 
-.formLabel {
-  font: 500 16px/18px 'Ubuntu', sans-serif;
-  margin-bottom: 10px;
-}
 
 .formQuest {
   display: flex;
@@ -341,4 +305,78 @@
 .btn[disabled] {
   opacity: 0.5;
   cursor: auto;
+}
+
+// ModalInput
+
+.inputWrapper {
+  margin-block-start: 15px;
+  position: relative;
+}
+
+.formInputText {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #FFF;
+  border: 2px solid #000;
+  padding: 8px;
+  text-align: center;
+  &::placeholder {
+    font: 400 14px/16px 'Ubuntu', sans-serif;
+    color: #000;
+    opacity: 0.5;
+    @media screen and (max-width: 380px) {
+      font-size: 12px;
+    }
+  }
+  &:focus {
+    border: 2px solid #963FF2;
+    outline: 0;
+  }
+  &:valid {
+    border: 2px solid #963FF2;
+  }
+}
+
+.wrapperLabel {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.inputLabel {
+  font: 500 16px/18px 'Ubuntu', sans-serif;
+}
+
+.inputError {
+  position: absolute;
+  right: 0;
+  padding: 2.5px 10px;
+  color: #FFF;
+  background-color: #F23F3F;
+}
+
+.inputTextError {
+  border: 2px solid #F23F3F;
+}
+
+.checkImg {
+  width: 39px;
+  height: 39px;
+  position: absolute;
+  right: 0%;
+  bottom: 0%;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.coupon {
+  &:valid {
+    border: 2px solid #000;
+  }
+  &:focus {
+    border: 2px solid #963FF2;
+    outline: 0;
+  }
 }

@@ -5,6 +5,7 @@ const mailRouter = require('./mailRouter');
 const postVKRouter = require('./postVKRouter');
 const rankRouter = require('./rankRouter');
 const adminRouter = require('./adminRouter');
+const couponRouter = require('./couponRouter');
 
 const router = new Router();
 
@@ -14,5 +15,6 @@ router.use('/mail', mailRouter);
 router.use('/post', postVKRouter);
 router.use('/rank', rankRouter);
 router.use('/admin', adminRouter);
+router.use('/coupon', couponRouter);
 
 module.exports = router;
