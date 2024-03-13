@@ -333,9 +333,6 @@
     border: 2px solid #963FF2;
     outline: 0;
   }
-  &:valid {
-    border: 2px solid #963FF2;
-  }
 }
 
 .wrapperLabel {
@@ -361,6 +358,22 @@
   border: 2px solid #F23F3F;
 }
 
+.inputValid {
+  // border: 2px solid #963FF2;
+  border: 2px solid #12d600d5;
+  outline: 0;
+}
+
+.discount {
+  font-size: 14px;
+  position: absolute;
+  right: 0;
+  padding: 2.5px 10px;
+  color: #FFF;
+  background-color: #963FF2;
+}
+
+
 .checkImg {
   width: 39px;
   height: 39px;
@@ -372,9 +385,9 @@
 }
 
 .coupon {
-  &:valid {
-    border: 2px solid #000;
-  }
+  // &:valid {
+  //   border: 2px solid #000;
+  // }
   &:focus {
     border: 2px solid #963FF2;
     outline: 0;

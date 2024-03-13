@@ -19,26 +19,30 @@ const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
 
   const [nickname, setNickname] = useState('');
   const [coupon, setCoupon] = useState('');
+  const [discount, setDiscount] = useState(null);
 
   const [nicknameDirty, setNicknameDirty] = useState(false);
-  const [couponDirty, setCouponDirty] = useState(false);
 
-  const [nicknameError, setNicknameError] = useState('Введите никнейм!');
-  const [couponError, setCouponError] = useState('Введите никнейм!');
+  const [nicknameError, setNicknameError] = useState('');
+  const [couponStatus, setCouponStatus] = useState('');
 
   const blurHandler = (e) => {
-    switch (e.target.name) {
-      case 'nickname':
-        setNicknameDirty(true)
-        break
-      case 'coupon':
-        setCouponDirty(true)
-        break
-      default:
-        alert( 'Неизвестное значение' );
+    if (e.target.name === 'nickname') {
+      setNicknameDirty(true);
+      if (nickname.length === 0) {
+        setNicknameError('Введите никнейм!');
+      } else if (nickname.length <= 4) {
+        setNicknameError('Короткий никнейм');
+      } else if (nickname.length >= 16) {
+        setNicknameError('Длинный никнейм');
+      } else {
+        setNicknameError('');
+      }
+    } else {
+      alert('Неизвестное значение');
     }
   }
-
+  
   const changeNickname = (event) => {
     setNickname(event.target.value);
     if (event.target.value.length === 0)
@@ -55,20 +59,47 @@ const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
 
   const changeCoupon = (event) => {
     setCoupon(event.target.value);
-    
+    setCouponStatus('');
   }
 
-  const checkCoupone = async () => {
+  const handleCouponError = (error) => {
+    console.error('Произошла ошибка при проверке купона:', error);
+  
+    if (error.response && error.response.status === 400) {
+      const { errorType } = error.response.data;
+      switch (errorType) {
+        case 'notFound':
+        case 'empty':
+        case 'expired':
+          setCouponStatus(errorType);
+          break;
+        default:
+          console.error('Неизвестная ошибка:', errorType);
+      }
+    }
+  };
+  
+  const checkCoupon = async () => {
     try {
       console.log(coupon);
       const response = await CheckCouponService.checkCoupon({ couponCode: coupon });
+      console.log(44444444444);
       console.log(response);
-
+      const percent = response.data.couponInfo.discount;
+      if (!percent) {
+        return setCouponStatus('ErrorInCoupon');
+      }
+      setCouponStatus(percent);
+      setDiscount(percent); // Установка состояния discount
+      console.log(percent);
     } catch (error) {
-      console.log(error.response?.data?.message);
+      console.log(33333333);
       console.log(error);
+      handleCouponError(error);
     }
-  }
+  };
+  
+  
   
   return (
     <>
@@ -105,7 +136,7 @@ const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
                   className={st.formInputText}
                   type={'text'}
                   placeholder={'Введите свой никнейм'}
-                  error={[nicknameError, nicknameDirty]}
+                  error={nicknameError}
                   value={nickname}
                   onBlur={(e) => blurHandler(e)}
                   onChange={changeNickname}
@@ -121,11 +152,11 @@ const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
                   className={`${st.formInputText} ${st.coupon}`}
                   type={'text'}
                   placeholder={'Введите купион, если имеется'}
-                  
+                  status={couponStatus}
+                  discount={discount}
                   value={coupon}
-                  onBlur={(e) => blurHandler(e)}
                   onChange={changeCoupon}
-                  onClick={checkCoupone}
+                  onClick={checkCoupon}
                   required
                 />
 
