@@ -62,6 +62,11 @@ const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
     setCouponStatus('');
   }
 
+  // exists - существует или нет
+  // message
+  // typeError
+  // Если существует то данные о купоне
+
   const handleCouponError = (error) => {
     console.error('Произошла ошибка при проверке купона:', error);
   
