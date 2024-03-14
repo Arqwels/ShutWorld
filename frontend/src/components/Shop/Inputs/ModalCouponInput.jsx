@@ -1,23 +1,22 @@
 import st from './../Modals/ModalForShop.module.scss';
 import checkIcon from './checkIcon.png';
 
-const ModalCouponInput = ({ id, label, className, status, onClick, discount, ...attrs }) => {
+const ModalCouponInput = ({ id, label, className, onClick, couponData, ...attrs }) => {
   let errorMessage = '';
   let errorClass = '';
+  let discount = '';
 
-  // Определение сообщения об ошибке и класса ошибки на основе статуса
-  if (status === 'notFound' || status === 'empty' || status === 'expired') {
-    if (status === 'notFound') {
-      errorMessage = 'Купон не найден!';
-    } else if (status === 'expired') {
-      errorMessage = 'Срок действия купона истек!';
-    } else if (status === 'empty') {
-      errorMessage = 'Поле купона пустое!';
+
+  if (couponData && couponData.exists !== undefined) {
+    const status = couponData.exists;
+
+    if (!status) {
+      errorMessage = couponData.message;
+    } else {
+      discount = couponData.discount
     }
-    errorClass = st.inputTextError;
   }
 
-  console.log(status);
 
   return (
     <div className={st.inputWrapper}>
@@ -25,7 +24,7 @@ const ModalCouponInput = ({ id, label, className, status, onClick, discount, ...
       {label &&
         <div className={st.wrapperLabel}>
           <label className={st.inputLabel} htmlFor={id}>{label}</label>
-          {status && errorMessage && <span className={st.inputError}>{errorMessage}</span>}
+          {couponData && couponData.exists !== undefined && errorMessage && <span className={st.inputError}>{errorMessage}</span>}
           {discount && <span className={st.discount}>{discount}% скидка</span>}
         </div>
       }
@@ -34,7 +33,7 @@ const ModalCouponInput = ({ id, label, className, status, onClick, discount, ...
       <input 
         name={id}
         id={id}
-        className={`${className} ${errorClass} `} // Класс ошибки добавляется, если есть ошибка
+        className={`${className} ${errorClass}`}
         {...attrs}
       />
       {/* Иконка для проверки купона */}

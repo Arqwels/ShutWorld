@@ -24,7 +24,9 @@ const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
   const [nicknameDirty, setNicknameDirty] = useState(false);
 
   const [nicknameError, setNicknameError] = useState('');
-  const [couponStatus, setCouponStatus] = useState('');
+  const [couponStatus, setCouponStatus] = useState(false);
+  const [couponData, setCouponData] = useState(null);
+
 
   const blurHandler = (e) => {
     if (e.target.name === 'nickname') {
@@ -59,7 +61,7 @@ const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
 
   const changeCoupon = (event) => {
     setCoupon(event.target.value);
-    setCouponStatus('');
+    setCouponData({ ...couponData, message: '', discount: '' });
   }
 
   // exists - существует или нет
@@ -71,32 +73,33 @@ const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
     console.error('Произошла ошибка при проверке купона:', error);
   
     if (error.response && error.response.status === 400) {
-      const { errorType } = error.response.data;
-      switch (errorType) {
-        case 'notFound':
-        case 'empty':
-        case 'expired':
-          setCouponStatus(errorType);
-          break;
-        default:
-          console.error('Неизвестная ошибка:', errorType);
-      }
+      console.log(couponData);
+      console.log(couponStatus);
+      setCouponData(error.response.data);
+      // console.log(error.response.data);
+      // switch (errorType) {
+      //   case 'notFound':
+      //   case 'empty':
+      //   case 'expired':
+      //     setCouponStatus(errorType);
+      //     break;
+      //   default:
+      //     console.error('Неизвестная ошибка:', errorType);
+      // }
     }
   };
   
   const checkCoupon = async () => {
     try {
-      console.log(coupon);
       const response = await CheckCouponService.checkCoupon({ couponCode: coupon });
-      console.log(44444444444);
-      console.log(response);
-      const percent = response.data.couponInfo.discount;
-      if (!percent) {
-        return setCouponStatus('ErrorInCoupon');
+      
+      if (response.data.exists) {
+        const couponInfo = response.data.couponInfo;
+        const dataToUpdate = { exists: response.data.exists, discount: couponInfo.discount };
+        setCouponData(dataToUpdate);
+      } else {
+        // Купон не найден, делайте необходимые действия
       }
-      setCouponStatus(percent);
-      setDiscount(percent); // Установка состояния discount
-      console.log(percent);
     } catch (error) {
       console.log(33333333);
       console.log(error);
@@ -157,9 +160,9 @@ const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
                   className={`${st.formInputText} ${st.coupon}`}
                   type={'text'}
                   placeholder={'Введите купион, если имеется'}
-                  status={couponStatus}
                   discount={discount}
                   value={coupon}
+                  couponData={couponData}
                   onChange={changeCoupon}
                   onClick={checkCoupon}
                   required

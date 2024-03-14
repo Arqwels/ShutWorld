@@ -358,7 +358,12 @@
   border: 2px solid #F23F3F;
 }
 
-.inputValid {
+.inputBorderError {
+  border: 2px solid #F23F3F;
+  outline: 0;
+}
+
+.inputBorderValid {
   // border: 2px solid #963FF2;
   border: 2px solid #12d600d5;
   outline: 0;
