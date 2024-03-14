@@ -346,38 +346,31 @@
   font: 500 16px/18px 'Ubuntu', sans-serif;
 }
 
-.inputError {
+// ModalInputs
+.labelSpan {
   position: absolute;
   right: 0;
   padding: 2.5px 10px;
   color: #FFF;
-  background-color: #F23F3F;
 }
 
-.inputTextError {
-  border: 2px solid #F23F3F;
+.labelSpanBackgroundValid {
+  background-color: #963FF2;
+}
+
+.inputBorderValid {
+  border: 2px solid #963FF2;
+  outline: 0;
+}
+
+.labelSpanBackgroundError {
+  background-color: #F23F3F;
 }
 
 .inputBorderError {
   border: 2px solid #F23F3F;
   outline: 0;
 }
-
-.inputBorderValid {
-  // border: 2px solid #963FF2;
-  border: 2px solid #12d600d5;
-  outline: 0;
-}
-
-.discount {
-  font-size: 14px;
-  position: absolute;
-  right: 0;
-  padding: 2.5px 10px;
-  color: #FFF;
-  background-color: #963FF2;
-}
-
 
 .checkImg {
   width: 39px;
@@ -387,14 +380,4 @@
   bottom: 0%;
   padding: 5px;
   cursor: pointer;
-}
-
-.coupon {
-  // &:valid {
-  //   border: 2px solid #000;
-  // }
-  &:focus {
-    border: 2px solid #963FF2;
-    outline: 0;
-  }
 }

@@ -19,18 +19,18 @@ const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
 
   const [nickname, setNickname] = useState('');
   const [coupon, setCoupon] = useState('');
-  const [discount, setDiscount] = useState(null);
-
-  const [nicknameDirty, setNicknameDirty] = useState(false);
 
   const [nicknameError, setNicknameError] = useState('');
+  const [classCoupon, setClassCoupon] = useState('');
+  const [classNickname, setClassNickname] = useState('');
+  
   const [couponStatus, setCouponStatus] = useState(false);
   const [couponData, setCouponData] = useState(null);
-
+  
+  const [discount, setDiscount] = useState(null);
 
   const blurHandler = (e) => {
     if (e.target.name === 'nickname') {
-      setNicknameDirty(true);
       if (nickname.length === 0) {
         setNicknameError('Введите никнейм!');
       } else if (nickname.length <= 4) {
@@ -54,6 +54,7 @@ const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
     }
     else if (event.target.value.length >= 4 && event.target.value.length <= 16) {
       setNicknameError('');
+      setClassNickname(st.inputBorderValid);
     }
     else if (event.target.value.length >= 16)
       setNicknameError('Длинный никнейм');
@@ -62,52 +63,36 @@ const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
   const changeCoupon = (event) => {
     setCoupon(event.target.value);
     setCouponData({ ...couponData, message: '', discount: '' });
+    setClassCoupon('')
   }
 
-  // exists - существует или нет
-  // message
-  // typeError
-  // Если существует то данные о купоне
-
-  const handleCouponError = (error) => {
+  const couponError = (error) => {
     console.error('Произошла ошибка при проверке купона:', error);
   
     if (error.response && error.response.status === 400) {
-      console.log(couponData);
-      console.log(couponStatus);
       setCouponData(error.response.data);
-      // console.log(error.response.data);
-      // switch (errorType) {
-      //   case 'notFound':
-      //   case 'empty':
-      //   case 'expired':
-      //     setCouponStatus(errorType);
-      //     break;
-      //   default:
-      //     console.error('Неизвестная ошибка:', errorType);
-      // }
     }
   };
   
   const checkCoupon = async () => {
     try {
       const response = await CheckCouponService.checkCoupon({ couponCode: coupon });
-      
-      if (response.data.exists) {
-        const couponInfo = response.data.couponInfo;
-        const dataToUpdate = { exists: response.data.exists, discount: couponInfo.discount };
-        setCouponData(dataToUpdate);
-      } else {
-        // Купон не найден, делайте необходимые действия
+      if (!response.data.exists) {
+        console.log('Ошибка в проверке купона!');
       }
+      const couponInfo = response.data.couponInfo;
+      const dataToUpdate = { exists: response.data.exists, discount: couponInfo.discount };
+      setCouponData(dataToUpdate);
+
+      setDiscount(couponInfo.discount)
     } catch (error) {
-      console.log(33333333);
-      console.log(error);
-      handleCouponError(error);
+      couponError(error);
     }
   };
   
-  
+  const submitForm = async () => {
+
+  }
   
   return (
     <>
@@ -145,14 +130,12 @@ const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
                   type={'text'}
                   placeholder={'Введите свой никнейм'}
                   error={nicknameError}
+                  classSts={classNickname}
                   value={nickname}
                   onBlur={(e) => blurHandler(e)}
                   onChange={changeNickname}
                   required
                 />
-
-                {/* <label className={st.formLabel} htmlFor="nickname">Никнейм</label>
-                <input className={st.formInputText} type="text" name="nickname" placeholder="Введите свой никнейм" required /> */}
                 
                 <ModalCouponInput 
                   id={'coupon'}
@@ -163,16 +146,20 @@ const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
                   discount={discount}
                   value={coupon}
                   couponData={couponData}
+                  statusClass={classCoupon}
                   onChange={changeCoupon}
                   onClick={checkCoupon}
                   required
                 />
-
-                {/* <label className={st.formLabel} htmlFor="coupon">Купон</label>
-                <input className={`${st.formInputText} ${st.coupon}`} type="text" name="coupon" placeholder="Введите купион, если имеется" /> */}
               
-                <DurationSelect donateStatus={donStatus} onDurationSelect={(duration) => setSelectedDuration(duration)} />
-                <PaymentMethod onSelectPaymentMethod={(selectedMethod) => setSelectedPaymentMethod(selectedMethod)} />
+                <DurationSelect 
+                  donateStatus={donStatus} 
+                  onDurationSelect={(duration) => setSelectedDuration(duration)} 
+                />
+
+                <PaymentMethod 
+                  onSelectPaymentMethod={(selectedMethod) => setSelectedPaymentMethod(selectedMethod)} 
+                />
 
                 <div className={st.formQuest}>
                   <img src={QuestionMark} alt="QuestionMark" />
