@@ -6,6 +6,8 @@ import { Context } from '.';
 import { observer } from 'mobx-react-lite';
 import ScrollToTop from './ScrollToTop';
 import Footer from './components/Footer/Footer';
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   const { store } = useContext(Context);
@@ -30,6 +32,9 @@ const App = () => {
       <AppRouter />
       <ScrollToTop /> {/* Временное решение! */}
       <Footer />
+      <ToastContainer 
+        limit={1}
+      />
     </BrowserRouter>
   );
 };

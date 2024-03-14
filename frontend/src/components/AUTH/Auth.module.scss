@@ -4,6 +4,9 @@
   justify-content: space-between;
   @media screen and (max-width: 1150px) {
     justify-content: center;
+    > img {
+      display: none;
+    }
   }
 }
 

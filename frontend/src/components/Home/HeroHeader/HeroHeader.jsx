@@ -1,21 +1,34 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import style from "./Hero.module.scss";
 import EndShip from "../../../images/endShip.svg";
 import { IP_SERVER, PLAY_ROUTE } from "../../../utils/consts";
-
-// Добавить Уведомления о копирования
-//! Если будет ошибка то выдавать error, если пользователь не предостаит доступ к буферму обмену. В теории... 
-const copyText = () => {
-  navigator.clipboard.writeText(IP_SERVER)
-    .then(() => {
-      console.log("Текст успешно скопирован в буфер обмена");
-    })
-    .catch((error) => {
-      console.error("Не удалось скопировать текст: " + error);
-    });
-};
+import { toast } from "react-toastify";
 
 const HeroHeader = () => {
+  const [ notificationShown, setNotificationShown ] = useState(false);
+  const copyText = () => {
+    if (!notificationShown) {
+      navigator.clipboard.writeText(IP_SERVER)
+        .then(() => {
+          toast.info("IP скопирован в буфер обмена!", {
+            autoClose: 2000,
+            onClose: () => setNotificationShown(false)
+          });
+          setNotificationShown(true);
+          console.log("Текст успешно скопирован в буфер обмена");
+        })
+        .catch((error) => {
+          toast.error("Вы заблокировали доступ к буферу обмена!", {
+            autoClose: 2000,
+            onClose: () => setNotificationShown(false)
+          });
+          setNotificationShown(true);
+          console.error("Не удалось скопировать текст: " + error);
+        });
+    }
+  };
+
   return (
     <div className={style.header}>
       <div className={style.blockLeft}>
