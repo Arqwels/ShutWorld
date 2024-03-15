@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Portal from "../../Portal";
 import { Link } from "react-router-dom";
 import DurationSelect from "../Payment&Duration/DurationSelect";
@@ -24,7 +24,6 @@ const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
   const [classCoupon, setClassCoupon] = useState('');
   const [classNickname, setClassNickname] = useState('');
   
-  const [couponStatus, setCouponStatus] = useState(false);
   const [couponData, setCouponData] = useState(null);
   
   const [discount, setDiscount] = useState(null);
@@ -63,16 +62,19 @@ const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
   const changeCoupon = (event) => {
     setCoupon(event.target.value);
     setCouponData({ ...couponData, message: '', discount: '' });
+    setDiscount(null)
     setClassCoupon('')
   }
-
-  const couponError = (error) => {
-    console.error('Произошла ошибка при проверке купона:', error);
   
-    if (error.response && error.response.status === 400) {
-      setCouponData(error.response.data);
-    }
+  const [ selectDuration, setSelectDuration ] = useState('');
+  const resetSelectStatus = () => {
+    setSelectDuration('');
   };
+
+  const [ selectPaymentMethod, setSelectPaymentMethod ] = useState('');
+  const resetMethodStatus = () => {
+    setSelectPaymentMethod('');
+  }
   
   const checkCoupon = async () => {
     try {
@@ -83,20 +85,85 @@ const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
       const couponInfo = response.data.couponInfo;
       const dataToUpdate = { exists: response.data.exists, discount: couponInfo.discount };
       setCouponData(dataToUpdate);
-
       setDiscount(couponInfo.discount)
     } catch (error) {
       couponError(error);
     }
   };
-  
-  const submitForm = async () => {
 
+  const couponError = (error) => {
+    console.error('Произошла ошибка при проверке купона:', error);
+    if (error.response && error.response.status === 400) {
+      setCouponData(error.response.data);
+    }
+  };
+
+  const priceWithDiscount = (price, discount) => {
+    const discountAmount = (price * discount) / 100;
+    const totalPrice = (price - discountAmount).toFixed(2);
+    return totalPrice;
+  }
+
+  const [isAgreed, setIsAgreed] = useState(false);
+  const сheckboxChange = (event) => {
+    setIsAgreed(event.target.checked);
+  };
+
+  const [ statusForm, setStatusForm ] = useState(false);
+  useEffect( () => {
+
+    if ( nicknameError || selectedDuration || isAgreed) {
+      setStatusForm(true)
+    } else {
+      setStatusForm(false)
+    }
+  }, [ nicknameError, selectedDuration, isAgreed ])
+
+
+
+  
+  
+  const [ formText, setFormText ] = useState('Данные не заполнены!');
+  const submitForm = async () => {
+    let priceDonate = 0;
+
+    if (!nickname) {
+      setNicknameError('Введите никнейм!');
+    }
+  
+    if (selectedDuration === null) {
+      setSelectDuration('Выберите значение!')
+    } else {
+      const price = selectedDuration.price;
+      if (discount) {
+        priceDonate = priceWithDiscount(price, discount)
+      } else {
+        priceDonate = price;
+      }
+      setFormText(price)
+    }
+  
+    if (selectedPaymentMethod === null) {
+      setSelectPaymentMethod('Выберите значение!')
+    }
+  
+    if (nickname && priceDonate && selectedDuration && selectedPaymentMethod && isAgreed) {
+      console.log(`Финальная стоимость: ${priceDonate}₽`);
+      console.log(nickname, priceDonate, selectedDuration, selectedPaymentMethod, isAgreed);
+      setStatusForm(true);
+      setFormText(priceDonate)
+    }
+  }
+  
+
+
+  const handleBuy = async (e) => {
+    e.preventDefault();
   }
   
   return (
     <>
-      { isOpen &&
+      {isOpen &&
         <Portal>
           <div className={st.modalWindow}>
 
@@ -122,7 +189,6 @@ const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
             <div className={st.modalLeft}>
               <h2>Покупка</h2>
               <form className={st.modalForm} method="get" action="#">
-                
                 <ModalNicknameInput 
                   id={'nickname'}
                   label={'Никнейм'}
@@ -154,11 +220,21 @@ const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
               
                 <DurationSelect 
                   donateStatus={donStatus} 
-                  onDurationSelect={(duration) => setSelectedDuration(duration)} 
+                  onDurationSelect={(duration) => {
+                    setSelectedDuration(duration);
+                    resetSelectStatus();
+                  }} 
+                  selectStatus={selectDuration}
+                  resetSelectStatus={resetSelectStatus}
                 />
 
                 <PaymentMethod 
-                  onSelectPaymentMethod={(selectedMethod) => setSelectedPaymentMethod(selectedMethod)} 
+                  onSelectPaymentMethod={(selectedMethod) => {
+                    setSelectedPaymentMethod(selectedMethod);
+                    resetMethodStatus();
+                  }} 
+                  selectStatus={selectPaymentMethod}
+                  resetMethodStatus={resetMethodStatus}
                 />
 
                 <div className={st.formQuest}>
@@ -170,13 +246,20 @@ const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
                 </div>
 
                 <div className={st.formOffer}>
-                  <input className={st.publicOffer} type="checkbox" name="publicOffer" id="publicOffer" required/>
+                  <input 
+                    className={st.publicOffer} 
+                    type="checkbox" 
+                    name="publicOffer" 
+                    id="publicOffer" 
+                    required
+                    onChange={сheckboxChange}
+                  />
                   <label htmlFor="publicOffer">Ознакомился с <Link to="#" target="_blank">публичной офертой</Link></label>
                 </div>
 
-                <button className={st.btn} disabled type="submit">Данные не заполнены</button>
+                <button className={st.btn} disabled={statusForm} type="submit">{formText}</button>
               </form>
-              <button onClick={() => console.log(nickname, selectedDuration, selectedPaymentMethod)}>Нажми меня</button>
+              <button onClick={submitForm}>Нажми меня</button>
             </div>
 
             {/* Mobile */}

@@ -4,7 +4,7 @@ import SelectIcon from '../../../images/SelectIcon.svg';
 import { observer } from 'mobx-react-lite';
 import formStore from '../../../store/form';
 
-export const PaymentMethod = ({ onSelectPaymentMethod }) => {
+export const PaymentMethod = ({ onSelectPaymentMethod, selectStatus, resetMethodStatus }) => {
   const { stateVisibl2, toggleDropdownVisible2 } = formStore;
   const [selectedMethod, setSelectedMethod] = useState(null);
 
@@ -12,13 +12,15 @@ export const PaymentMethod = ({ onSelectPaymentMethod }) => {
     setSelectedMethod(method);
     toggleDropdownVisible2(false);
     onSelectPaymentMethod(method);
+    resetMethodStatus();
   };
 
   return (
     <div className={style.bodyForm}>
       <label className={style.labelDurationText} htmlFor="payMethod">Способ оплаты</label>
+      {selectStatus && <span className={style.statusError}>{selectStatus}</span>}
       <div className={`${style.select} ${stateVisibl2 ? '' : style.active}`} style={{ zIndex: 9 }}>
-        <div className={style.selectHeader} onClick={()=> toggleDropdownVisible2()}>
+        <div className={`${style.selectHeader} ${selectedMethod ? style.selected : ''} ${selectStatus ? style.statusErrorBorder : ''}`} onClick={()=> toggleDropdownVisible2()}>
           <div className={style.selectTextNormal}>
             {selectedMethod ? selectedMethod.label : 'Выберите способ оплаты'}
           </div>
