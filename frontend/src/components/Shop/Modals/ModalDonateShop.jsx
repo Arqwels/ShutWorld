@@ -12,6 +12,9 @@ import CloseIcon from "../../../assets/images/icons/close-icon.svg";
 import ModalNicknameInput from "../Inputs/ModalNicknameInput";
 import ModalCouponInput from "../Inputs/ModalCouponInput";
 import CheckCouponService from "../../../service/CheckCouponService";
+import CreateOrderService from "../../../service/CreateOrderService";
+import { toast } from "react-toastify";
+import { VK_LINK } from "../../../utils/consts";
 
 const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, privilegeText, onClose }) => {
   const [selectedDuration, setSelectedDuration] = useState(null);
@@ -60,7 +63,7 @@ const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
 
   const changeCoupon = (event) => {
     setCoupon(event.target.value);
-    setCouponData({ ...couponData, message: '', discount: '' });
+    setCouponData({ ...couponData, exists: false, message: '', discount: '' });
     setDiscount(null)
     setClassCoupon('')
     checkPrice();
@@ -176,13 +179,45 @@ const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
     }
   
     if (selectedPaymentMethod === null) {
-      setSelectPaymentMethod('Выберите значение!')
+      setSelectPaymentMethod('Выберите значение!');
     }
 
     if (nickname && priceDonate && selectedDuration && selectedPaymentMethod && isAgreed) {
-      console.log(nickname, priceDonate, selectedDuration, selectedPaymentMethod, isAgreed);
-    }
+      const idDonate = donStatus.id;
+      const weightDonate = donStatus.weight;
+      
+      let couponInfo = {};
+      if (couponData?.exists) {
+        couponInfo.couponText = coupon;
+        couponInfo.percent = couponData.discount;
+      }
 
+      try {
+        const result = await CreateOrderService.createOrderDonate({
+          nickname, 
+          couponInfo,
+          priceDonate, 
+          selectedDuration, 
+          selectedPaymentMethod, 
+          isAgreed, 
+          idDonate, 
+          weightDonate
+        })
+        if (result.data.status) {
+          toast.success(result.data.message, {autoClose: 2000})
+        }
+      } catch (error) {
+        if (!error.response.data.status) {
+          if (error.response.data.typeError === 'Not find Nickname') {
+            setNicknameError(error.response.data.message);
+          } else if (error.response.data.typeError === 'Donate status error') {
+            setNicknameError(error.response.data.message);
+            toast.error (error.response.data.message, {autoClose: 2000})
+          }
+        }
+        console.log(error);
+      }
+    }
   }
 
   return (
@@ -266,7 +301,7 @@ const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
                   <img src={QuestionMark} alt="QuestionMark" />
                   <div className={st.formQuestText}>
                     <p>Произошла какая-то ошибка или не можете оплатить? Тогда сообщите нам, мы поможем.</p>
-                    <Link to="https://vk.com/shutw" target="_blank"><img src={LinkFormVK} alt="LinkFormVK" />vk.com/shutworld</Link>
+                    <Link to={VK_LINK} target="_blank"><img src={LinkFormVK} alt="LinkFormVK" />vk.com/shutworld</Link>
                   </div>
                 </div>
 
@@ -297,7 +332,6 @@ const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
                 </ul>
               </div>
             </div>
-
 
           </div>
           

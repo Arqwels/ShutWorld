@@ -4,6 +4,7 @@ export const API_ENDPOINTS = {
   GET_RANKS_DONATE: 'api/rank/get-ranks',
   
   CHECK_COUPON: 'api/coupon/check-coupon',
+  CREATE_ORDER_DONATE: 'api/order/create-order-donate',
 
   // ADMINS
   GET_USERS: 'api/admin/get-users',
