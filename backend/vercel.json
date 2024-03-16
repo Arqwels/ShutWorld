@@ -1,5 +1,11 @@
 {
   "version": 2,
   "builds": [{ "src": "./index.js", "use": "@vercel/node" }],
-  "routes": [{ "src": "/api/(.*)", "dest": "/"}]
+  "routes": [{ "src": "/api/(.*)", "dest": "/"}],
+  "crons": [
+    {
+      "path": "/api/post/save-post-vk",
+      "schedule": "10 20 * * *"
+    }
+  ]
 }

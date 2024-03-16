@@ -1,4 +1,4 @@
-import { DS_LINK, PLAY_ROUTE, RULES_ROUTE, SHOP_ROUTE, VK_LINK ,USER_AGREEMENT } from '../../utils/consts';
+import { DS_LINK, PLAY_ROUTE, RULES_ROUTE, SHOP_ROUTE, VK_LINK, USER_AGREEMENT_ROUTE } from '../../utils/consts';
 
 export const LinksSocial = [
   {
@@ -32,6 +32,6 @@ export const LinksPages = [
   {
     id: 3,
     labelText: "Пользовательское соглашение",
-    to: USER_AGREEMENT
+    to: USER_AGREEMENT_ROUTE
   }
 ];

@@ -7,18 +7,18 @@ const UserDto = require('../dtos/userDto')
 const ApiError = require('../error/api-error')
 
 class UserService {
-  async registration(nickname,email,password,useragreement,role,next) {
+  async registration(nickname,email,password,useragreement) {
     const candidate = await User.findOne({ where: { nickname } });
     if(candidate) {
-      throw ApiError.BadRequest(`Пользователь с таким никнеймок ${nickname} уже зарегистрирован!`)
+      throw ApiError.BadRequest(`Пользователь с таким никнеймок ${nickname} уже зарегистрирован!`, {success: false, error: "Nickname busy"})
     }
     const hashPassword = await bcrypt.hash(password, 7)
     const activationLink = uuid.v4()
 
-    const user = await User.create({nickname, email, useragreement, role, password: hashPassword, activationLink})
+    const user = await User.create({nickname, email, useragreement, password: hashPassword, activationLink})
     await mailService.sendActivationMail(email, `${process.env.API_URL}/api/mail/activate/${activationLink}`)
 
-    const userDto = new UserDto(user); // id, nickname, isActivated
+    const userDto = new UserDto(user);
     const tokens = tokenService.generateTokens({...userDto})
     await tokenService.saveToken(userDto.id, tokens.refreshToken)
 
@@ -37,11 +37,11 @@ class UserService {
   async login(nickname, password) {
     const user = await User.findOne({ where: { nickname }})
     if (!user) {
-      throw ApiError.BadRequest('Пользователь не найден!');
+      throw ApiError.BadRequest('Пользователь не найден!', ['user']);
     }
     const isPassEquals = await bcrypt.compare(password, user.password);
     if (!isPassEquals) {
-      throw ApiError.BadRequest('Неверный пароль!');
+      throw ApiError.BadRequest('Неверный пароль!', ['password']);
     }
     const userDto = new UserDto(user);
     const tokens = tokenService.generateTokens({...userDto});
@@ -63,13 +63,11 @@ class UserService {
     const userData = tokenService.validateRefreshToken(refreshToken);
     const tokenFromDb = await tokenService.findToken(refreshToken);
     if (!userData || !tokenFromDb) {
-      console.log("Ошибка в bakend/service/userService = 25")
       throw ApiError.UnauthorizedError();
     }
     const user = await User.findByPk(userData.id);
     const userDto = new UserDto(user);
     const tokens = tokenService.generateTokens({...userDto});
-
     await tokenService.saveToken(userDto.id, tokens.refreshToken);
     return {...tokens, user: userDto};
     } catch (error) {

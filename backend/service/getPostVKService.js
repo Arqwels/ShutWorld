@@ -34,21 +34,19 @@ class getPostVKService {
   
   async savePostData(data) {
     try {
-      const existsPosts = await postVKModel.findAll();
-      await Promise.all(
-        data.map(async (newPost) => {
-          const existsPost = existsPosts.find((post) => post.postId === newPost.postId);
-          if(existsPost) {
-            await existsPost.update(newPost);
-          } else {
-            await postVKModel.create(newPost);
-          }
-        })
-      );
+      for (const newPost of data) {
+        const existsPost = await postVKModel.findOne({ where: { postId: newPost.postId } });
+        if (existsPost) {
+          await existsPost.update(newPost);
+        } else {
+          await postVKModel.create(newPost);
+        }
+      }
+      return { success: true };
     } catch (error) {
-      throw ApiError.ErrorSaveData("Ошибка при сохранении ВК Постов!", error);
+      throw new ApiError("Ошибка при сохранении ВК Постов!", error);
     }
-  };
+  };  
 }
 
 module.exports = new getPostVKService();

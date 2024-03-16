@@ -1,6 +1,8 @@
 import axios from "axios";
 import { makeAutoObservable } from "mobx";
 import AuthService from "../service/AuthService";
+import { SERVER_URL, PRODUCTION_SERVER_URL } from "../utils/env";
+import { toast } from "react-toastify";
 
 export default class Store {
   user = {};
@@ -31,20 +33,36 @@ export default class Store {
       this.setAuth(true);
       this.setUser(response.data.user);
     } catch (error) {
+      if (error.response?.data?.errors.error === "Nickname busy") {
+        toast.error("Никнейм занят, выберите другой.", {autoClose: 2000});
+        return "NicknameBusy";
+      }
       console.log(error.response?.data?.message);
     }
   }
 
   async login(nickname, password) {
-    try {
-      const response = await AuthService.login(nickname, password);
-      console.log(response);
-      localStorage.setItem('token', response.data.accessToken);
-      this.setAuth(true);
-      this.setUser(response.data.user);
-    } catch (error) {
-      console.log(error.response?.data?.message);
+    const Errors = [];
+  
+    if (!nickname || !password) {
+      Errors.push("Введите никнейм и пароль.");
+    } else {
+      try {
+        const response = await AuthService.login(nickname, password);
+        localStorage.setItem('token', response.data.accessToken);
+        this.setAuth(true);
+        this.setUser(response.data.user);
+      } catch (error) {
+        if (error.response?.data?.errors[0] === "user") {
+          Errors.push("userError");
+        }
+        if (error.response?.data?.errors[0] === "password") {
+          Errors.push("passwordError");
+        }
+        console.log(error.response?.data?.message);
+      }
     }
+    return Errors;
   }
 
   async logout() {
@@ -60,18 +78,19 @@ export default class Store {
 
 // В методе checkAuth
   async checkAuth() {
+    const url = process.env.NODE_ENV === "production" ? PRODUCTION_SERVER_URL : SERVER_URL;
     this.setLoading(true);
     try {
       const cachedToken = localStorage.getItem('token'); // Получаем токен из локального хранилища
       if (cachedToken) {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}api/user/refresh`, { withCredentials: true });
+        const response = await axios.get(`${url}api/user/refresh`, { withCredentials: true });
         localStorage.setItem('token', response.data.accessToken); // Обновляем токен в локальном хранилище
         this.setAuth(true);
         this.setUser(response.data.user);
       }
     } catch (error) {
       console.log(555111);
-      //localStorage.removeItem('token');
+      // localStorage.removeItem('token');
       console.log(error.response?.data?.message);
     } finally {
       setTimeout(() => {
