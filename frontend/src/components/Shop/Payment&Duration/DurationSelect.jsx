@@ -4,7 +4,7 @@ import SelectIcon from '../../../images/SelectIcon.svg'
 import { observer } from 'mobx-react-lite';
 import formStore from '../../../store/form';
 
-export const DurationSelect = ({ donateStatus, onDurationSelect }) => {
+export const DurationSelect = ({ donateStatus, onDurationSelect, selectStatus, resetSelectStatus }) => {
   const { stateVisibl1, toggleDropdownVisible1 } = formStore;
   const [selectedItem, setSelectedItem] = useState(null);
 
@@ -12,13 +12,15 @@ export const DurationSelect = ({ donateStatus, onDurationSelect }) => {
     setSelectedItem(item);
     toggleDropdownVisible1(false);
     onDurationSelect(item);
+    resetSelectStatus();
   };
 
   return (
     <div className={style.bodyForm}>
       <label className={style.labelDurationText} htmlFor="duration">Длительность</label>
+      {selectStatus && <span className={style.statusError}>{selectStatus}</span>}
       <div className={`${style.select} ${stateVisibl1 ? style.active : ''}`} style={{ zIndex: 10 }}>
-        <div className={style.selectHeader} onClick={()=> toggleDropdownVisible1()}>
+        <div className={`${style.selectHeader} ${selectedItem ? style.selected : ''} ${selectStatus ? style.statusErrorBorder : ''}`} onClick={()=> toggleDropdownVisible1()}>
           <div className={style.selectTextNormal}>
             {selectedItem ? selectedItem.labelDuration : 'Выберите на сколько возьмёте'}
           </div>
@@ -40,4 +42,4 @@ export const DurationSelect = ({ donateStatus, onDurationSelect }) => {
   );
 };
 
-export default observer ( DurationSelect );
+export default observer(DurationSelect);

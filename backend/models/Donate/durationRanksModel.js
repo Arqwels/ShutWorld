@@ -1,5 +1,6 @@
 const sequelize = require('../../db');
 const { DataTypes } = require('sequelize');
+const OrderRank = require('./orderRankModel');
 
 const DurationDonate = sequelize.define('duration-donate', {
   duration: {
@@ -21,5 +22,7 @@ const DurationDonate = sequelize.define('duration-donate', {
 }, {
   timestamps: false
 });
+
+DurationDonate.hasOne(OrderRank, { foreignKey: 'orderDurationId' })
 
 module.exports = DurationDonate;
