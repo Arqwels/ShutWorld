@@ -21,7 +21,10 @@ const RankDonate = sequelize.define('rank-donate', {
     type: DataTypes.ARRAY(DataTypes.TEXT),
     allowNull: false
   },
-  imageUrl: DataTypes.STRING,
+  imageId: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
   weight: {
     type: DataTypes.INTEGER,
     allowNull: false

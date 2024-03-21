@@ -35,15 +35,19 @@ const Ranks = () => {
     fetchRanks();
   }, []);
 
+  const checkLop = () => {
+    console.log(ranks);
+  }
+
   return (
     <Fragment>
     <div id="donate" className={st.donate}>
-      <h2>Ранги</h2>
+      <h2 onClick={checkLop}>Ранги</h2>
       <div className={st.wrapCard}>
         {ranks.length > 0 ? (
           ranks.map(rank => (
             <div key={rank.id} className={st.card}>
-              <img src={`${baseURL}${rank.imageUrl}`} alt="Rank" />
+              <img src={`${baseURL}api/images/${rank.imageId}`} alt="Rank" />
               <div className={st.cardText}>
                 <h2>{rank.name} <br/>от <span>{rank["duration-donates"][0].price}</span>₽</h2>
                 <button onClick={() => openModal(rank.id, "DonateStatus")} className={st.btn}>Приобрести</button>
