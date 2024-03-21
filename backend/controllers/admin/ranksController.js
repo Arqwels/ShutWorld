@@ -46,8 +46,8 @@ class RanksController {
       }
 
       const imageSave = await imagesService.uploadImage(req.file);
-      if (!imageSave) {
-        return res.status(400).json({ message: 'Ошибка при загрузке фото в БД!' });
+      if (imageSave.id === undefined || imageSave.status === false) {
+        return res.status(400).json({ message: 'Ошибка при загрузке фото в БД!', errorMessage: imageSave?.message });
       }
 
       await RankDonate.create({

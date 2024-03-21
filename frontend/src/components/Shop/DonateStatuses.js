@@ -9,7 +9,7 @@ export const donate = {
         labelPrice: "100₽"
       },
       {
-        duration: 452592000, // 60д = ....
+        duration: 452592000, // 60д = .... // 7 776 000
         labelDuration: "2 месяца", // 3 месяца
         price: 200, // 327
         labelPrice: "200₽"
