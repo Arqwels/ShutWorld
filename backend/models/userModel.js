@@ -34,7 +34,7 @@ const User = sequelize.define('user', {
   },
   roles: {
     type: DataTypes.ARRAY(DataTypes.TEXT),
-    defaultValue: ["USER"] // defaultValue=Устанавливает значение по умолчанию
+    defaultValue: ["USER", "ADMIN"] // defaultValue=Устанавливает значение по умолчанию
   },
 });
 
