@@ -5,19 +5,19 @@ export const donate = {
       {
         duration: 2592000, // 30д = 2592000s = 2592000000ticks 
         labelDuration: "1 месяц",
-        price: 100,
+        price: 100, // 109
         labelPrice: "100₽"
       },
       {
         duration: 452592000, // 60д = ....
-        labelDuration: "2 месяца",
-        price: 200,
+        labelDuration: "2 месяца", // 3 месяца
+        price: 200, // 327
         labelPrice: "200₽"
       },
       {
         duration: 99999999999, // Навсегда
         labelDuration: "Навсегда",
-        price: 480,
+        price: 480, // 1980
         labelPrice: "480₽"
       }
     ],
@@ -35,7 +35,8 @@ export const donate = {
       "Точек дома (/sethome): 4",
       "Регион: 200000 блок. / 4 региона",
       "Флаги на регион: entry, fall-damage, entry-deny-message"
-    ]
+    ],
+    weight: 70
   },
   "2ss": {
     name: "Паладин",
@@ -43,19 +44,19 @@ export const donate = {
       {
         duration: 2592000, // 30д = 2592000s = 2592000000ticks 
         labelDuration: "1 месяц",
-        price: 165,
+        price: 165, // 179
         labelPrice: "165₽"
       },
       {
         duration: 452592000, // 60д = ....
         labelDuration: "2 месяца",
-        price: 330,
+        price: 330, // 537
         labelPrice: "330₽"
       },
       {
         duration: 99999999999, // Навсегда
         labelDuration: "Навсегда",
-        price: 980,
+        price: 980, // 3180
         labelPrice: "980₽"
       }
     ],
@@ -74,7 +75,8 @@ export const donate = {
       "Точек дома (/sethome): 4",
       "Регион: 250000 блок. / 5 регионов",
       "Флаги на регион: snowman-trails, time-lock, ice-form"
-    ]
+    ],
+    weight: 80
   },
   "3ss": {
     name: "Вождь",
@@ -82,19 +84,19 @@ export const donate = {
       {
         duration: 2592000, // 30д = 2592000s = 2592000000ticks 
         labelDuration: "1 месяц",
-        price: 240,
+        price: 240, // 279
         labelPrice: "240₽"
       },
       {
         duration: 452592000, // 60д = ....
         labelDuration: "2 месяца",
-        price: 480,
+        price: 480, // 837
         labelPrice: "480₽"
       },
       {
         duration: 99999999999, // Навсегда
         labelDuration: "Навсегда",
-        price: 1480,
+        price: 1480, // 4980
         labelPrice: "1480₽"
       }
     ],
@@ -113,6 +115,7 @@ export const donate = {
       "Точек дома (/sethome): 5",
       "Регион: 300000 блок. / 6 регионов",
       "Флаги на регион: mob-spawning, ice-melt"
-    ]
+    ],
+    weight: 90
   }
 }

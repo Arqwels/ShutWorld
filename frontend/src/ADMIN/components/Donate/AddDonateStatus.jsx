@@ -45,7 +45,7 @@ const AddDonateStatus = () => {
 
     const formData = new FormData();
 
-    formData.append('imageFile', fileInput.current.files[0]);
+    formData.append('photo', fileInput.current.files[0]);
     formData.append('id', id);
     formData.append('name', name);
     formData.append('description', description);
@@ -148,7 +148,7 @@ const AddDonateStatus = () => {
           <label className={st.labelTitle}>Фото для статуса</label>
           <input 
             type='file'
-            name='fileImage'
+            name='photo'
             ref={fileInput}
             className={st.fileInput} />
           

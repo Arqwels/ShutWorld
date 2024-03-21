@@ -1,14 +1,18 @@
 const sequelize =  require('../../db');
 const DurationDonate = require("../../models/Donate/durationRanksModel");
 const RankDonate = require("../../models/Donate/ranksModel");
-const RankService = require("../../service/admin/rankService");
+const Image = require('../../models/imagesModel');
+const imagesService = require('../../service/imagesService');
 
 class RanksController {
   async getAllRanks(req, res) {
     try {
       
       const rank = await RankDonate.findAll({
-        include: DurationDonate
+        include: [
+          DurationDonate,
+          Image
+        ]
       });
 
       res.json(rank);
@@ -34,7 +38,6 @@ class RanksController {
     let transaction;
     try {
       transaction = await sequelize.transaction();
-      const { imageFile } = req.files;
       const rankData = req.body;
 
       const rankIdCheck = await RankDonate.findByPk(rankData.id)
@@ -42,18 +45,17 @@ class RanksController {
         return res.status(400).json({ message: "Донат с таким Id уже существует!" });
       }
 
-      const uploadResult = await RankService.imageUpload(imageFile);
-      if (uploadResult.error) {
-        return res.status(400).json({ message: uploadResult.error });
+      const imageSave = await imagesService.uploadImage(req.file);
+      if (!imageSave) {
+        return res.status(400).json({ message: 'Ошибка при загрузке фото в БД!' });
       }
-      const imageName = uploadResult.fileName;
 
-      const rank = await RankDonate.create({
+      await RankDonate.create({
         id: rankData.id,
         name: rankData.name,
         description: rankData.description,
         privilege: JSON.parse(rankData.privilege),
-        imageUrl: imageName,
+        imageId: imageSave.id,
         weight: rankData.weight
       }, { transaction });
 
@@ -88,9 +90,9 @@ class RanksController {
         return res.status(400).json({message: `Ранг с название ${rankId} не найден!`})
       }
 
-      const urlImg = resultFind.dataValues.imageUrl || resultFind.imageUrl;
-      const resImg = await RankService.imageDelete(urlImg);
-      if(!resImg) {
+      const imageId = resultFind.dataValues.imageId || resultFind.imageId;
+      const deleteImage = await imagesService.deleteImage(imageId);
+      if(!deleteImage) {
         return res.status(400).json({ status: false, message: 'Ошибка при удалении фото!', error: resImg.error})
       }
       
