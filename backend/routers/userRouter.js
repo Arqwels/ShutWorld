@@ -3,7 +3,6 @@ const router = new Router()
 const userController = require('../controllers/userController')
 const {body} = require('express-validator');
 
-
 // http://localhost:5000/api/user/registration
 router.post('/registration',
   body('nickname').isLength({min: 5, max: 16}),
@@ -22,7 +21,7 @@ router.post('/login',
 // http://localhost:5000/api/user/logout
 router.post('/logout', userController.logout)
 
-// Для перезаписи access токена если он умер ( refresh отправляем и получаем access и refresh)
+// Для перезаписи access токена если он умер ( refresh отправляем и получаем access и refresh )
 // http://localgost:5000/api/user/refresh
 router.get('/refresh', userController.refresh)
 

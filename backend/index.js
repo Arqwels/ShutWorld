@@ -5,7 +5,6 @@ const cookieParser = require('cookie-parser')
 const sequelize = require('./db')
 const router = require('./routers/index')
 const errorMiddleware = require('./middleware/errorMiddleware')
-// const fileUpload = require('express-fileupload')
 
 const app = express()
 const PORT = process.env.PORT || 2000
@@ -17,11 +16,6 @@ app.use(cors({
   origin: process.env.CLIENT_URL || process.env.RPODUCTION_CLIENT_URL
 }))
 app.use('/api', router)
-
-// app.use(fileUpload());
-
-
-app.use(express.static('upload'));
 
 // Обработка ошибок, последним должен быть Middleware
 app.use(errorMiddleware)

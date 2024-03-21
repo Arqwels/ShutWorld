@@ -1,6 +1,5 @@
 const Image = require("../models/imagesModel");
 
-
 class imagesService {
   async uploadImage (dataFile) {
     try {
@@ -10,17 +9,13 @@ class imagesService {
       const fileExtension = originalname.substring(originalname.lastIndexOf('.')).toLowerCase();
 
       if (!allowedExtensions.includes(fileExtension)) {
-        return res.status(400).json({ status: false, message: 'Расширение файла не подходит!'});
+        return {message: 'Расширение файла не подходит!'};
       }
-
-      const img = await Image.create({ filename: originalname, data: buffer });
-      console.log(img);
-
-      return img;
-
-      // const imageId = await Image
-    } catch (error) {
       
+      await Image.create({ filename: originalname, data: buffer });
+    } catch (error) {
+      console.error(error);
+      return { message: 'Ошибка при загрузки файла' };
     }
   };
   
@@ -31,11 +26,11 @@ class imagesService {
     try {
       const resultDelete = await Image.destroy({ where: { id: imageId }})
       if (!resultDelete) {
-        return { success: false, message: `Ошибка при удалении файла ${imageId}` };
+        return { status: false, message: `Ошибка при удалении файла ${imageId}` };
       }
-      return { success: true, message: `Фото ранга успешно удалён` };
+      return { status: true, message: `Фото ранга успешно удалён` };
     } catch (error) {
-      return { success: false, message: `Ошибка при удалении файла ${imageId}`, error: error };
+      return { status: false, message: `Ошибка при удалении файла ${imageId}`, error: error };
     }
   }
   

@@ -2,7 +2,6 @@ const sequelize =  require('../../db');
 const DurationDonate = require("../../models/Donate/durationRanksModel");
 const RankDonate = require("../../models/Donate/ranksModel");
 const Image = require('../../models/imagesModel');
-const RankService = require("../../service/admin/rankService");
 const imagesService = require('../../service/imagesService');
 
 class RanksController {

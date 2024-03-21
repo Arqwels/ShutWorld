@@ -1,7 +1,6 @@
 const Router = require('express');
-const couponController = require('../controllers/couponController');
-
 const router = new Router();
+const couponController = require('../controllers/couponController');
 
 // http://localhost:5000/api/coupon/check-coupon
 router.post('/check-coupon', couponController.checkCoupone);

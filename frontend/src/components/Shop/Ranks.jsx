@@ -35,14 +35,10 @@ const Ranks = () => {
     fetchRanks();
   }, []);
 
-  const checkLop = () => {
-    console.log(ranks);
-  }
-
   return (
     <Fragment>
     <div id="donate" className={st.donate}>
-      <h2 onClick={checkLop}>Ранги</h2>
+      <h2>Ранги</h2>
       <div className={st.wrapCard}>
         {ranks.length > 0 ? (
           ranks.map(rank => (

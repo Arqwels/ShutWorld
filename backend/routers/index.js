@@ -1,5 +1,4 @@
 const Router = require('express');
-const fileUpload = require('express-fileupload');
 const userRouter = require('./userRouter');
 const mailRouter = require('./mailRouter');
 const postVKRouter = require('./postVKRouter');

@@ -1,4 +1,4 @@
-const imageController = require('../controllers/admin/imageController');
+const imageController = require('../controllers/imageController');
 const Router = require('express').Router;
 const router = new Router();
 const multer = require('multer');
