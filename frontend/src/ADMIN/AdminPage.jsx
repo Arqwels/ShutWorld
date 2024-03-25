@@ -4,9 +4,9 @@ import WrapperComponent from '../pages/WrapperComponent'
 import { useContext } from "react";
 import { Context } from '..';
 import GetUsers from './components/GetUsers';
-import AddDonateStatus from './components/Donate/AddDonateStatus';
 import { Link } from 'react-router-dom';
-import { ADMIN_EDIT_RANKS } from '../utils/consts';
+import { ADMIN_ADD_RANK, ADMIN_EDIT_RANKS } from '../utils/consts';
+import st from './Admin.module.scss';
 
 const AdminPage = () => {
   const { store } = useContext(Context);
@@ -15,8 +15,10 @@ const AdminPage = () => {
       <WrapperComponent>
           <h2>{store.user.nickname}, Ты теперь читер! :D</h2>
           <GetUsers />
-          <AddDonateStatus />
-          <Link to={ADMIN_EDIT_RANKS}>Изменить Ранги!</Link>
+          <ul className={st.listUrls}>
+            <li><Link to={ADMIN_ADD_RANK} className={st.buttonAdminPage}>Добавить новый Ранг!</Link></li>
+            <li><Link to={ADMIN_EDIT_RANKS} className={st.buttonAdminPage}>Изменить Ранги!</Link></li>
+          </ul>
       </WrapperComponent>
   )
 }

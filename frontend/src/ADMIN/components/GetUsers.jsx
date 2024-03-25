@@ -1,5 +1,6 @@
 import React from 'react'
 import AdminService from '../../service/AdminService';
+import style from '../Admin.module.scss';
 
 const GetUsers = () => {
   const getUsers = async () => {
@@ -14,10 +15,10 @@ const GetUsers = () => {
   }
 
   return (
-    <>
-      <h2>Получить всех юзеров!</h2>
-      <button onClick={getUsers}>Получить всех!</button>
-    </>
+    <div className={style.getUsersContainer}>
+      <h2 className={style.getUsersTitle}>Получить всех юзеров!</h2>
+      <button className={style.getUsersButton} onClick={getUsers}>Получить всех!</button>
+    </div>
   )
 }
 

@@ -3,8 +3,10 @@ import st from '../../Admin.module.scss';
 import AdminService from '../../../service/AdminService';
 import DurationInput from './DurationInput';
 import PrivilegeInput from './PrivilegeInput';
+import { useNavigate } from 'react-router-dom';
 
 const AddDonateStatus = () => {
+  const navigate = useNavigate();
   const fileInput = createRef();
 
   const [id, setId] = useState('');
@@ -166,6 +168,9 @@ const AddDonateStatus = () => {
           
           <button type="submit" className={st.submitBtn}>Добавить</button>
         </form>
+      </div>
+      <div className={st.goBack}>
+        <button onClick={() => navigate(-1)} className={st.goBackBtn}>Назад</button>
       </div>
     </>
   );

@@ -20,7 +20,7 @@ class MailService {
       await this.transporter.sendMail({
         from: process.env.SMTP_USER,
         to,
-        subject: 'Активация аккаунта на сайте ' + process.env.API_URL,
+        subject: 'Активация аккаунта на сайте ' + process.env.API_URL, //! Нужен фикс
         text: 'Пожалуйста, активируйте ваш аккаунт, перейдя по ссылке: ' + link
       });
     } catch (error) {

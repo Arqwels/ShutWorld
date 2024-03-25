@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import AdminService from '../../../../service/AdminService';
 import '../../../../index.scss';
 
-import st from '../../../Admin.module.scss';
+import st from './EditRank.module.scss';
 
 const SinglEditRank = () => {
   const { idRank } = useParams();
@@ -103,81 +103,91 @@ const SinglEditRank = () => {
 
   return (
     <WrapperComponent>
-      <div>Изменение ранга - {idRank}</div>
+      <div className={st.title}>Изменение ранга - {idRank}</div>
       <form action="#" onSubmit={formSubmit} className={st.editForm}>
-        <label>ID:</label>
+        <label className={st.label}>ID:</label>
         <input 
           type="text"
           value={rankId}
           onChange={handleRankIdChange}
+          className={st.input}
         />
-        <label>Rank name:</label>
+        <label className={st.label}>Rank name:</label>
         <input 
           type="text"
           value={rankName}
           onChange={(e) => setRankName(e.target.value)}
+          className={st.input}
         />
-        <label>Rank description:</label>
+        <label className={st.label}>Rank description:</label>
         <textarea 
           rows='5'
           value={rankDescription}
           onChange={(e) => setRankDescription(e.target.value)}
+          className={st.textarea}
         />
 
+        <div className={st.durationWrap}>
         {rankDurationDonates.map(durationDonate => (
-          <div key={durationDonate.id}>
-            <label>Duration:</label>
+          <div key={durationDonate.id} className={st.singlDurationWrap}>
+            <label className={st.label} title='Длительность статуса в цифровом виде (2592000)&#10;Главное что бы были цифрами!'>Duration:</label>
             <input 
               type="text" 
               value={durationDonate.duration}
               onChange={(e) => handleDurationChange(e, durationDonate.id)}
+              className={st.input}
             />
             
-            <label>Label Duration:</label>
+            <label className={st.label} title='Длительность статуса в текстовом виде (1 месяц)'>Label Duration:</label>
             <input 
               type="text" 
               value={durationDonate.labelDuration}
               onChange={(e) => handleLabelDurationChange(e, durationDonate.id)}
+              className={st.input}
             />
             
-            <label>Price:</label>
+            <label className={st.label} title='Прайс статуса в цифровом виде (299)'>Price:</label>
             <input 
               type="text" 
               value={durationDonate.price}
               onChange={(e) => handlePriceChange(e, durationDonate.id)}
+              className={st.input}
             />
             
-            <label>RankId:</label>
+            <label className={st.label} title='Обязательно должны сходится с ID'>RankId:</label>
             <input 
               type="text" 
               value={durationDonate.rankId}
               onChange={(e) => handleRankIdChange(e, durationDonate.id)}
+              className={st.input}
             />
           </div>
         ))}
-
-        <button type='submit'>Отправить</button>
+        </div>
+  
+        <button type='submit' className={st.submitEdit}>Отправить</button>
       </form>
       <br />
-      <ul className='klklasd'>
-        <li>
-          ID: {rankData.id || ''}<br />
-          Rank name: {rankData.name || ''}<br />
-          Rank description: {rankData.description || ''}<br />
-          <ul>
+      <ul className={st.list}>
+        <li className={st.listItem}>
+          <span className={st.listItemTitle}>ID:</span> {rankData.id || ''}<br />
+          <span className={st.listItemTitle}>Rank name:</span> {rankData.name || ''}<br />
+          <span className={st.listItemTitle}>Rank description:</span> {rankData.description || ''}<br />
+          <ul className={st.subList}>
             {rankData["duration-donates"] && rankData["duration-donates"].map(durationDonate => (
-              <li key={durationDonate.id}>
+              <li key={durationDonate.id} className={st.subListItem}>
                 {durationDonate.duration} - {durationDonate.labelDuration} - {durationDonate.price} - {durationDonate.rankId}
               </li>
             ))}
           </ul>
         </li>
       </ul>
+
       <div className={st.goBack}>
         <button onClick={() => navigate(-1)} className={st.goBackBtn}>Назад</button>
       </div>
     </WrapperComponent>
-  );
+  );  
 }
 
 export default SinglEditRank;

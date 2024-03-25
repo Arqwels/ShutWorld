@@ -9,13 +9,13 @@ class imagesService {
       const fileExtension = originalname.substring(originalname.lastIndexOf('.')).toLowerCase();
 
       if (!allowedExtensions.includes(fileExtension)) {
-        return {message: 'Расширение файла не подходит!'};
+        return { status: false, message: 'Расширение файла не подходит!'};
       }
       
-      await Image.create({ filename: originalname, data: buffer });
+      return await Image.create({ filename: originalname, data: buffer });
     } catch (error) {
       console.error(error);
-      return { message: 'Ошибка при загрузки файла' };
+      return { status: false, message: 'Ошибка при загрузки файла' };
     }
   };
   
