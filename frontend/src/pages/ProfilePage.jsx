@@ -1,10 +1,10 @@
-import Welcome from '../components/Profile/Welcome';
+import ProfileWrapper from '../components/Profile/ProfileWrapper';
 import WrapperComponent from './WrapperComponent';
 
 const ProfilePage = () => {
   return (
     <WrapperComponent>
-      <Welcome />
+      <ProfileWrapper />
     </WrapperComponent>
   )
 }
