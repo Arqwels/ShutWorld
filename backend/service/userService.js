@@ -74,6 +74,25 @@ class UserService {
       console.log(error);
     }
   }
+
+  async checkPassword(oldPassword, newPassword, userId) {
+    const user = await User.findOne({ where: { id: userId } } )
+
+    const isPassEquals = await bcrypt.compare(oldPassword, user.password);
+    if (!isPassEquals) {
+      throw ApiError.BadRequest('Неверный пароль!', 'old-password');
+    }
+
+    const isSamePassword = await bcrypt.compare(newPassword, user.password);
+    if (isSamePassword) {
+      throw ApiError.BadRequest('Новый пароль совпадает со старым', 'new-password');
+    }
+  }
+
+  async changePassword(password, userId) {
+    const hashPassword = await bcrypt.hash(password, 7)
+    await User.update({ password: hashPassword }, { where: { id: userId } });
+  }
 }
 
 module.exports = new UserService();

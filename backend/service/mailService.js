@@ -18,9 +18,9 @@ class MailService {
   async sendActivationMail(to, link) {
     try {
       await this.transporter.sendMail({
-        from: process.env.SMTP_USER,
+        from: '"ShutWorld" <notifications@shutworld.ru>',
         to,
-        subject: 'Активация аккаунта на сайте ' + process.env.API_URL, //! Нужен фикс
+        subject: 'Активация аккаунта на сайте ' + process.env.PROJECT_NAME,
         text: 'Пожалуйста, активируйте ваш аккаунт, перейдя по ссылке: ' + link
       });
     } catch (error) {

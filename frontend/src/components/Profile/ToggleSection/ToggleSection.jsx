@@ -5,7 +5,7 @@ import TogglePassword from './TogglePassword';
 import ToggleOrdersHistory from './ToggleOrdersHistory';
 
 
-const ToggleSection = ({ image, altImage, bodyText, emailText, emailSubmit, passwordSubmit, ordersHistory }) => {
+const ToggleSection = ({ image, altImage, bodyText, emailText, emailSubmit, btnState, passwordSubmit, error, ordersHistory }) => {
   const [ active, setActive ] = useState(false);
 
   return (
@@ -25,11 +25,11 @@ const ToggleSection = ({ image, altImage, bodyText, emailText, emailSubmit, pass
           {emailSubmit && (
             <div className={style.dropDownListMail}>
               {emailText}
-              <button className={style.btn} onClick={emailSubmit}>Отправить</button>
+              <button className={style.btn} onClick={emailSubmit} disabled={btnState}>Отправить</button>
             </div>
           )}
           {passwordSubmit && (
-            <TogglePassword functionSubmit={passwordSubmit}/>
+            <TogglePassword functionSubmit={passwordSubmit} error={error}/>
           )}
           {ordersHistory && (
             <ToggleOrdersHistory data={ordersHistory} />

@@ -131,13 +131,19 @@
   font-weight: bold;
 
   color: #FFF;
-  background-color: rgb(0, 168, 65);
+  background-color: #E83CCE;
 
   padding: 4px 16px;
 
-  &:hover {
-    background-color: darken(rgb(0, 168, 65), 10%);
+  &:hover:not(:disabled) {
+    background-color: darken(#E83CCE, 10%);
   }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: auto;
+  }
+
   @media screen and (max-width: 479px) {
     font-size: 14px;
   }
@@ -201,7 +207,8 @@
     }
   }
 
-  & input[type="password"] {
+  & input[type="password"], input[type="text"] {
+    width: 100%;
     padding: 6px 12px;
     margin-bottom: 26px;
     outline: none;
@@ -211,14 +218,11 @@
     }
   }
 
-  & input[type="submit"] {
+  & button {
     width: 20%;
     border: none;
     cursor: pointer;
     padding: 8px 16px;
-    &:disabled {
-      cursor: not-allowed;
-    }
     @media screen and (max-width: 767px) {
       width: 50%;
     }
@@ -230,6 +234,20 @@
   @media screen and (max-width: 479px) {
     padding: 16px;
   }
+}
+
+.passwordInput {
+  position: relative;
+}
+
+.togglePasswordIcon {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  padding: 4px;
+  top: 9%;
+  right: 1%;
+  cursor: pointer;
 }
 
 .inputContainer {
