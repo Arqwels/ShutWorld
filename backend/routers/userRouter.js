@@ -2,6 +2,7 @@ const Router = require('express')
 const router = new Router()
 const userController = require('../controllers/userController')
 const {body} = require('express-validator');
+const authMiddleware = require('../middleware/authMiddleware');
 
 // http://localhost:5000/api/user/registration
 router.post('/registration',
@@ -22,7 +23,19 @@ router.post('/login',
 router.post('/logout', userController.logout)
 
 // Для перезаписи access токена если он умер ( refresh отправляем и получаем access и refresh )
-// http://localgost:5000/api/user/refresh
+// http://localhost:5000/api/user/refresh
 router.get('/refresh', userController.refresh)
+
+// http://localhost:5000/api/user/get-mail-message
+router.get('/get-mail-message', authMiddleware, userController.sendMailMessage);
+
+// http://localhost:5000/api/user/change-password
+router.post('/change-password', 
+  body('oldPassword').isLength({min: 6}),
+  body('newPassword').isLength({min: 6}),
+  body('repeatedNewPassword').isLength({min: 6}),
+  authMiddleware, 
+  userController.changePassword
+);
 
 module.exports = router;

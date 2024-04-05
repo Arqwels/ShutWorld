@@ -3,7 +3,7 @@ export const donate = {
     name: "Гладиатор",
     duration: [
       {
-        duration: 2592000, // 30д = 2592000s = 2592000000ticks 
+        duration: 2592000, // 30д = 2592000s = 2 592 000 000ticks 
         labelDuration: "1 месяц",
         price: 100, // 109
         labelPrice: "100₽"
@@ -82,19 +82,19 @@ export const donate = {
     name: "Вождь",
     duration: [
       {
-        duration: 2592000, // 30д = 2592000s = 2592000000ticks 
+        duration: 2592000, // 30д = 2592000s = 51 840 000 ticks 
         labelDuration: "1 месяц",
         price: 240, // 279
         labelPrice: "240₽"
       },
       {
-        duration: 452592000, // 60д = ....
+        duration: 452592000, // 90д = 7 7776 000s = 155 520 000
         labelDuration: "2 месяца",
         price: 480, // 837
         labelPrice: "480₽"
       },
       {
-        duration: 99999999999, // Навсегда
+        duration: 99999999999, // Навсегда = 999 999 999 999
         labelDuration: "Навсегда",
         price: 1480, // 4980
         labelPrice: "1480₽"

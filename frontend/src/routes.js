@@ -1,4 +1,4 @@
-import { ADMIN_EDIT_RANKS, ADMIN_ROUTE, ADMIN_SINGLE_EDIT_RANK, AUTHORIZATION_ROUTE, LOGIN_ROUTE, MAIN_ROUTE, PLAY_ROUTE, PROFILE_ROUTE, PUBLIC_OFFER_ROUTE, RULES_ROUTE, SHOP_ROUTE, USER_AGREEMENT_ROUTE } from "./utils/consts";
+import { ADMIN_ADD_RANK, ADMIN_EDIT_RANKS, ADMIN_ROUTE, ADMIN_SINGLE_EDIT_RANK, AUTHORIZATION_ROUTE, LOGIN_ROUTE, MAIN_ROUTE, PLAY_ROUTE, PROFILE_ROUTE, PUBLIC_OFFER_ROUTE, RULES_ROUTE, SHOP_ROUTE, USER_AGREEMENT_ROUTE } from "./utils/consts";
 import HomePage from "./pages/HomePage";
 import HowPlay from "./pages/HowPlayPage";
 import LoginPage from "./pages/LoginPage";
@@ -11,6 +11,7 @@ import mUserAgreementPage from "./pages/mUserAgreementPage";
 import AdminPage from "./ADMIN/AdminPage";
 import EditerRanksPage from "./ADMIN/EditerRanks.Page";
 import SinglEditRank from "./ADMIN/components/Donate/Editor/SinglEditRank";
+import AddDonateStatus from "./ADMIN/components/Donate/AddDonateStatus";
 
 export const authRoutes = [
   {
@@ -23,6 +24,10 @@ export const adminRouters = [
   {
     path: ADMIN_ROUTE,
     Component: AdminPage
+  },
+  {
+    path: ADMIN_ADD_RANK,
+    Component: AddDonateStatus
   },
   {
     path: ADMIN_EDIT_RANKS,

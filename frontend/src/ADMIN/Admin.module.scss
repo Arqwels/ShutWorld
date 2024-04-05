@@ -173,3 +173,47 @@
     }
   }
 }
+
+.getUsersContainer {
+  margin-block: 25px;
+}
+
+.getUsersTitle {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.getUsersButton {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.getUsersButton:hover {
+  background-color: #0056b3;
+}
+
+
+
+.listUrls {
+  list-style: none;
+  padding: 0;
+}
+
+.buttonAdminPage {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-block: 5px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.buttonAdminPage:hover {
+  background-color: #0056b3;
+}

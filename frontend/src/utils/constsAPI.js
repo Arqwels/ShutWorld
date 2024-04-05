@@ -6,6 +6,10 @@ export const API_ENDPOINTS = {
   CHECK_COUPON: 'api/coupon/check-coupon',
   CREATE_ORDER_DONATE: 'api/order/create-order-donate',
 
+  // USER
+  GET_MAIL_MESSAGE: '/api/user/get-mail-message',
+  CHANGE_PASSWORD: '/api/user/change-password',
+
   // ADMINS
   GET_USERS: 'api/admin/get-users',
   POST_ADDRANK: 'api/admin/add-rank',

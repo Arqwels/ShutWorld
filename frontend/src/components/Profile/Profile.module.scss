@@ -1,0 +1,274 @@
+
+.wrapper {
+  padding: 60px 140px;
+  @media screen and (max-width: 1199px) {
+    padding: 50px 80px;
+  }
+  @media screen and (max-width: 991px) {
+    padding: 40px;
+  }
+  @media screen and (max-width: 767px) {
+    padding: 10px;
+  }
+  @media screen and (max-width: 479px) {
+    padding: 10px 0px;
+  }
+}
+// HeroProfile
+.containerHero {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+  grid-auto-flow: column;
+  
+  color: #333;
+  @media screen and (max-width: 1199px) {
+    grid-template-columns: auto;
+    grid-auto-flow: row;
+  }
+}
+
+.titleHero {
+  margin-block: 25px;
+  font-size: 26px;
+  @media screen and (max-width: 767px) {
+    margin-block: 16px;
+    font-size: 22px;
+  }
+}
+
+.textHero {
+  font-size: 18px;
+  @media screen and (max-width: 767px) {
+    font-size: 14px;
+  }
+}
+
+.ImageHero {
+  width: 90%;
+  grid-row: span 3;
+  @media screen and (max-width: 1199px) {
+    display: none;
+  }
+}
+
+
+// ToggleSection
+.toggleSection {
+  width: 100%;
+  padding: 12px 32px;
+  outline: none;
+  border: 1px solid #eaeaea;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  display: flex;
+  align-items: center;
+
+  margin-top: 32px;
+
+  &:focus-visible {
+    border-color: #D8BFD8;
+  }
+
+  @media screen and (max-width: 767px) {
+    padding: 8px 16px;
+    margin-top: 16px;
+  }
+  @media screen and (max-width: 479px) {
+    font-size: 14px;
+  }
+}
+
+.sectionImage {
+  width: 28px;
+  height: 28px;
+  margin-right: 24px;
+  @media screen and (max-width: 479px) {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+  }
+}
+
+.toggleMark {
+  width: 20px;
+  margin-left: auto;
+  @media screen and (max-width: 479px) {
+    width: 14px;
+  }
+}
+
+
+
+.dropDownList {
+  width: 100%;
+  height: auto;
+  min-height: 100px;
+}
+
+.dropDownListMail {
+  text-align: center;
+  
+  padding: 32px 0;
+
+  border: 1px solid #eaeaea;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  > button {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 12px;
+  }
+  @media screen and (max-width: 479px) {
+    padding: 26px 0;
+    font-size: 14px;
+  }
+}
+
+.btn {
+  font-size: 16px;
+  font-weight: bold;
+
+  color: #FFF;
+  background-color: #E83CCE;
+
+  padding: 4px 16px;
+
+  &:hover:not(:disabled) {
+    background-color: darken(#E83CCE, 10%);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: auto;
+  }
+
+  @media screen and (max-width: 479px) {
+    font-size: 14px;
+  }
+}
+
+
+
+.ordersHistoryWrapper {
+  padding: 6px;
+  border: 1px solid #eaeaea;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  @media screen and (max-width: 767px) {
+    overflow-x: hidden;
+  }
+}
+
+.ordersHistory {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.underLine {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.07);
+
+  td {
+    padding-block: 18px;
+    @media screen and (max-width: 767px) {
+      padding: 10px 5px;
+      border: none;
+      text-align: left;
+    }
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  @media screen and (max-width: 767px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+
+// TogglePassword.jsx
+.fromPassword {
+  display: flex;
+  flex-direction: column;
+
+  padding: 32px;
+
+  border: 1px solid #eaeaea;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  & label {
+    font-size: 18px;
+    margin-bottom: 6px;
+    @media screen and (max-width: 479px) {
+      font-size: 12px;
+    }
+  }
+
+  & input[type="password"], input[type="text"] {
+    width: 100%;
+    padding: 6px 12px;
+    margin-bottom: 26px;
+    outline: none;
+    border: 2px solid #000;
+    &:focus {
+      border-color: #963FF2;
+    }
+  }
+
+  & button {
+    width: 20%;
+    border: none;
+    cursor: pointer;
+    padding: 8px 16px;
+    @media screen and (max-width: 767px) {
+      width: 50%;
+    }
+    @media screen and (max-width: 479px) {
+      width: 100%;
+      font-size: 14px;
+    }
+  }
+  @media screen and (max-width: 479px) {
+    padding: 16px;
+  }
+}
+
+.passwordInput {
+  position: relative;
+}
+
+.togglePasswordIcon {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  padding: 4px;
+  top: 9%;
+  right: 1%;
+  cursor: pointer;
+}
+
+.inputContainer {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
+}
+
+.error {
+  position: absolute;
+  right: 0;
+  color: #FFF;
+  background-color: #F23F3F;
+  padding: 3px 6px;
+  font-size: 14px;
+  @media screen and (max-width: 479px) {
+    padding: 2px 6px;
+    font-size: 10px;
+  }
+}

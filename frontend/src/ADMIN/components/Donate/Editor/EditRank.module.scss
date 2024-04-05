@@ -1,0 +1,117 @@
+
+.title {
+  font-size: 28px;
+  text-align: center;
+  margin-block: 60px 40px;
+}
+
+.editForm {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 20px;
+  margin-inline: 160px;
+  background-color: rgba($color: #969696, $alpha: 0.12);
+  border: 2px solid #c4c4c4;
+  border-radius: 12px;
+}
+
+.label {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 10px;
+  &:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+}
+
+.textarea {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  &:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+}
+
+.durationWrap {
+  display: flex;
+  gap: 12px;
+}
+
+.singlDurationWrap {
+  background-color: rgba($color: #969696, $alpha: 0.12);
+  border: 2px solid #c4c4c4;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.submitEdit {
+  width: 40%;
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 16px auto 0;
+
+  &:hover {
+    background-color: #218838;
+  }
+}
+
+.goBack {
+  text-align: center;
+  margin-block: 20px 40px;
+  .goBackBtn {
+    background-color: #2196f3;
+    color: white;
+    padding: 12px 32px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    &:hover {
+      background-color: #0d47a1;
+    }
+  }
+}
+
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.listItem {
+  margin-bottom: 20px;
+}
+
+.listItemTitle {
+  font-weight: bold;
+  color: #333;
+}
+
+.subList {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.subListItem {
+  margin-bottom: 5px;
+}
