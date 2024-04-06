@@ -136,6 +136,23 @@ class UserController {
       next(error)
     }
   }
+
+  async gettingOrderHistory(req, res, next) {
+    try {
+      const userNickname = req.user.nickname;
+
+      const findUser = await User.findOne({ where: { nickname: userNickname } } )
+      if (!findUser) {
+        return res.status(400).json({ status: false, message: "Пользователь не найден!" })
+      }
+
+      const result = await userService.gettingOrderHistory(userNickname);
+
+      return res.status(200).json({ status: true, result})
+    } catch (error) {
+      next(error)
+    }
+  }
 }
 
 module.exports = new UserController();

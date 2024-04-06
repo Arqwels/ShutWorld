@@ -4,8 +4,7 @@ import IconMark from '../../../assets/images/icons/chevron-right-small.svg';
 import TogglePassword from './TogglePassword';
 import ToggleOrdersHistory from './ToggleOrdersHistory';
 
-
-const ToggleSection = ({ image, altImage, bodyText, emailText, emailSubmit, btnState, passwordSubmit, error, ordersHistory }) => {
+const ToggleSection = ({ image, altImage, bodyText, emailText, emailSubmit, btnState, passwordToggle, ordersHistoryToggle }) => {
   const [ active, setActive ] = useState(false);
 
   return (
@@ -28,11 +27,11 @@ const ToggleSection = ({ image, altImage, bodyText, emailText, emailSubmit, btnS
               <button className={style.btn} onClick={emailSubmit} disabled={btnState}>Отправить</button>
             </div>
           )}
-          {passwordSubmit && (
-            <TogglePassword functionSubmit={passwordSubmit} error={error}/>
+          {passwordToggle && (
+            <TogglePassword />
           )}
-          {ordersHistory && (
-            <ToggleOrdersHistory data={ordersHistory} />
+          {ordersHistoryToggle && (
+            <ToggleOrdersHistory />
           )}
         </div>
       )}

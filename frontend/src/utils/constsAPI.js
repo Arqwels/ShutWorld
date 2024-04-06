@@ -9,6 +9,7 @@ export const API_ENDPOINTS = {
   // USER
   GET_MAIL_MESSAGE: '/api/user/get-mail-message',
   CHANGE_PASSWORD: '/api/user/change-password',
+  GETTING_ORDER_HISTORY: '/api/user/getting-order-history',
 
   // ADMINS
   GET_USERS: 'api/admin/get-users',
