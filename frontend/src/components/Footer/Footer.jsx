@@ -3,8 +3,11 @@ import cubeFooter from '../../images/cube-footer.png';
 import style from './Footer.module.scss';
 import LinksMobile from './LinksMobile';
 import { LinksPages, LinksSocial } from './LinksItems';
+import { PROJECT_CREATION_DATE } from '../../utils/consts';
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear(); // Получаем текущий год
+  
   return (
   <footer>
     <div className="container">
@@ -35,7 +38,7 @@ const Footer = () => {
         <LinksMobile />
       </section>
       <div className={style.yearCreation}>
-        <h3>© 2022   SHUTWORLD</h3>
+        <h3>© {PROJECT_CREATION_DATE} - {currentYear}   SHUTWORLD</h3>
         <p>Проект ShutWorld не относится к Mojang Studios.</p>
       </div>
     </div>

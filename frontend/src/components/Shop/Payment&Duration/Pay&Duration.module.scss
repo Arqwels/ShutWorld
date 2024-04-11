@@ -18,12 +18,17 @@
 }
 
 .selectHeader {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border: 2px solid #000000;
   background-color: #FFFFFF;
   padding: 10px;
+  &:focus-visible {
+    border: 2px solid #963FF2;
+    outline: 0;
+  }
 }
 
 .selected {
@@ -54,6 +59,7 @@
 }
 
 .selectBodyItem {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,10 +67,13 @@
   border: 2px solid #000000;
   background-color: #FFFFFF;
   padding: 10px;
-}
-
-.selectBodyItem:hover {
-  background-color: #F4E7FF;
+  &:hover {
+    background-color: #F4E7FF;
+  }
+  &:focus-visible {
+    border: 2px solid #963FF2;
+    outline: 0;
+  }
 }
 
 .selectTextNormal {

@@ -20,7 +20,16 @@ export const DurationSelect = ({ donateStatus, onDurationSelect, selectStatus, r
       <label className={style.labelDurationText} htmlFor="duration">Длительность</label>
       {selectStatus && <span className={style.statusError}>{selectStatus}</span>}
       <div className={`${style.select} ${stateVisibl1 ? style.active : ''}`} style={{ zIndex: 10 }}>
-        <div className={`${style.selectHeader} ${selectedItem ? style.selected : ''} ${selectStatus ? style.statusErrorBorder : ''}`} onClick={()=> toggleDropdownVisible1()}>
+        <div 
+          className={`${style.selectHeader} ${selectedItem ? style.selected : ''} ${selectStatus ? style.statusErrorBorder : ''}`} 
+          onClick={()=> toggleDropdownVisible1()}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              toggleDropdownVisible1();
+            }
+          }}
+          tabIndex="0" // Делаем фокусируемым и доступным для навигации с клавиатуры
+        >
           <div className={style.selectTextNormal}>
             {selectedItem ? selectedItem.labelDuration : 'Выберите на сколько возьмёте'}
           </div>
@@ -31,7 +40,17 @@ export const DurationSelect = ({ donateStatus, onDurationSelect, selectStatus, r
         </div>
         <div className={style.selectBody + (stateVisibl1 ? ' ' + style.active : '')}>
           {Array.isArray(donateStatus['duration-donates']) && donateStatus['duration-donates'].map((item, index) => (
-            <div key={index} className={style.selectBodyItem} onClick={() => handleSelect(item)}>
+            <div 
+              key={index} 
+              className={style.selectBodyItem} 
+              onClick={() => handleSelect(item)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  handleSelect(item);
+                }
+              }}
+              tabIndex="0" // Делаем фокусируемым и доступным для навигации с клавиатуры
+            >
               <div className={style.selectTextNormal}>{item.labelDuration}</div>
               <div className={style.selectTextBold}>{item.price}₽</div>
             </div>

@@ -27,3 +27,8 @@ export const ADMIN_LOGIN_ROUTER = '/swadmin'
 export const ADMIN_ADD_RANK = '/add-rank';
 export const ADMIN_EDIT_RANKS = '/edit-ranks';
 export const ADMIN_SINGLE_EDIT_RANK = '/edit-rank/:idRank';
+
+
+// Разная информация
+
+export const PROJECT_CREATION_DATE = '2022';

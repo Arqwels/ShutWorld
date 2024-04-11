@@ -52,6 +52,8 @@ class Artifacts extends Component {
               onClose={() => this.closeModal(index)}
               descriptionTitle={artifacts[modal.index].name}
               descriptionText={artifacts[modal.index].description}
+              priceOnePiece={artifacts[modal.index].price}
+              maxCount={artifacts[modal.index].maxCount}
             />
           )
         })}

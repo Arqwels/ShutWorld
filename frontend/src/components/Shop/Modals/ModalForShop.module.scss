@@ -1,3 +1,12 @@
+// Обнуление стрелочек в input number
+input[type="number"] {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  appearance: none;
+  margin: 0;
+}
+//=====
+
 .modalWindow {
   width: 100%;
   max-width: 1200px;
@@ -82,7 +91,7 @@
   display: flex;
   flex-direction: column;
   > h2 {
-    color: #FFFFFF;
+    color: #FFF;
     font: 700 28px/32px 'Ubuntu', sans-serif;
     padding-bottom: 30px;
   }
@@ -92,6 +101,15 @@
     color: #000;
     font: 400 14px 'Ubuntu', sans-serif;
   }
+
+  .titlePrice {
+    padding: 16px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #000;
+    font: 400 18px 'Ubuntu', sans-serif;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  }
+
   @media screen and (max-width: 1400px) {
     padding-right: 60px;
   }
@@ -109,7 +127,7 @@
     display: none;
   }
   > h2 {
-    color: #FFFFFF;
+    color: #FFF;
     font: 700 28px/32px 'Ubuntu', sans-serif;
     padding-bottom: 20px;
     @media screen and (max-width: 450px) {
@@ -117,7 +135,7 @@
       padding-bottom: 12px;
     }
   }
-  > p {
+  > p, h3 {
     padding: 16px;
     background-color: rgba(255, 255, 255, 0.8);
     color: #000;
@@ -129,9 +147,16 @@
       margin-bottom: 12px;
     }
   }
+
+  > h3 {
+    margin-bottom: 0;
+    padding: 16px 16px 8px;
+    font: 400 18px/20px 'Ubuntu', sans-serif;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  }
 }
 
-.descTA > p {
+.descTA > p, h3 {
   font: 400 18px/20px 'Ubuntu', sans-serif;
 }
 
@@ -166,7 +191,7 @@
   display: flex;
   flex-direction: column;
   > h2 {
-    color: #FFFFFF;
+    color: #FFF;
     font: 700 28px/32px 'Ubuntu', sans-serif;
     padding-bottom: 30px;
     @media screen and (max-width: 450px) {
@@ -282,7 +307,7 @@
     height: 1em;
     flex-shrink: 0;
     flex-grow: 0;
-    border: 2px solid #000000;
+    border: 2px solid #000;
     margin-right: 0.5em;
     background-repeat: no-repeat;
     background-position: center center;
@@ -381,4 +406,41 @@
   bottom: 0%;
   padding: 5px;
   cursor: pointer;
+}
+
+
+
+
+.wrapperInput {
+  position: relative;
+}
+
+.btnMinus {
+  left: 0;
+  margin-left: 4px;
+}
+
+.btnPlus {
+  right: 0;
+  margin-right: 4px;
+}
+
+.btnMinus:active, .btnPlus:active {
+  transform: translateY(-50%) scale(0.5);
+}
+
+.button {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  &:focus-visible {
+    border: 2px solid #963FF2;
+    outline: 0;
+  }
 }
