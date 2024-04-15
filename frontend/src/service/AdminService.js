@@ -25,6 +25,13 @@ export default class AdminService {
       console.error(error);
     }
   }
+  static async addArtifact(data) {
+    try {
+      return await $api.post(API_ENDPOINTS.POST_ADDARTIFACT, data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   static async deleteRank(rankId) {
     try {

@@ -3,6 +3,7 @@ const router = new Router();
 const roleMiddleware = require('../middleware/roleMiddleware');
 const adminController = require('../controllers/admin/adminController');
 const ranksController = require('../controllers/admin/ranksController');
+const artifactController = require('../controllers/admin/artifactController');
 const multer = require('multer');
 
 const storage = multer.memoryStorage();
@@ -30,5 +31,10 @@ router.delete('/delete-rank/:rankId', roleMiddleware(["ADMIN"]), ranksController
 
 // http://localhost:5000/api/admin/update-rank
 router.put('/update-rank', roleMiddleware(["ADMIN"]), ranksController.updateRank);
+
+// Artifact
+
+// http://localhost:5000/api/admin/add-artifact
+router.post('/add-artifact', upload.single('photo'), roleMiddleware(["ADMIN"]), artifactController.addArtifact);
 
 module.exports = router;

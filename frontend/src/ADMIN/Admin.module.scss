@@ -217,3 +217,18 @@
 .buttonAdminPage:hover {
   background-color: #0056b3;
 }
+
+
+
+// AddArtifact
+.selectedImageContainer {
+  margin-block: 20px;
+  max-width: 300px;
+}
+
+.selectedImage {
+  width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
