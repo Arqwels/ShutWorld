@@ -119,11 +119,17 @@
   max-width: 360px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: 10px;
   border: 1px solid #ccc;
   background-color: #f8f8f8;
   li {
-    margin-bottom: 5px;
+    margin-bottom: 2px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #000;
+    &:last-child {
+      border-bottom: none;
+    }
   }
 }
 

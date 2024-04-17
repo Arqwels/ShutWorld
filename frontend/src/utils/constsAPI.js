@@ -3,6 +3,7 @@ export const API_ENDPOINTS = {
 
   GET_RANKS_DONATE: 'api/rank/get-ranks',
   GET_ALL_ARTIFACT: 'api/artifact/get-all-artifact',
+  GET_ONE_ARTIFACT: 'api/artifact/get-one-artifact',
   
   CHECK_COUPON: 'api/coupon/check-coupon',
   CREATE_ORDER_DONATE: 'api/order/create-order-donate',
@@ -20,4 +21,6 @@ export const API_ENDPOINTS = {
   UPDATE_RANK: 'api/admin/update-rank',
 
   POST_ADDARTIFACT: 'api/admin/add-artifact',
+  DELETE_ARTIFACT: 'api/admin/delete-artifact',
+  UPDATE_ARTIFACT: 'api/admin/update-artifact',
 };

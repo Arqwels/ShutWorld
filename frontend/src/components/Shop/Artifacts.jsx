@@ -2,7 +2,7 @@ import { Fragment, useEffect, useState } from "react"
 import { SERVER_URL, PRODUCTION_SERVER_URL } from "../../utils/env";
 import AbsentRank from "../../assets/images/ShopPage/absent-product.png";
 import st from "./ShopStyles.module.scss";
-import GetAllArtifactService from "../../service/ArtifactService";
+import ArtifactService from "../../service/ArtifactService";
 import ModalArtifact from "./Modals/ModalArtifactsShop";
 import SortCustomRadio from "./Inputs/SortCustomRadio";
 
@@ -46,7 +46,7 @@ const Artifact = () => {
   useEffect(() => {
     const fetchArtifact = async () => {
       try {
-        const response = await GetAllArtifactService.getAllArtifact();
+        const response = await ArtifactService.getAllArtifact();
         const sortedArtifacts = sortArtifacts(response.data, sortingStatus);
         setArtifacts(sortedArtifacts);
       } catch (error) {

@@ -84,8 +84,6 @@ const SinglEditRank = () => {
       console.log("-----------------------");
     });
 
-    e.preventDefault();
-
     const requestData = {
       rankId: rankId,
       name: rankName,
@@ -187,7 +185,7 @@ const SinglEditRank = () => {
         <button onClick={() => navigate(-1)} className={st.goBackBtn}>Назад</button>
       </div>
     </WrapperComponent>
-  );  
-}
+  );
+};
 
 export default SinglEditRank;

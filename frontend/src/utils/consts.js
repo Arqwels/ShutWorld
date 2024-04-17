@@ -25,6 +25,8 @@ export const ADMIN_ROUTE = '/admin';
 export const ADMIN_LOGIN_ROUTER = '/swadmin'
 
 export const ADMIN_ADD_ARTIFACT = '/add-artifact';
+export const ADMIN_EDIT_ARTIFACT = '/edit-artifact';
+export const ADMIN_SINGLE_EDIT_ARTIFACT = '/edit-artifact/:artifactId';
 
 export const ADMIN_ADD_RANK = '/add-rank';
 export const ADMIN_EDIT_RANKS = '/edit-ranks';

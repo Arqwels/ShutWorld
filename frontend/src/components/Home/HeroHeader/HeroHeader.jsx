@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import style from "./Hero.module.scss";
-import EndShip from "../../../images/endShip.svg";
+import EndShip from "../../../assets/images/Images/EndShip.png";
 import { IP_SERVER, PLAY_ROUTE } from "../../../utils/consts";
 import { toast } from "react-toastify";
 
