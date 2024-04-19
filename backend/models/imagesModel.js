@@ -1,6 +1,7 @@
 const sequelize = require('../db');
 const { DataTypes } = require('sequelize');
 const RankDonate = require('./Donate/ranksModel');
+const ArtifactDonate = require('./Donate/artifactModel');
 
 const Image = sequelize.define('image', {
   filename: {
@@ -15,6 +16,7 @@ const Image = sequelize.define('image', {
   timestamps: false
 });
 
+Image.hasMany(ArtifactDonate, { foreignKey: 'imageId' })
 Image.hasMany(RankDonate, { foreignKey: 'imageId' })
 
 module.exports = Image;

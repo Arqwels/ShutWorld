@@ -6,7 +6,6 @@ export default class UserService {
     try {
       return $api.get(API_ENDPOINTS.GET_MAIL_MESSAGE);
     } catch (error) {
-      console.log(4444);
       console.error(error);
     }
   }
@@ -15,7 +14,14 @@ export default class UserService {
     try {
       return $api.post(API_ENDPOINTS.CHANGE_PASSWORD, data);
     } catch (error) {
-      console.log(454545);
+      console.error(error);
+    }
+  }
+
+  static async gettingOrderHistory() {
+    try {
+      return $api.get(API_ENDPOINTS.GETTING_ORDER_HISTORY);
+    } catch (error) {
       console.error(error);
     }
   }

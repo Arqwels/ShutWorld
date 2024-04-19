@@ -5,6 +5,9 @@ const mailService = require('./mailService')
 const tokenService = require('./tokenService')
 const UserDto = require('../dtos/userDto')
 const ApiError = require('../error/api-error')
+const OrderRank = require('../models/Donate/orderRankModel')
+const OrderHistory = require('../dtos/orderHistoryDto')
+const RankDonate = require('../models/Donate/ranksModel')
 
 class UserService {
   async registration(nickname,email,password,useragreement) {
@@ -92,6 +95,50 @@ class UserService {
   async changePassword(password, userId) {
     const hashPassword = await bcrypt.hash(password, 7)
     await User.update({ password: hashPassword }, { where: { id: userId } });
+  }
+
+  async gettingOrderHistory(nickname) {
+    const data = await OrderRank.findAll({
+      where: { nickname: nickname }
+    });
+
+    if (!data || data.length === 0) {
+      throw new ApiError.BadRequest('Данных не найдено', 'missing data');
+    }
+
+    const orderHistoryDto = [];
+
+    for (const item of data) {
+      const productName = await this.getProductNameById(item.idDonate);
+      const orderHistoryItem = new OrderHistory({
+        id: item.id,
+        orderStatus: item.status,
+        nickname: item.nickname,
+        price: item.priceDonate,
+        paymentMethod: item.paymentMethodLabel,
+        productName: productName,
+        date: item.createdAt
+      });
+      orderHistoryDto.push(orderHistoryItem);
+    }
+    return orderHistoryDto;
+  }
+
+  async getProductNameById(productId) {
+    try {
+      const product = await RankDonate.findOne({
+        where: { id: productId }
+      });
+
+      if (!product) {
+        throw new Error('Продукт с указанным id не найден');
+      }
+
+      return product.name;
+    } catch (error) {
+      console.error('Ошибка при получении имени продукта:', error);
+      throw error;
+    }
   }
 }
 

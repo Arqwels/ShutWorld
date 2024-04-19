@@ -1,12 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
 import Portal from "../../Portal";
-import { Link } from "react-router-dom";
 import DurationSelect from "../Payment&Duration/DurationSelect";
 import PaymentMethod from "../Payment&Duration/PaymentMethod";
 import st from "./ModalForShop.module.scss";
 
-import LinkFormVK from "../../../assets/images/icons/link-formvk-icon.svg";
-import QuestionMark from "../../../assets/images/ShopPage/question-mark.svg";
 import CloseIcon from "../../../assets/images/icons/close-icon.svg";
 
 import ModalNicknameInput from "../Inputs/ModalNicknameInput";
@@ -14,7 +11,8 @@ import ModalCouponInput from "../Inputs/ModalCouponInput";
 import CheckCouponService from "../../../service/CheckCouponService";
 import CreateOrderService from "../../../service/CreateOrderService";
 import { toast } from "react-toastify";
-import { VK_LINK } from "../../../utils/consts";
+import ModalFormQuest from "../Inputs/ModalFormQuest";
+import ModalFormOffer from "../Inputs/ModalFormOffer";
 
 const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, privilegeText, onClose }) => {
   const [selectedDuration, setSelectedDuration] = useState(null);
@@ -297,25 +295,9 @@ const ModalDonate = ({ isOpen, donStatus, descriptionTitle, descriptionText, pri
                   resetMethodStatus={resetMethodStatus}
                 />
 
-                <div className={st.formQuest}>
-                  <img src={QuestionMark} alt="QuestionMark" />
-                  <div className={st.formQuestText}>
-                    <p>Произошла какая-то ошибка или не можете оплатить? Тогда сообщите нам, мы поможем.</p>
-                    <Link to={VK_LINK} target="_blank"><img src={LinkFormVK} alt="LinkFormVK" />vk.com/shutworld</Link>
-                  </div>
-                </div>
+                <ModalFormQuest />
 
-                <div className={st.formOffer}>
-                  <input 
-                    className={st.publicOffer} 
-                    type="checkbox" 
-                    name="publicOffer" 
-                    id="publicOffer" 
-                    required
-                    onChange={сheckboxChange}
-                  />
-                  <label htmlFor="publicOffer">Ознакомился с <Link to="#" target="_blank">публичной офертой</Link></label>
-                </div>
+                <ModalFormOffer onChange={сheckboxChange} />
 
                 <button onClick={submitForm} type="submit" className={st.btn} disabled={!statusForm}>{formText}</button>
               </form>

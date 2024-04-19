@@ -10,7 +10,6 @@ import IconPassword from '../../assets/images/icons/password-lock.svg';
 import IconMail from '../../assets/images/icons/mail-check.svg';
 import IconOrderHistory from '../../assets/images/icons/order-history.svg';
 
-import OrdersHistory from './ToggleSection/OrdersHistory.json'; // Импорт файла JSON
 import UserService from '../../service/UserService';
 import { toast } from "react-toastify";
 
@@ -49,49 +48,6 @@ const ProfileWrapper = () => {
       }, 60000);
     }
   }
-
-  const [ passwordError, setPasswordError ]= useState('');
-  const passwordChange = async (oldPassword, newPassword, repeatedNewPassword) => {
-    console.log("Старый пароль:", oldPassword);
-    console.log("Новый пароль:", newPassword);
-    console.log("Повторенный новый пароль:", repeatedNewPassword);
-
-    // Проверка на схожесть newPassword и repeatedNewPassword
-    if (newPassword !== repeatedNewPassword) {
-      if (notificationShown) {
-        return;
-      }
-      console.error("Новый пароль и повторенный новый пароль не совпадают.");
-      toast.error("Новый пароль и повторенный новый пароль не совпадают.", {
-        autoClose: 2000,
-        onClose: () => setNotificationShown(false)
-      });
-      setNotificationShown(true);
-      return;
-    }
-
-    try {
-      const result = await UserService.changePassword({oldPassword, newPassword, repeatedNewPassword});
-      if (result.data.status) {
-        toast.success(result.data.message, {autoClose: 2000})
-      }
-    } catch (error) {
-
-      console.log(error.response.data.errors);
-      if (error.response.data) {
-        if (error.response?.data?.errors === 'old-password') {
-          toast.error (error.response?.data?.message, {autoClose: 2000})
-          return;
-        } else if (error.response?.data?.errors === 'new-password') {
-          toast.error (error.response?.data?.message, {autoClose: 2000})
-          return;
-        }
-        setPasswordError(error.response?.data?.message)
-      }
-      console.log(error);
-    }
-  }
-  
   
   return (
     <div className={style.wrapper}>
@@ -111,15 +67,14 @@ const ProfileWrapper = () => {
         image={IconPassword} 
         altImage={"Icon password"}
         bodyText={"Изменить пароль"}
-        passwordSubmit={passwordChange}
-        error={passwordError}
+        passwordToggle
       />
       
       <ToggleSection 
         image={IconOrderHistory} 
         altImage={"Icon order history"}
         bodyText={"Получить историю заказов"}
-        ordersHistory={OrdersHistory}
+        ordersHistoryToggle
       />
     </div>
   );

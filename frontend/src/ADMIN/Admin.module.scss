@@ -119,11 +119,17 @@
   max-width: 360px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: 10px;
   border: 1px solid #ccc;
   background-color: #f8f8f8;
   li {
-    margin-bottom: 5px;
+    margin-bottom: 2px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #000;
+    &:last-child {
+      border-bottom: none;
+    }
   }
 }
 
@@ -216,4 +222,19 @@
 
 .buttonAdminPage:hover {
   background-color: #0056b3;
+}
+
+
+
+// AddArtifact
+.selectedImageContainer {
+  margin-block: 20px;
+  max-width: 300px;
+}
+
+.selectedImage {
+  width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }

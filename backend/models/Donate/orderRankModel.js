@@ -27,7 +27,7 @@ const OrderRank = sequelize.define('order-donate', {
     defaultValue: null
   },
   priceDonate: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.FLOAT,
     allowNull: false
   },
   orderDurationId: {

@@ -6,7 +6,7 @@ import UserService from '../../../service/UserService';
 import EyeOn from '../../../assets/images/icons/eye-fill.svg';
 import EyeOff from '../../../assets/images/icons/eye-off-fill.svg';
 
-const TogglePassword = ({functionSubmit, error}) => {
+const TogglePassword = () => {
   const [ oldPassword, setOldPassword ] = useState('');
   const [ newPassword, setNewPassword ] = useState('');
   const [ repeatedNewPassword, setRepeatedNewPassword ] = useState('');

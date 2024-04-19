@@ -38,4 +38,7 @@ router.post('/change-password',
   userController.changePassword
 );
 
+// http://localhost:5000/api/user/getting-order-history
+router.get('/getting-order-history', authMiddleware, userController.gettingOrderHistory);
+
 module.exports = router;

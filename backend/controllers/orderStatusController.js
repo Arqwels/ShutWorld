@@ -4,7 +4,7 @@ const OrderRank = require('../models/Donate/orderRankModel');
 const User = require('../models/userModel');
 
 class orderStatusController {
-  async createOrderStatus (req, res) {
+  async createOrderStatus (req, res, next) {
     try {
       const { nickname, couponInfo, priceDonate, selectedDuration, selectedPaymentMethod, isAgreed, idDonate, weightDonate } = req.body;
 
@@ -108,7 +108,6 @@ class orderStatusController {
       //! Придумать что-то 
       res.status(200).json({ status: true, message: 'Оплатили!'})
     } catch (error) {
-      console.log(error);
       next(error);
     }
   }

@@ -20,7 +20,16 @@ export const PaymentMethod = ({ onSelectPaymentMethod, selectStatus, resetMethod
       <label className={style.labelDurationText} htmlFor="payMethod">Способ оплаты</label>
       {selectStatus && <span className={style.statusError}>{selectStatus}</span>}
       <div className={`${style.select} ${stateVisibl2 ? '' : style.active}`} style={{ zIndex: 9 }}>
-        <div className={`${style.selectHeader} ${selectedMethod ? style.selected : ''} ${selectStatus ? style.statusErrorBorder : ''}`} onClick={()=> toggleDropdownVisible2()}>
+        <div 
+          className={`${style.selectHeader} ${selectedMethod ? style.selected : ''} ${selectStatus ? style.statusErrorBorder : ''}`} 
+          onClick={()=> toggleDropdownVisible2()} 
+          tabIndex="0" // делаем фокусируемым
+          onKeyDown={(e) => { // обрабатываем нажатие клавиш
+            if (e.key === 'Enter' || e.key === ' ') {
+              toggleDropdownVisible2();
+            }
+          }}
+        >
           <div className={style.selectTextNormal}>
             {selectedMethod ? selectedMethod.label : 'Выберите способ оплаты'}
           </div>
@@ -30,15 +39,42 @@ export const PaymentMethod = ({ onSelectPaymentMethod, selectStatus, resetMethod
           <img src={SelectIcon} alt="SelectIcon" className={`${style.selectIcon} ${stateVisibl2 ? style.activeIcon : ''}`} />
         </div>
         <div className={style.selectBody + (stateVisibl2 ? ' ' + style.active : '')}>
-          <div className={style.selectBodyItem} onClick={() => handleSelect({ label: 'QIWI', price: 'Комиссия 3%' })}>
+          <div 
+            className={style.selectBodyItem} 
+            onClick={() => handleSelect({ label: 'QIWI', price: 'Комиссия 3%' })}
+            tabIndex="0" // делаем фокусируемым
+            onKeyDown={(e) => { // обрабатываем нажатие клавиш
+              if (e.key === 'Enter' || e.key === ' ') {
+                handleSelect({ label: 'QIWI', price: 'Комиссия 3%' });
+              }
+            }}
+          >
             <div className={style.selectTextNormal}>QIWI</div>
             <div className={style.selectTextBold}>Комиссия 3%</div>
           </div>
-          <div className={style.selectBodyItem} onClick={() => handleSelect({ label: 'Банковская карта', price: 'Комиссия 0%' })}>
+          <div 
+            className={style.selectBodyItem} 
+            onClick={() => handleSelect({ label: 'Банковская карта', price: 'Комиссия 0%' })}
+            tabIndex="0" // делаем фокусируемым
+            onKeyDown={(e) => { // обрабатываем нажатие клавиш
+              if (e.key === 'Enter' || e.key === ' ') {
+                handleSelect({ label: 'Банковская карта', price: 'Комиссия 0%' });
+              }
+            }}
+          >
             <div className={style.selectTextNormal}>Банковская карта</div>
             <div className={style.selectTextBold}>Комиссия 0%</div>
           </div>
-          <div className={style.selectBodyItem} onClick={() => handleSelect({ label: 'Bitcoin', price: 'Комиссия 5%' })}>
+          <div 
+            className={style.selectBodyItem} 
+            onClick={() => handleSelect({ label: 'Bitcoin', price: 'Комиссия 5%' })}
+            tabIndex="0" // делаем фокусируемым
+            onKeyDown={(e) => { // обрабатываем нажатие клавиш
+              if (e.key === 'Enter' || e.key === ' ') {
+                handleSelect({ label: 'Bitcoin', price: 'Комиссия 5%' });
+              }
+            }}
+          >
             <div className={style.selectTextNormal}>Bitcoin</div>
             <div className={style.selectTextBold}>Комиссия 5%</div>
           </div>
@@ -48,4 +84,4 @@ export const PaymentMethod = ({ onSelectPaymentMethod, selectStatus, resetMethod
   );
 };
 
-export default observer( PaymentMethod );
+export default observer(PaymentMethod);
