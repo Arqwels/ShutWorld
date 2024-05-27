@@ -11,8 +11,10 @@ import ModalCountInput from "../Inputs/ModalCountInput";
 import CheckCouponService from "../../../service/CheckCouponService";
 import ModalFormQuest from "../Inputs/ModalFormQuest";
 import ModalFormOffer from "../Inputs/ModalFormOffer";
+import CreateOrderService from "../../../service/CreateOrderService";
+import { toast } from "react-toastify";
 
-const ModalArtifact = ({ isOpen, onClose, descriptionTitle, descriptionText, priceOnePiece, maxCount }) => {
+const ModalArtifact = ({ isOpen, descriptionTitle, descriptionText, priceOnePiece, maxCount, idArtifact, idName, onClose }) => {
   const [ textForm, setTextForm ] = useState('Данные не заполнены!');
   const [ statusForm, setStatusForm ] = useState(false);
   const [ finalPrice, setFinalPrice ] = useState(priceOnePiece);
@@ -182,21 +184,22 @@ const ModalArtifact = ({ isOpen, onClose, descriptionTitle, descriptionText, pri
 
     console.log(2234234234);
 
-    if (count < 1 || count > maxCount) {
-      setCountError(`Введите значение от 1 до ${maxCount}`)
-    }
-
-    let priceDonate = 0;
+    console.log(idArtifact);
+    console.log(idName);
 
     if (!nickname) {
       setNicknameError('Введите никнейм!');
+    }
+
+    if (count < 1 || count > maxCount) {
+      setCountError(`Введите значение от 1 до ${maxCount}`)
     }
   
     if (selectedPaymentMethod === null) {
       setSelectPaymentMethod('Выберите значение!');
     }
 
-    if (nickname && priceDonate && selectedPaymentMethod && isAgreed) {
+    if (nickname && count && selectedPaymentMethod && isAgreed) {
       
       let couponInfo = {};
       if (couponData?.exists) {
@@ -204,28 +207,28 @@ const ModalArtifact = ({ isOpen, onClose, descriptionTitle, descriptionText, pri
         couponInfo.percent = couponData.discount;
       }
 
-      // try {
-      //   const result = await CreateOrderService.createOrderDonate({
-      //     nickname, 
-      //     couponInfo,
-      //     priceDonate, 
-      //     selectedPaymentMethod, 
-      //     isAgreed, 
-      //   })
-      //   if (result.data.status) {
-      //     toast.success(result.data.message, {autoClose: 2000})
-      //   }
-      // } catch (error) {
-      //   if (!error.response.data.status) {
-      //     if (error.response.data.typeError === 'Not find Nickname') {
-      //       setNicknameError(error.response.data.message);
-      //     } else if (error.response.data.typeError === 'Donate status error') {
-      //       setNicknameError(error.response.data.message);
-      //       toast.error (error.response.data.message, {autoClose: 2000})
-      //     }
-      //   }
-      //   console.log(error);
-      // }
+      try {
+        const result = await CreateOrderService.createOrderArtifact({
+          nickname, 
+          couponInfo,
+          idArtifact,
+          idName,
+          count,
+          finalPrice,
+          selectedPaymentMethod, 
+          isAgreed,
+        })
+        if (result.data.status) {
+          toast.success(result.data.message, {autoClose: 2000})
+        }
+      } catch (error) {
+        if (!error.response.data.status) {
+          if (error.response.data.typeError === 'Not find Nickname') {
+            setNicknameError(error.response.data.message);
+          }
+        }
+        console.log(error);
+      }
     }
   }
 

@@ -9,4 +9,12 @@ export default class CreateOrderService {
       console.error(error); 
     }
   }
+
+  static async createOrderArtifact(data) {
+    try {
+      return $api.post(API_ENDPOINTS.CREATE_ORDER_ARTIFACT, data);
+    } catch (error) {
+      console.error(error); 
+    }
+  }
 }

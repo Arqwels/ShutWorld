@@ -2,6 +2,7 @@ const orderService = require('../service/orderStatusService');
 const RankDonate = require('../models/Donate/ranksModel');
 const OrderRank = require('../models/Donate/orderRankModel');
 const User = require('../models/userModel');
+const OrderArtifact = require('../models/Donate/orderArtifactModel');
 
 class orderStatusController {
   async createOrderStatus (req, res, next) {
@@ -49,7 +50,7 @@ class orderStatusController {
         return res.status(400).json({ status: false, typeError: 'Not find Donate status', message: 'Статус не найден!!'})
       }
 
-      if (couponInfo.lenght > 0) {
+      if (couponInfo.length > 0) {
         // Проверка самого купона
         const checkCoupon = await orderService.findCoupon(couponInfo.couponText)
         if (!checkCoupon) {
@@ -80,7 +81,7 @@ class orderStatusController {
       // =====================
 
       if (nickname ||
-        (couponInfo.lenght > 0) ||
+        (couponInfo.length > 0) ||
         priceDonate ||
         selectedDuration ||
         selectedPaymentMethod ||
@@ -106,6 +107,113 @@ class orderStatusController {
         return res.status(200).json({ status: true, message: 'Спасибо за покупку!' });
       }
       //! Придумать что-то 
+      res.status(200).json({ status: true, message: 'Оплатили!'})
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  //! selectedPaymentMethod сделать тоже проверку на это
+  async createOrderArtifact(req, res, next) {
+    // Функция для округления цены
+    function roundToTwo(num) {
+      return +(Math.round(num + "e+2")  + "e-2");
+    }
+
+    const tolerance = 0.01; // Допустимая разница в цене
+    try {
+      console.log(34534534535);
+      console.log(req.body);
+
+      const { nickname, couponInfo, idArtifact, idName, count, finalPrice, selectedPaymentMethod, isAgreed } = req.body;
+
+      const checkNickname = await orderService.findNickname(nickname);
+      if (!checkNickname) {
+        return res.status(400).json({ status: false, typeError: 'Not find Nickname', message: 'Пользователь не найден!'})
+      }
+
+      // Проверка есть ли данный артифакт в БД
+      const findArtifact = await orderService.findArtifact(idArtifact, idName);
+      if (!findArtifact) {
+        return res.status(400).json({ status: false, typeError: 'Not find Artifact', message: 'Артифакт не найден!'})
+      }
+
+      // Проверка на максимальное кол-во артефактов
+      if (!count || count <= 0 || count > findArtifact.maxCount) {
+        return res.status(400).json({ status: false, typeError: 'Max count error', message: 'Ошибка при подсчёте максимального кол-во!' });
+      }
+
+      // Проверка купона и цены есть есть купон
+      if (couponInfo && Object.keys(couponInfo).length > 0) {
+        // Проверка самого купона
+        if (typeof couponInfo === 'object' && couponInfo !== null && 'couponText' in couponInfo && 'percent' in couponInfo) {
+          if (couponInfo.couponText.length > 0 && (typeof couponInfo.percent === 'number' && couponInfo.percent > 0)) {
+            
+            const checkCoupon = await orderService.findCoupon(couponInfo.couponText)
+            if (!checkCoupon) {
+              return res.status(400).json({ status: false, typeError: 'Not find Coupon', message: 'Ошибка при проверке купона!'})
+            }
+
+            // Проверка процентности купона
+            if (couponInfo.percent !== checkCoupon.discount) {
+              return res.status(400).json({ status: false, typeError: 'Coupon error', message: 'Купон недействительный!'})
+            }
+
+            // Проверка цены, если есть купон
+            const resultCheckPrice = await orderService.priceWithDiscount(findArtifact.price, checkCoupon.discount)
+
+            // Убедитесь, что результат округлен до двух знаков после запятой
+            let finalPriceWithCoupon = roundToTwo(resultCheckPrice * count);
+
+            if (Math.abs(finalPriceWithCoupon - finalPrice) > tolerance) {
+              return res.status(400).json({ status: false, typeError: 'Price error', message: 'Цена не сходится!'})
+            }
+          } else {
+            return res.status(400).json({ status: false, typeError: 'Incorrect coupon format1', message: 'Неверный формат купона!2'})
+          }
+        } else {
+          return res.status(400).json({ status: false, typeError: 'Incorrect coupon format2', message: 'Неверный формат купона!1'})
+        }
+      }
+
+      // Проверка цены без купона
+      if (!couponInfo) {
+        if (Math.abs((findArtifact.price * count) - finalPrice) > tolerance) {
+          return res.status(400).json({ status: false, typeError: 'Price error', message: 'Цена не сходится!'})
+        }
+      }
+
+      // Проверка согласия на "Публичную оферту"
+      if (!isAgreed) {
+        return res.status(400).json({ status: false, typeError: 'Agreed error', message: 'Вы не согласились с условиями!'})
+      }
+
+      if (nickname ||
+        (couponInfo.length > 0) ||
+        count ||
+        finalPrice ||
+        isAgreed ||
+        selectedPaymentMethod ||
+        idArtifact ||
+        idName
+      ) {
+        // После всех проверок и перед отправкой успешного ответа
+        await OrderArtifact.create({
+          status: 'processing', // status | processing  error  successfully
+          nickname: nickname,
+          couponText: couponInfo?.couponText || null,
+          couponPercent: couponInfo?.percent || null,
+          idArtifact: idArtifact,
+          idName: idName,
+          countArtifact: count,
+          price: finalPrice,
+          paymentMethodLabel: selectedPaymentMethod.label,
+          isAgreed: isAgreed
+        });
+        // Отправляем успешный ответ
+        return res.status(200).json({ status: true, message: 'Спасибо за покупку!' });
+      }
+
       res.status(200).json({ status: true, message: 'Оплатили!'})
     } catch (error) {
       next(error);

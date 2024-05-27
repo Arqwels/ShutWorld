@@ -144,6 +144,8 @@ const Artifact = () => {
             descriptionText={artifact.description}
             priceOnePiece={artifact.price}
             maxCount={artifact.maxCount}
+            idArtifact={artifact.id}
+            idName={artifact.idName}
             onClose={() => closeModal(index)}
           />
         );

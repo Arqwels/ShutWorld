@@ -76,7 +76,7 @@ export default class Store {
     }
   }
 
-// В методе checkAuth
+  // В методе checkAuth
   async checkAuth() {
     const url = process.env.NODE_ENV === "production" ? PRODUCTION_SERVER_URL : SERVER_URL;
     this.setLoading(true);
@@ -89,8 +89,7 @@ export default class Store {
         this.setUser(response.data.user);
       }
     } catch (error) {
-      console.log(555111);
-      // localStorage.removeItem('token');
+      localStorage.removeItem('token');
       console.log(error.response?.data?.message);
     } finally {
       setTimeout(() => {
@@ -98,5 +97,4 @@ export default class Store {
       }, 0);
     }
   }
-
 }

@@ -2,8 +2,9 @@ import { Link, useNavigate } from "react-router-dom";
 import WrapperComponent from "../../../../pages/WrapperComponent"
 import st from '../../../Admin.module.scss';
 import { useEffect, useState } from "react";
-import GetAllArtifactService from "../../../../service/ArtifactService";
+import ArtifactService from "../../../../service/ArtifactService";
 import { ADMIN_SINGLE_EDIT_ARTIFACT } from "../../../../utils/consts";
+import AdminService from "../../../../service/AdminService";
 
 const EditorArtifact = () => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const EditorArtifact = () => {
 
   const fetchData = async () => {
     try {
-      const response = await GetAllArtifactService.getAllArtifact();
+      const response = await ArtifactService.getAllArtifact();
       setArtifacts(response.data);
       console.log(response.data);
     } catch (error) {
@@ -21,11 +22,11 @@ const EditorArtifact = () => {
 
   const deleteArtifact = async (idNameArtifact) => {
     alert("Вы уверены, что хотите удалить артефакт?");
-    // const response = await ... ;
-    // if(response.status === 200) {
-    //   alert(response.data.message);
-    //   fetchData();
-    // }
+    const response = await AdminService.deleteArtifact(idNameArtifact);
+    if(response.status === 200) {
+      alert(response.data.message);
+      fetchData();
+    }
   }
 
   useEffect(() => {
