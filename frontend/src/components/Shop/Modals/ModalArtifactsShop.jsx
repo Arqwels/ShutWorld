@@ -11,8 +11,10 @@ import ModalCountInput from "../Inputs/ModalCountInput";
 import CheckCouponService from "../../../service/CheckCouponService";
 import ModalFormQuest from "../Inputs/ModalFormQuest";
 import ModalFormOffer from "../Inputs/ModalFormOffer";
+import CreateOrderService from "../../../service/CreateOrderService";
+import { toast } from "react-toastify";
 
-const ModalArtifact = ({ isOpen, onClose, descriptionTitle, descriptionText, priceOnePiece, maxCount }) => {
+const ModalArtifact = ({ isOpen, descriptionTitle, descriptionText, priceOnePiece, maxCount, idArtifact, idName, onClose }) => {
   const [ textForm, setTextForm ] = useState('Данные не заполнены!');
   const [ statusForm, setStatusForm ] = useState(false);
   const [ finalPrice, setFinalPrice ] = useState(priceOnePiece);
@@ -87,44 +89,59 @@ const ModalArtifact = ({ isOpen, onClose, descriptionTitle, descriptionText, pri
   };
 
   // Подсчёт скидки 
-  const priceWithDiscount = useCallback((price, discount) => {
-    const discountAmount = (price * discount) / 100;
-    let totalPrice = price - discountAmount;
+  const priceWithDiscount = useCallback((totalPrice, discount) => {
+    // Проверка входных данных
+    if (isNaN(totalPrice) || isNaN(discount)) {
+      console.error("Входные данные должны быть числами");
+      return null;
+    }
   
-    // Округляем число до двух десятичных знаков
-    const precision = Math.pow(10, 2);
-    totalPrice = Math.ceil(totalPrice * precision) / precision;
+    if (totalPrice < 0 || discount < 0 || discount > 100) {
+      console.error("Некорректные значения для цены или скидки");
+      return null;
+    }
   
-    // Применяем метод toFixed() для обрезания до двух знаков после запятой
-    return totalPrice.toFixed(2);
+  
+    const discountAmount = (totalPrice * discount) / 100;
+    const finalPrice = (totalPrice - discountAmount).toFixed(2);
+  
+    return parseFloat(finalPrice); // Возвращаем число вместо строки
   }, []);
 
   // Функция для обновления finalPrice в зависимости от скидки
   const checkPrice = useCallback(() => {
+    const totalPrice = count * priceOnePiece;
     if (discount) {
-      const newFinalPrice = calculateTotalPrice(count, priceWithDiscount(priceOnePiece, discount));
-      setFinalPrice(newFinalPrice); // Обновляем состояние finalPrice
+      const finalPriceWithDiscount = priceWithDiscount(totalPrice, discount);
+      setFinalPrice(finalPriceWithDiscount); // Обновляем состояние finalPrice
     } else {
-      const newFinalPrice = calculateTotalPrice(count, priceOnePiece);
-      setFinalPrice(newFinalPrice); // Обновляем состояние finalPrice
+      setFinalPrice(totalPrice); // Обновляем состояние finalPrice без скидки
     }
   }, [count, discount, priceOnePiece, priceWithDiscount]);
 
   // Функция для проверки купона
   const checkCoupon = async () => {
     try {
+      // Отправляем запрос на проверку купона на сервере
       const response = await CheckCouponService.checkCoupon({ couponCode: coupon });
+      // Если купон не существует, выводим сообщение об ошибке в консоль
       if (!response.data.exists) {
         console.log('Ошибка в проверке купона!');
       }
-      const couponInfo = response.data.couponInfo;
-      setDiscount(couponInfo.discount); // Устанавливаем скидку
-      // Пересчитываем цену с учетом купона
-      const newFinalPrice = calculateTotalPrice(count, priceWithDiscount(priceOnePiece, couponInfo.discount));
+
+      const couponInfo = response.data.couponInfo; // Получаем информацию о купоне из ответа сервера
+      setDiscount(couponInfo.discount); // Устанавливаем скидку из данных купона
+      
+      const totalPrice = count * priceOnePiece; // Пересчитываем общую цену с учетом количества
+      const finalPriceWithDiscount = priceWithDiscount(totalPrice, couponInfo.discount); // Применяем скидку к общей цене
+      
+      // Обновляем состояние купона (существует, величина скидки) 
       const dataToUpdate = { exists: response.data.exists, discount: couponInfo.discount };
       setCouponData(dataToUpdate);
-      setFinalPrice(newFinalPrice);
+      
+      setFinalPrice(finalPriceWithDiscount); // Устанавливаем итоговую цену с учетом скидки
     } catch (error) {
+      // Обрабатываем ошибку, возникшую при проверке купона
       couponError(error);
     }
   };
@@ -136,12 +153,6 @@ const ModalArtifact = ({ isOpen, onClose, descriptionTitle, descriptionText, pri
       setCouponData(error.response.data);
     }
   };
-  
-  // Функция для расчета общей стоимости
-  const calculateTotalPrice = (count, price) => {
-    const totalPrice = count * price;
-    return parseFloat(totalPrice.toFixed(2));
-  }
 
   // Для проверки на пустой input в Никнейме
   const blurHandler = (e) => {
@@ -182,21 +193,22 @@ const ModalArtifact = ({ isOpen, onClose, descriptionTitle, descriptionText, pri
 
     console.log(2234234234);
 
-    if (count < 1 || count > maxCount) {
-      setCountError(`Введите значение от 1 до ${maxCount}`)
-    }
-
-    let priceDonate = 0;
+    console.log(idArtifact);
+    console.log(idName);
 
     if (!nickname) {
       setNicknameError('Введите никнейм!');
+    }
+
+    if (count < 1 || count > maxCount) {
+      setCountError(`Введите значение от 1 до ${maxCount}`)
     }
   
     if (selectedPaymentMethod === null) {
       setSelectPaymentMethod('Выберите значение!');
     }
 
-    if (nickname && priceDonate && selectedPaymentMethod && isAgreed) {
+    if (nickname && count && selectedPaymentMethod && isAgreed) {
       
       let couponInfo = {};
       if (couponData?.exists) {
@@ -204,28 +216,28 @@ const ModalArtifact = ({ isOpen, onClose, descriptionTitle, descriptionText, pri
         couponInfo.percent = couponData.discount;
       }
 
-      // try {
-      //   const result = await CreateOrderService.createOrderDonate({
-      //     nickname, 
-      //     couponInfo,
-      //     priceDonate, 
-      //     selectedPaymentMethod, 
-      //     isAgreed, 
-      //   })
-      //   if (result.data.status) {
-      //     toast.success(result.data.message, {autoClose: 2000})
-      //   }
-      // } catch (error) {
-      //   if (!error.response.data.status) {
-      //     if (error.response.data.typeError === 'Not find Nickname') {
-      //       setNicknameError(error.response.data.message);
-      //     } else if (error.response.data.typeError === 'Donate status error') {
-      //       setNicknameError(error.response.data.message);
-      //       toast.error (error.response.data.message, {autoClose: 2000})
-      //     }
-      //   }
-      //   console.log(error);
-      // }
+      try {
+        const result = await CreateOrderService.createOrderArtifact({
+          nickname, 
+          couponInfo,
+          idArtifact,
+          idName,
+          count,
+          finalPrice,
+          selectedPaymentMethod, 
+          isAgreed,
+        })
+        if (result.data.status) {
+          toast.success(result.data.message, {autoClose: 2000})
+        }
+      } catch (error) {
+        if (!error.response.data.status) {
+          if (error.response.data.typeError === 'Not find Nickname') {
+            setNicknameError(error.response.data.message);
+          }
+        }
+        console.log(error);
+      }
     }
   }
 

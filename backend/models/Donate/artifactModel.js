@@ -12,7 +12,7 @@ const ArtifactDonate = sequelize.define('artifact-donate', {
     allowNull: false
   },
   price: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.FLOAT,
     allowNull: false
   },
   maxCount: {

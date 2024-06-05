@@ -7,6 +7,7 @@ export const API_ENDPOINTS = {
   
   CHECK_COUPON: 'api/coupon/check-coupon',
   CREATE_ORDER_DONATE: 'api/order/create-order-donate',
+  CREATE_ORDER_ARTIFACT: 'api/order/create-order-artifact',
 
   // USER
   GET_MAIL_MESSAGE: 'api/user/get-mail-message',

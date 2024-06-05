@@ -2,6 +2,7 @@ const User = require("../models/userModel");
 const Coupons = require("../models/Donate/couponsModel");
 const DurationDonate = require("../models/Donate/durationRanksModel");
 const RankDonate = require("../models/Donate/ranksModel");
+const ArtifactDonate = require("../models/Donate/artifactModel");
 
 class OrdersService {
   async findNickname (nickname) {
@@ -73,6 +74,14 @@ class OrdersService {
     }
     return parseFloat(totalPrice); // Преобразуем обратно в число
   }
+
+  async findArtifact(idArtifact, idName) {
+    const artifact = await ArtifactDonate.findByPk(idArtifact);
+    if (!artifact || (idName !== artifact.idName)) {
+      return null;
+    }
+    return artifact;
+  };
 }
 
 module.exports = new OrdersService();
