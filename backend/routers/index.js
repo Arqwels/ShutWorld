@@ -8,6 +8,7 @@ const couponRouter = require('./couponRouter');
 const orderRouter = require('./orderRouter');
 const imagesRouter = require('./imagesRouter');
 const artifactRouter = require('./artifactRouter');
+const rulesRouter = require('./rulesRouter');
 
 const router = new Router();
 
@@ -20,5 +21,6 @@ router.use('/admin', adminRouter);
 router.use('/coupon', couponRouter);
 router.use('/order', orderRouter);
 router.use('/images', imagesRouter);
+router.use('/rules', rulesRouter);
 
 module.exports = router;

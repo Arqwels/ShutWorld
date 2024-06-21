@@ -28,6 +28,23 @@
   }
 }
 
+.noRules {
+  text-align: center;
+  padding: 150px 0;
+  color: #000;
+  font: 500 18px/22px 'Ubuntu', sans-serif;
+  > h2 {
+    margin-bottom: 16px;
+  }
+  @media screen and (max-width: 768px) {
+    padding: 100px 0;
+    font-size: 16px;
+  }
+  @media screen and (max-width: 576px) {
+    padding: 80px 0;
+  }
+}
+
 .ruleItem.active .headImg {
   transform: rotate(0.5turn);
 }
@@ -66,6 +83,9 @@
     @media screen and (max-width: 768px) {
       padding: 12px 18px;
       font-size: 14px;
+    }
+    p + p {
+      margin-top: 8px; // Добавляем отступ между тегами <p>
     }
   }
 }

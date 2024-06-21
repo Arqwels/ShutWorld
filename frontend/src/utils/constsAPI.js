@@ -1,5 +1,6 @@
 export const API_ENDPOINTS = {
   GET_POST_VK: 'api/post/get-post-vk',
+  GET_RULES: 'api/rules/get-rules',
 
   GET_RANKS_DONATE: 'api/rank/get-ranks',
   GET_ALL_ARTIFACT: 'api/artifact/get-all-artifact',

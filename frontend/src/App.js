@@ -8,6 +8,7 @@ import ScrollToTop from './ScrollToTop';
 import Footer from './components/Footer/Footer';
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import Loader from './components/Loader/Loader';
 
 const App = () => {
   const { store } = useContext(Context);
@@ -23,7 +24,7 @@ const App = () => {
   }, [store]);
 
   if(store.isLoading || !isAuthChecked) {
-    return <div>ЗАГРУЖАЮСЬ ЖДИИИИ!!!...</div>;
+    return <Loader />;
   };
 
   return (
