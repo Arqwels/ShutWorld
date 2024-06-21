@@ -43,7 +43,7 @@ router.post('/add-artifact', upload.single('photo'), roleMiddleware(["ADMIN"]), 
 router.delete('/delete-artifact/:artifactId', roleMiddleware(["ADMIN"]), artifactController.deleteArtifact);
 
 // http://localhost:5000/api/admin/update-artifact
-router.put('/update-artifact', artifactController.updateArtifact);
+router.put('/update-artifact', roleMiddleware(["ADMIN"]), artifactController.updateArtifact);
 
 // Coupon
 
@@ -54,10 +54,10 @@ router.post('/add-coupon', roleMiddleware(["ADMIN"]), couponController.createCou
 // Rules
 
 // http://localhost:5000/api/admin/create-rules-title
-router.post('/create-rules-title', adminRulesController.createrTitleRules);
+router.post('/create-rules-title', roleMiddleware(["ADMIN"]), adminRulesController.createrTitleRules);
 
 // http://localhost:5000/api/admin/create-rules-text
-router.post('/create-rules-text', adminRulesController.createrTextRules);
+router.post('/create-rules-text', roleMiddleware(["ADMIN"]), adminRulesController.createrTextRules);
 
 
 module.exports = router;
