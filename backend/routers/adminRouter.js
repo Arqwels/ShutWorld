@@ -6,6 +6,7 @@ const ranksController = require('../controllers/admin/ranksController');
 const artifactController = require('../controllers/admin/artifactController');
 const multer = require('multer');
 const couponController = require('../controllers/admin/couponController');
+const adminRulesController = require('../controllers/admin/adminRulesController');
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
@@ -47,6 +48,16 @@ router.put('/update-artifact', artifactController.updateArtifact);
 // Coupon
 
 // http://localhost:5000/api/admin/add-coupon
-router.post('/add-coupon', roleMiddleware(["ADMIN"]), couponController.createCoupon)
+router.post('/add-coupon', roleMiddleware(["ADMIN"]), couponController.createCoupon);
+
+
+// Rules
+
+// http://localhost:5000/api/admin/create-rules-title
+router.post('/create-rules-title', adminRulesController.createrTitleRules);
+
+// http://localhost:5000/api/admin/create-rules-text
+router.post('/create-rules-text', adminRulesController.createrTextRules);
+
 
 module.exports = router;
