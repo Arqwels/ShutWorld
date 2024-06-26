@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import style from './Auth.module.scss';
 import endShip from '../../images/endShipLogin.svg';
+import eyeIcon from '../../assets/images/icons/eye-fill.svg';
+import eyeOffIcon from '../../assets/images/icons/eye-off-fill.svg';
 import { Context } from '../..';
 import { observer } from 'mobx-react-lite';
 import { ADMIN_ROUTE, AUTHORIZATION_ROUTE, PROFILE_ROUTE } from '../../utils/consts';
@@ -9,6 +11,7 @@ import { ADMIN_ROUTE, AUTHORIZATION_ROUTE, PROFILE_ROUTE } from '../../utils/con
 const Login = () => {
   const [nickname, setNickname] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const { store } = useContext(Context);
   const navigate = useNavigate();
@@ -93,6 +96,10 @@ const Login = () => {
     }
   };
 
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div className={style.body}>
       <img src={endShip} alt="endShip" />
@@ -100,10 +107,11 @@ const Login = () => {
         <form className={style.wrapForm}>
           <h2 className={style.headTitle}>Вход</h2>
           <div className={style.wrapFormItem}>
-            <label className={style.titleField}>Никнейм</label>
+            <label className={style.titleField} htmlFor="nickname">Никнейм</label>
             <div className={style.wrapError}>
               {(nicknameDirty && nicknameError) && <div className={style.error}>{nicknameError}</div>}
               <input
+                id="nickname"
                 className={style.inputBut}
                 type="text"
                 name="nickname"
@@ -116,19 +124,25 @@ const Login = () => {
             </div>
           </div>
           <div className={style.wrapFormItem}>
-            <label className={style.titleField}>Пароль</label>
+            <label className={style.titleField} htmlFor="password">Пароль</label>
             <div className={style.wrapError}>
               {(passwordDirty && passwordError) && <div className={style.error}>{passwordError}</div>}
-              <input
-                className={style.inputBut}
-                type="text"
-                name="password"
-                value={password}
-                onChange={passwordHandler}
-                onBlur={blurHandler}
-                placeholder="Введите свой пароль"
-                required
-              />
+              <div className={style.passwordWrapper}>
+                <input
+                  id="password"
+                  className={style.inputBut}
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  value={password}
+                  onChange={passwordHandler}
+                  onBlur={blurHandler}
+                  placeholder="Введите свой пароль"
+                  required
+                />
+                <button type="button" className={style.eyeButton} onClick={toggleShowPassword}>
+                  <img src={showPassword ? eyeOffIcon : eyeIcon} alt="toggle visibility" />
+                </button>
+              </div>
             </div>
           </div>
           <span className={style.recovery}>Забыли пароль от аккаунта?</span>

@@ -78,20 +78,24 @@ const Register = observer(() => {
   };
   // Проверка на пароль, его размер
   const passwordHandler = (e) => {
-    setPassword(e.target.value)
+    setPassword(e.target.value);
     if (e.target.value.length === 0) 
-      setPasswordError('Введите пароль')
+      setPasswordError('Введите пароль');
     else if (e.target.value.length <= 5) 
-      setPasswordError('Слишком короткий пароль')
+      setPasswordError('Слишком короткий пароль');
     else if (e.target.value.length >= 5 && e.target.value.length <= 16)
-      setPasswordError('')
+      setPasswordError('');
     else if (e.target.value.length >= 16)
-      setPasswordError('Слишком длинный пароль')
-  }
-  //! Есть проблема когда введены оба пароля и пользователь захочет изменить пароль, то повторный пароль можно не изменять. Нужен фикс!
-  // Проверка на совпадение повторного пароля с праволем
+      setPasswordError('Слишком длинный пароль');
+
+    // Проверяем повторный пароль при изменении основного пароля
+    if (repeatPassword.length > 0) {
+      e.target.value === repeatPassword ? setRepeatPasswordError('') : setRepeatPasswordError('Неверный повторный пароль');
+    }
+  };
+  // Проверка на совпадение повторного пароля с паролем
   const repeatPasswordHandler = (e) => {
-    setRepeatPassword(e.target.value)
+    setRepeatPassword(e.target.value);
     e.target.value === password ? setRepeatPasswordError('') : setRepeatPasswordError('Неверный повторный пароль');
   }
   // Для проверки введёно ли хоть что-то в форму
@@ -123,12 +127,13 @@ const Register = observer(() => {
         navigate(PROFILE_ROUTE);
       }
     }
-    if ( nicknameError || emailError || passwordError || userAgrmntError || repeatPasswordError || registerStatus ) {
+
+    if ( nicknameError || emailError || passwordError || userAgrmntError || repeatPasswordError || registerStatus || !useragreement ) {
       setFormValid(false);
     } else {
       setFormValid(true);
     }
-  }, [ store, navigate, nicknameError, emailError, passwordError, userAgrmntError, repeatPasswordError, registerStatus ])
+  }, [ store, navigate, nicknameError, emailError, passwordError, userAgrmntError, repeatPasswordError, registerStatus, useragreement ])
 
   const handleRegistration = async (e) => {
     e.preventDefault();
@@ -152,7 +157,7 @@ const Register = observer(() => {
           <form className={style.wrapForm}>
             <h2 className={style.headTitle}>Регистрация</h2>
             <Input 
-              titleLabel={texts.label.h3.nickname}
+              titleLabel={texts.label.label.nickname}
               textLabel={texts.label.p.nickname}
               errors={[nicknameDirty, nicknameError, registerStatus]}
               value={nickname}
@@ -163,7 +168,7 @@ const Register = observer(() => {
               placeholder={texts.input.placeholder.nickname}
             />
             <Input 
-              titleLabel={texts.label.h3.email}
+              titleLabel={texts.label.label.email}
               textLabel={texts.label.p.email}
               errors={[emailDirty, emailError]}
               value={email}
@@ -174,7 +179,7 @@ const Register = observer(() => {
               placeholder={texts.input.placeholder.email}
             />
             <Input 
-              titleLabel={texts.label.h3.password}
+              titleLabel={texts.label.label.password}
               textLabel={texts.label.p.password}
               errors={[passwordDirty, passwordError]}
               value={password}
@@ -185,7 +190,7 @@ const Register = observer(() => {
               placeholder={texts.input.placeholder.password}
             />
             <Input 
-              titleLabel={texts.label.h3.repeatPassword}
+              titleLabel={texts.label.label.repeatPassword}
               textLabel={texts.label.p.repeatPassword}
               errors={[repeatPasswordDirty, repeatPasswordError]}
               value={repeatPassword}
@@ -215,6 +220,6 @@ const Register = observer(() => {
         </div>
       </section>
   )
-})
+});
 
 export default Register;

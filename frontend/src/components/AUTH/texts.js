@@ -1,6 +1,6 @@
 const texts = {
   label: {
-    h3: {
+    label: {
       nickname: 'Придумайте себе ник',
       email: 'Email адрес',
       password: 'Пароль',
@@ -17,8 +17,8 @@ const texts = {
     type: {
       name: 'text',
       email: 'email',
-      password: 'text',
-      repeatPassword: 'text',
+      password: 'password',
+      repeatPassword: 'password',
       userAgreement: 'checkbox',
     },
     name: {
@@ -38,6 +38,6 @@ const texts = {
       userAgreement: 'useragreement'
     }
   }
-}
+};
 
 export default texts;
